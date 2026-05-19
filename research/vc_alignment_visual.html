@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>uMODA — VC Thesis Alignment Research</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f172a;--slate:#475569;--muted:#94a3b8;--light:#f8fafc;--border:#e2e8f0;
+  --t1:#2563eb;--t1b:#eff6ff;
+  --t2:#7c3aed;--t2b:#f5f3ff;
+  --t3:#ea580c;--t3b:#fff7ed;
+  --t4:#059669;--t4b:#ecfdf5;
+  --t5:#db2777;--t5b:#fdf2f8;
+  --t6:#0891b2;--t6b:#ecfeff;
+  --g1:#059669;--g1b:#d1fae5;
+  --g2:#d97706;--g2b:#fef3c7;
+  --g3:#6b7280;--g3b:#f3f4f6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#fff;color:var(--navy);line-height:1.6;font-size:14px}
+a{color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;overflow-x:auto}
+.nav-brand{font-size:13px;font-weight:800;padding:13px 20px 13px 0;margin-right:16px;border-right:1px solid var(--border);white-space:nowrap;letter-spacing:-0.01em}
+.nav a{font-size:12px;font-weight:500;padding:13px 12px;color:var(--slate);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s}
+.nav a:hover{color:var(--navy);border-bottom-color:var(--navy)}
+
+/* LAYOUT */
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px}
+
+/* HERO */
+.hero{padding:56px 0 44px}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--t6b);color:var(--t6);padding:4px 10px;border-radius:4px;margin-bottom:18px}
+.hero h1{font-size:36px;font-weight:800;line-height:1.15;margin-bottom:14px;letter-spacing:-.02em}
+.hero p{font-size:15px;color:var(--slate);max-width:620px;line-height:1.7;margin-bottom:28px}
+.meta-row{display:flex;gap:32px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--border)}
+.meta-item{font-size:12px;color:var(--muted)}
+.meta-item strong{color:var(--navy);font-size:13px}
+.stats-row{display:flex;gap:40px;flex-wrap:wrap;padding:28px 0;border-bottom:1px solid var(--border)}
+.stat .n{font-size:38px;font-weight:800;letter-spacing:-.03em}
+.stat .l{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px}
+
+/* SECTION */
+section{padding:60px 0;border-top:1px solid var(--border)}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t6);margin-bottom:6px}
+.sec-title{font-size:22px;font-weight:700;margin-bottom:10px}
+.sec-desc{font-size:13px;color:var(--slate);max-width:600px;margin-bottom:32px;line-height:1.65}
+
+/* THREADS */
+.threads-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tc{padding:16px 18px;border-radius:8px;border:1px solid}
+.tc .tn{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.tc h3{font-size:13px;font-weight:700;margin-bottom:4px}
+.tc p{font-size:12px;line-height:1.5;opacity:.85}
+.tc1{border-color:var(--t1);background:var(--t1b)}.tc1 .tn{color:var(--t1)}
+.tc2{border-color:var(--t2);background:var(--t2b)}.tc2 .tn{color:var(--t2)}
+.tc3{border-color:var(--t3);background:var(--t3b)}.tc3 .tn{color:var(--t3)}
+.tc4{border-color:var(--t4);background:var(--t4b)}.tc4 .tn{color:var(--t4)}
+.tc5{border-color:var(--t5);background:var(--t5b)}.tc5 .tn{color:var(--t5)}
+.tc6{border-color:var(--t6);background:var(--t6b)}.tc6 .tn{color:var(--t6)}
+
+/* CALLOUT */
+.callout{background:var(--navy);color:#fff;border-radius:10px;padding:28px 36px;margin:36px 0}
+.callout-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t6);margin-bottom:10px}
+.callout h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.callout p{font-size:13px;line-height:1.7;opacity:.8;max-width:660px}
+
+/* TIER HEADERS */
+.tier-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:10px 16px;border-radius:8px}
+.tier-head.t1h{background:var(--g1b)}.tier-head.t2h{background:var(--g2b)}.tier-head.t3h{background:var(--g3b)}
+.tier-badge{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.tb1{background:var(--g1b);color:var(--g1)}.tb2{background:var(--g2b);color:var(--g2)}.tb3{background:var(--g3b);color:var(--g3)}
+.tier-head-text .title{font-size:14px;font-weight:700}
+.tier-head-text .desc{font-size:12px;color:var(--slate)}
+
+/* CARDS GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px}
+.firm-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+.card-top{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.firm-name{font-size:16px;font-weight:700}
+.firm-name a{text-decoration:none;color:var(--navy)}
+.firm-name a:hover{text-decoration:underline}
+.firm-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.new-chip{font-size:8px;font-weight:700;letter-spacing:.08em;background:#fef9c3;color:#92400e;padding:2px 5px;border-radius:3px;text-transform:uppercase;margin-left:5px;vertical-align:middle}
+.card-body{padding:14px 18px}
+
+/* PITCH BLOCK */
+.pitch-block{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:12px}
+.pitch-label{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.pitch-text{font-size:12px;color:var(--navy);line-height:1.55;font-weight:500}
+
+/* ALIGN LIST */
+.al{list-style:none;margin-bottom:12px}
+.al li{font-size:12px;color:var(--slate);line-height:1.5;padding:2px 0 2px 13px;position:relative}
+.al li::before{content:"›";position:absolute;left:0;color:var(--t6);font-weight:700}
+
+/* THREAD PILLS */
+.pills{display:flex;gap:4px;flex-wrap:wrap}
+.tp{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.03em;border:1px solid}
+.tp.t1{background:var(--t1b);color:var(--t1);border-color:var(--t1)}
+.tp.t2{background:var(--t2b);color:var(--t2);border-color:var(--t2)}
+.tp.t3{background:var(--t3b);color:var(--t3);border-color:var(--t3)}
+.tp.t4{background:var(--t4b);color:var(--t4);border-color:var(--t4)}
+.tp.t5{background:var(--t5b);color:var(--t5);border-color:var(--t5)}
+.tp.t6{background:var(--t6b);color:var(--t6);border-color:var(--t6)}
+.tp.off{background:#f1f5f9;color:#cbd5e1;border-color:#e2e8f0}
+
+/* MATRIX */
+.matrix-wrap{overflow-x:auto}
+.matrix{width:100%;border-collapse:collapse;font-size:12px}
+.matrix th{padding:9px 12px;text-align:left;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:2px solid var(--border);background:var(--light);white-space:nowrap}
+.matrix td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.matrix tr:hover td{background:var(--light)}
+.matrix .fw{font-weight:600}
+.matrix a{color:var(--navy);text-decoration:none}
+.matrix a:hover{text-decoration:underline}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%}
+.d1{background:var(--t1)}.d2{background:var(--t2)}.d3{background:var(--t3)}
+.d4{background:var(--t4)}.d5{background:var(--t5)}.d6{background:var(--t6)}.d0{background:#e2e8f0}
+.dots{display:flex;gap:3px;align-items:center}
+.tr1 td:first-child{border-left:3px solid var(--g1)}
+.tr2 td:first-child{border-left:3px solid var(--g2)}
+.tr3 td:first-child{border-left:3px solid var(--g3)}
+
+/* OUTREACH */
+.seq-list{list-style:none}
+.seq-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.seq-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.seq-body{flex:1}
+.seq-firm{font-size:15px;font-weight:700;margin-bottom:3px}
+.seq-angle{margin-bottom:5px}
+.at{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:3px;margin-right:4px}
+.at1{background:var(--t1b);color:var(--t1)}.at4{background:var(--t4b);color:var(--t4)}
+.at5{background:var(--t5b);color:var(--t5)}.at6{background:var(--t6b);color:var(--t6)}
+.at3{background:var(--t3b);color:var(--t3)}.at2{background:var(--t2b);color:var(--t2)}
+.seq-note{font-size:12px;color:var(--slate);line-height:1.5}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:16px;padding:14px 16px;background:var(--light);border-radius:8px;margin-bottom:20px}
+.leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--slate)}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+footer{padding:28px 0;border-top:1px solid var(--border);text-align:center;font-size:11px;color:var(--muted)}
+
+@media(max-width:900px){
+  .wrap{padding:0 20px}.nav{padding:0 20px}
+  .hero h1{font-size:26px}.threads-grid{grid-template-columns:repeat(2,1fr)}
+  .cards-grid{grid-template-columns:1fr}.stats-row{gap:20px}
+}
+@media(max-width:600px){.threads-grid{grid-template-columns:1fr}.hero h1{font-size:22px}}
+@media print{.nav{position:static}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">uMODA · VC Research</div>
+  <a href="#framework">Framework</a>
+  <a href="#tier1">Tier 1 Firms</a>
+  <a href="#matrix">Full Matrix</a>
+  <a href="#outreach">Outreach Sequence</a>
+</nav>
+
+<!-- HERO -->
+<div class="wrap">
+<div class="hero">
+  <div class="badge">Impact-Aligned Investor Research · May 2026</div>
+  <h1>Where uMODA Sits<br>in the VC Landscape</h1>
+  <p>uMODA builds behavioral validity measurement infrastructure for AI in essential services — the layer that makes AI trustworthy to consumers, providers, and platforms simultaneously. This document maps every identified VC firm against six investment thesis threads and provides the exact narrative approach for each.</p>
+  <div class="meta-row">
+    <div class="meta-item"><strong>Status</strong> Working Document</div>
+    <div class="meta-item"><strong>Scope</strong> Early-stage AI infrastructure · Impact-aligned · Multi-stakeholder</div>
+    <div class="meta-item"><strong>Date</strong> May 19, 2026</div>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="stat"><div class="n">27</div><div class="l">Firms Analyzed</div></div>
+  <div class="stat"><div class="n" style="color:var(--g1)">13</div><div class="l">Tier 1 · High Alignment</div></div>
+  <div class="stat"><div class="n" style="color:var(--g2)">11</div><div class="l">Tier 2 · Partial Alignment</div></div>
+  <div class="stat"><div class="n">6</div><div class="l">Thesis Threads Spanned</div></div>
+  <div class="stat"><div class="n" style="color:var(--t6)">NEW</div><div class="l">Thread 6: Multi-Stakeholder</div></div>
+</div>
+</div>
+
+<!-- FRAMEWORK -->
+<section id="framework">
+<div class="wrap">
+  <div class="sec-label">Investment Thesis Framework</div>
+  <div class="sec-title">The 6 Threads uMODA Spans</div>
+  <div class="sec-desc">Most AI infrastructure companies speak to 1–2 investor theses. uMODA speaks to six simultaneously — which creates multiple access points into aligned capital and makes the narrative flexible by audience.</div>
+
+  <div class="threads-grid">
+    <div class="tc tc1">
+      <div class="tn">Thread 1</div>
+      <h3>Infrastructure Layer</h3>
+      <p>Investing in what gets built <em>under</em> the application — the measurement layer, the trust layer, the evaluation layer. Not the app; the foundation the app depends on.</p>
+    </div>
+    <div class="tc tc2">
+      <div class="tn">Thread 2</div>
+      <h3>Durable Problems</h3>
+      <p>Companies solving problems that existed before AI hype and will exist after it. The Problematic Triad in auto care is a decades-old structural problem. AI just made it measurable.</p>
+    </div>
+    <div class="tc tc3">
+      <div class="tn">Thread 3</div>
+      <h3>Founder Domain Expertise</h3>
+      <p>Firms that explicitly value founders with a rare edge or deep connection to the problem — not generalist builders applying AI to a market they read about.</p>
+    </div>
+    <div class="tc tc4">
+      <div class="tn">Thread 4</div>
+      <h3>Essential Services</h3>
+      <p>Not SaaS optimization. Industries that shape daily life — healthcare, financial services, auto care — where trust failures have real downstream consequences for real people.</p>
+    </div>
+    <div class="tc tc5">
+      <div class="tn">Thread 5</div>
+      <h3>Inclusion as Core Thesis</h3>
+      <p>Firms where expanding access and closing gaps for underserved populations <em>is the business model</em> — not a marketing layer on top of it.</p>
+    </div>
+    <div class="tc tc6">
+      <div class="tn">Thread 6 · New</div>
+      <h3>Multi-Stakeholder Architecture</h3>
+      <p>AI that must be simultaneously valid and trustworthy to multiple parties with different interests: the consumer, the service provider, the platform, and the regulator. The Problematic Triad made explicit as an investment category.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Why Thread 6 Changes the Pitch</div>
+    <h3>Most AI companies serve one buyer. uMODA serves three simultaneously.</h3>
+    <p>Consumer AI optimizes for the user. Enterprise AI optimizes for the buyer. uMODA's behavioral validity infrastructure must prove trustworthiness to the consumer who is vulnerable to exploitation, the provider who is vulnerable to algorithmic bias, and the platform that loses credibility the moment either party doubts it. That three-sided accountability constraint is what creates the defensible moat — and it's a framing that resonates specifically with marketplace, responsible AI, and network effects investors.</p>
+  </div>
+</div>
+</section>
+
+<!-- TIER 1 -->
+<section id="tier1">
+<div class="wrap">
+  <div class="sec-label">Firm Profiles</div>
+  <div class="sec-title">Tier 1 — High Alignment (4–6 Threads)</div>
+  <div class="sec-desc">Each card shows the exact narrative angle to lead with, the alignment rationale, and the active thesis threads. Original firms from initial research are marked; new additions from expanded search are marked NEW.</div>
+
+  <!-- TIER 1 HEADER -->
+  <div class="tier-head t1h">
+    <span class="tier-badge tb1">Tier 1</span>
+    <div class="tier-head-text">
+      <div class="title">13 firms · Thesis DNA matches 4–6 of 6 threads</div>
+      <div class="desc">These investors would recognize uMODA's market without requiring significant education on why the category exists.</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- 1. Sympatico -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://sympaticoventures.com" target="_blank">Sympatico Ventures</a></div>
+          <div class="firm-sub">Angel + Impact Grants · Founded by Eileen Donahoe (former US tech diplomat)</div>
+        </div>
+        <span class="tier-badge tb1">6/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your thesis is that broad AI adoption depends on whether citizens, companies, and governments trust that AI is safe and compatible with human agency. uMODA builds the 3rd-party behavioral validity infrastructure that makes that trust auditable and defensible."</div>
+        </div>
+        <ul class="al">
+          <li>"3rd-party auditing and evaluation of frontier models" is their stated investment category — exactly what uMODA occupies.</li>
+          <li>Eileen Donahoe's diplomatic background means she understands why trust infrastructure matters at the ecosystem level, not just the product level.</li>
+          <li>Dual coverage: "Responsible AI Investor" and "Infrastructure Conviction" — covers both the impact and the technical angle.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp t3">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. EO Ventures -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://eqopportunity.vc" target="_blank">Equal Opportunity (EO) Ventures</a></div>
+          <div class="firm-sub">Pre-Seed &amp; Seed · $500K–$5M · $100M Fund II · Bill Helman + Roland Fryer</div>
+        </div>
+        <span class="tier-badge tb1">6/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your Social Money Multiplier formula requires measuring impact per dollar deployed. uMODA applies that same logic to AI systems — proving whether the AI actually creates or destroys economic value for the underserved communities it operates in."</div>
+        </div>
+        <ul class="al">
+          <li>Requires founders to report impact metrics alongside financial metrics — uMODA's measurement infrastructure operationalizes exactly that requirement.</li>
+          <li>Auto care is one of the most significant structural barriers to economic participation for exploited communities. Roland Fryer's Harvard economics background will recognize the market failure pattern.</li>
+          <li>Portfolio signals: Manta AI, Sigma Squared, Forage, JobGet — all infrastructure plays in essential services.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp t3">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Cortical Ventures -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://cortical.vc" target="_blank">Cortical Ventures</a></div>
+          <div class="firm-sub">Pre-Seed &amp; Seed · Operators backing operators · Portfolio: Weaviate</div>
+        </div>
+        <span class="tier-badge tb1">5/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your AI Production Gap thesis — infrastructure bridging demos and production — is precisely what uMODA measures. Every AI demo is a cognitive validity performance. What consumers experience is behavioral validity. uMODA quantifies that gap."</div>
+        </div>
+        <ul class="al">
+          <li>"Applications and infrastructure companies bridging the gap between demos and production deployments" is a near-exact description of the Knowing-Doing Gap uMODA measures.</li>
+          <li>AI for Good pillar adds the impact dimension without making it the only lens — operators backing operators means they evaluate founder conviction directly.</li>
+          <li>"Two decades through every AI hype cycle" — they can distinguish infrastructure from noise. Lead with the technical frame first.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp t3">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp off">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Kapor Capital -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://kaporcapital.com" target="_blank">Kapor Capital</a></div>
+          <div class="firm-sub">Pre-Seed · Seed · Series A · Oakland · 170+ portfolio companies</div>
+        </div>
+        <span class="tier-badge tb1">5/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"62% of your founders identify as underrepresented. uMODA's Situated Fairness Principle is the infrastructure that proves their AI products actually work equitably across cultural contexts — making your entire portfolio thesis measurable and defensible."</div>
+        </div>
+        <ul class="al">
+          <li>Co-anchor of the HumanityAI $500M initiative (Ford Foundation, Omidyar, Mozilla). uMODA's measurement methodology could be the validation infrastructure for that entire ecosystem.</li>
+          <li>They assist portfolio companies with "diversity and inclusion goals appropriate for funding stage" — uMODA operationalizes that assistance into auditable data.</li>
+          <li>Auto care disproportionately exploits the communities Kapor explicitly backs. The market fit is the thesis fit.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp off">INFRA</span><span class="tp t2">DURABLE</span><span class="tp t3">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Swell VC -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://swell.vc" target="_blank">Swell VC</a></div>
+          <div class="firm-sub">Pre-Seed &amp; Seed · "Building AI companies before it was a category" (since 2008)</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your commerce thesis: 'hidden complexity that has quietly taxed the economy for decades.' That is the Problematic Triad. Auto care is the most undocumented hidden tax on American economic participation. uMODA makes it measurable and correctable."</div>
+        </div>
+        <ul class="al">
+          <li>Commerce infrastructure framing — "how goods move, price, and transact" — maps directly to the consumer-provider-platform trust triad in auto care.</li>
+          <li>"We don't outsource conviction" — they'll respect the domain-specific measurement approach if it's presented with precision.</li>
+          <li>AI infrastructure founders since 2008: they don't need to be educated on AI infrastructure; they need to be shown why measurement is the next layer.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp t3">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp off">INCLUSION</span><span class="tp off">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Inertia VC -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://inertia.vc" target="_blank">Inertia VC</a></div>
+          <div class="firm-sub">Early Stage · AI-native infrastructure for legacy industries</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your thesis: next-gen AI captures 'why,' not just 'what happened.' That distinction is uMODA's thin-thick evaluation framework. The behavioral validity layer is the 'why' — and no foundation model can replicate it from within the auto care triad."</div>
+        </div>
+        <ul class="al">
+          <li>"The structural gap between what a foundation model can do and what a customer can legally accept" maps precisely to uMODA's behavioral validity layer.</li>
+          <li>Legacy platforms stored what happened; next-gen captures why — this is the exact market-readiness argument for the evaluation infrastructure layer.</li>
+          <li>Partial miss: heavy compliance/regulated industry focus; frame through the trust-layer narrative, not the marketplace narrative.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp off">INCLUSION</span><span class="tp off">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. ex/ante -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://ex-ante.co" target="_blank">ex/ante</a> <span class="new-chip">NEW</span></div>
+          <div class="firm-sub">Seed · AI risk as opportunity · Human agency infrastructure</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"You invest in tools that turn AI risk into opportunity by supporting human agency. uMODA is the measurement infrastructure that makes AI risk in multi-party essential services quantifiable and correctable before it becomes a liability. The pitch is the market thesis you already hold."</div>
+        </div>
+        <ul class="al">
+          <li>Fund thesis: "capitalising on rising enterprise and consumer demand for ownership and control" — the demand signal uMODA is built to serve.</li>
+          <li>Emerged from the Project Liberty / Reframe Venture responsible AI ecosystem — already embedded in the infrastructure conviction investor network.</li>
+          <li>91% of surveyed VCs in that ecosystem see major opportunity in the responsibility stack. ex/ante has built its entire fund thesis around it — zero education needed.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp off">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Collab Capital -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://collab.capital" target="_blank">Collab Capital</a> <span class="new-chip">NEW</span></div>
+          <div class="firm-sub">Seed &amp; Series A · $500K–$1M · $75M Fund II · LPs: Apple, Goldman Sachs</div>
+        </div>
+        <span class="tier-badge tb1">5/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your 'proximity is power' thesis is the epistemological foundation of uMODA's Situated Fairness Principle: the founder closest to the problem builds the most valid AI. uMODA provides the measurement infrastructure to prove and audit that validity at scale."</div>
+        </div>
+        <ul class="al">
+          <li>Co-founded by Jewel Burks Solomon + Barry Givens. Fund II closed June 2025 with Apple and Goldman as LPs — institutional validation of their inclusion-as-infrastructure thesis.</li>
+          <li>Three pillars: Economic Mobility, Healthcare Access, Community Infrastructure. Auto care belongs squarely in Community Infrastructure.</li>
+          <li>Frame uMODA as the AI accountability layer that makes their Economic Mobility portfolio defensible — the measurement system that proves workforce AI tools actually work equitably.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp off">INFRA</span><span class="tp t2">DURABLE</span><span class="tp t3">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Autotech Ventures -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://autotechvc.com" target="_blank">Autotech Ventures</a> <span class="new-chip">NEW</span></div>
+          <div class="firm-sub">Seed–Series C · $1M–$8M · $500M+ AUM · $230M Fund III · Menlo Park</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"You're the only major VC fund organized entirely around automotive. You explicitly name automotive retail and repair as investment areas. The trust asymmetry between consumer, shop, and AI intermediary IS the non-obvious niche requiring sector expertise that your thesis is designed to find."</div>
+        </div>
+        <ul class="al">
+          <li>56+ portfolio companies in automotive/transport, including Lyft, Swvl, Cazoo — proven ability to back infrastructure that scales in this sector.</li>
+          <li>"Non-obvious transport market opportunities in niches that require sector expertise" — this is their stated investment mandate. The Problematic Triad is exactly that niche.</li>
+          <li>Explicitly backs marketplaces, fintech, and SaaS within automotive — the trust/measurement layer fits the marketplace AI thesis directly.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp off">INCLUSION</span><span class="tp off">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Work-Bench -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://work-bench.com" target="_blank">Work-Bench</a> <span class="new-chip">NEW</span></div>
+          <div class="firm-sub">Seed · NYC · Enterprise AI infrastructure · Regulated industries</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"You've published in 2026 that governance and evaluation tooling is now a gating factor for enterprise AI adoption. uMODA is that layer — extended to essential services marketplaces where consumer, provider, and platform each require simultaneous assurance."</div>
+        </div>
+        <ul class="al">
+          <li>2026 thesis: "AI is in an operational phase where infrastructure decisions matter more than model announcements" — the measurement layer argument made directly by the investor.</li>
+          <li>Vertical enterprise software with defensible data moats in regulated industries — the same structural argument applies to the auto care sector.</li>
+          <li>NYC-based with strong enterprise buyer access — useful for a platform-side go-to-market strategy alongside the consumer-side thesis.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp off">INCLUSION</span><span class="tp off">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Mozilla Ventures -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://mozilla.vc" target="_blank">Mozilla Ventures</a> <span class="new-chip">NEW</span></div>
+          <div class="firm-sub">Seed–Series A · 55+ portfolio companies · Mozilla Foundation backed</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"You've already backed Credo AI, Fiddler AI, and Holistic AI — the AI governance and evaluation infrastructure category. uMODA belongs in that cohort: behavioral validity measurement for AI in essential services, built for communities most harmed by trust failures."</div>
+        </div>
+        <ul class="al">
+          <li>Three investment pillars: Trustworthy AI, Healthy Communities, Security &amp; Privacy. uMODA spans all three simultaneously.</li>
+          <li>Portfolio peers Credo AI (governance), Fiddler AI (observability + fairness), Holistic AI (risk management) — uMODA's behavioral validity layer is the missing piece in that stack for essential services markets.</li>
+          <li>India AI Impact Summit 2026: portfolio companies are active in AI governance, safety, evaluation, and inclusive global impact — direct peer community for uMODA.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp off">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. Kalos Ventures -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://kalosventures.com" target="_blank">Kalos Ventures</a> <span class="new-chip">NEW · JUST CLOSED</span></div>
+          <div class="firm-sub">Seed–Series A · $78.8M Fund I (oversubscribed, May 2026) · Ashley Bittner · NYC</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With</div>
+          <div class="pitch-text">"Your human infrastructure thesis applies directly to auto care: a sector where 50–55% of the consumer-provider relationship will be AI-mediated, disproportionately affecting communities with the least capacity to navigate trust failures. uMODA is the validity layer for that infrastructure."</div>
+        </div>
+        <ul class="al">
+          <li><strong>Actively deploying right now.</strong> Closed May 2026, oversubscribed. LPs include Pivotal Ventures (Melinda French Gates) and MassMutual — equity and financial inclusion signal embedded at the LP level.</li>
+          <li>Thesis: AI/automation + demographic change as converging forces reshaping human service relationships. Auto care sits squarely in this frame as an essential, high-frequency, trust-critical consumer service.</li>
+          <li>Portfolio: Manifest (AI for SMB owners), Rosarium Health (aging-in-place). uMODA is a natural cohort addition in the "human infrastructure" category.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp off">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp t4">ESSENTIAL</span><span class="tp t5">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. NFX -->
+    <div class="firm-card">
+      <div class="card-top">
+        <div>
+          <div class="firm-name"><a href="https://nfx.com" target="_blank">NFX</a> <span class="new-chip">NEW</span></div>
+          <div class="firm-sub">Seed · $4–5M avg · $325M Fund IV (Oct 2025) · Network effects specialists</div>
+        </div>
+        <span class="tier-badge tb1">4/6</span>
+      </div>
+      <div class="card-body">
+        <div class="pitch-block">
+          <div class="pitch-label">Lead With — This is a defensibility pitch, not an impact pitch</div>
+          <div class="pitch-text">"Every behavioral validity measurement improves the system for all three parties simultaneously: consumer, provider, platform. That is a three-sided data network effect. The moat compounds with every transaction."</div>
+        </div>
+        <ul class="al">
+          <li>NFX's research explicitly states: "Real identity is critical in two-sided marketplace businesses where trust and reputation facilitate the liquidity of transactions." uMODA builds the infrastructure that operationalizes that trust signal.</li>
+          <li>Data network effects — "more usage improves models and outcomes" — describes exactly how uMODA's behavioral validity infrastructure gets more defensible over time.</li>
+          <li>Do not lead with impact. Lead with the network effects structure. Impact is a consequence, not the hook for this firm.</li>
+        </ul>
+        <div class="pills">
+          <span class="tp t1">INFRA</span><span class="tp t2">DURABLE</span><span class="tp off">FOUNDER</span><span class="tp off">ESSENTIAL</span><span class="tp off">INCLUSION</span><span class="tp t6">MULTI-PARTY</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end cards-grid -->
+</div>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix">
+<div class="wrap">
+  <div class="sec-label">Full Landscape</div>
+  <div class="sec-title">All 27 Firms — Alignment Matrix</div>
+  <div class="sec-desc">Colored dots = strong thesis match. Gray dots = weak or no match. Left border color indicates tier.</div>
+
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:var(--t1)"></div>T1: Infrastructure</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--t2)"></div>T2: Durable Problem</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--t3)"></div>T3: Founder Domain</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--t4)"></div>T4: Essential Services</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--t5)"></div>T5: Inclusion</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--t6)"></div>T6: Multi-Stakeholder</div>
+    <div class="leg"><div class="leg-dot" style="background:#e2e8f0"></div>No match</div>
+  </div>
+
+  <div class="matrix-wrap">
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>Firm</th>
+        <th>Stage / Check</th>
+        <th>T1</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- TIER 1 -->
+      <tr class="tr1"><td class="fw"><a href="https://sympaticoventures.com" target="_blank">Sympatico Ventures</a></td><td>Angel + Grants</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>6/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://eqopportunity.vc" target="_blank">EO Ventures</a></td><td>Pre-Seed/Seed · $500K–5M</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>6/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://cortical.vc" target="_blank">Cortical Ventures</a></td><td>Pre-Seed/Seed</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d0"></span></td><td>5/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://kaporcapital.com" target="_blank">Kapor Capital</a></td><td>Pre-Seed–Series A</td><td><span class="dot d0"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>5/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://collab.capital" target="_blank">Collab Capital ✦</a></td><td>Seed/Series A · $500K–1M</td><td><span class="dot d0"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>5/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://swell.vc" target="_blank">Swell VC</a></td><td>Pre-Seed/Seed</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d4"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>4/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://inertia.vc" target="_blank">Inertia VC</a></td><td>Early Stage</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>3/6 →4</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://ex-ante.co" target="_blank">ex/ante ✦</a></td><td>Seed</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://autotechvc.com" target="_blank">Autotech Ventures ✦</a></td><td>Seed–Series C · $1M–8M</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>3/6 →4</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://work-bench.com" target="_blank">Work-Bench ✦</a></td><td>Seed · NYC</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>3/6 →4</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://mozilla.vc" target="_blank">Mozilla Ventures ✦</a></td><td>Seed–Series A</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://kalosventures.com" target="_blank">Kalos Ventures ✦ 🟢</a></td><td>Seed–Series A · $78.8M</td><td><span class="dot d0"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <tr class="tr1"><td class="fw"><a href="https://nfx.com" target="_blank">NFX ✦</a></td><td>Seed · $4–5M</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d6"></span></td><td>3/6</td></tr>
+      <!-- TIER 2 -->
+      <tr class="tr2"><td class="fw"><a href="https://mbriyo.ventures" target="_blank">Mbriyo Ventures</a></td><td>Pre-Seed · EU</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d3"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>3/6</td></tr>
+      <tr class="tr2"><td class="fw">DFF Ventures</td><td>Pre-Seed · €250K–2.5M · EU</td><td><span class="dot d0"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>2/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://airstreet.com" target="_blank">Air Street Capital ✦</a></td><td>Pre-Seed/Seed · $500K–15M</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>1/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://precursorvc.com" target="_blank">Precursor Ventures ✦</a></td><td>Pre-Seed · $250K–500K</td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d3"></span></td><td><span class="dot d0"></span></td><td><span class="dot d5"></span></td><td><span class="dot d0"></span></td><td>2/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://iaventures.com" target="_blank">IA Ventures ✦</a></td><td>Seed · $250K–750K</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>1/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://gradient.com" target="_blank">Gradient Ventures ✦</a></td><td>Seed · $3M avg</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>1/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://omidyar.com" target="_blank">Omidyar Network ✦</a></td><td>Series A+ · Grants</td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>3/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://bloombergbeta.com" target="_blank">Bloomberg Beta ✦</a></td><td>Seed · $1M–7M</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d3"></span></td><td><span class="dot d0"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://obvious.com" target="_blank">Obvious Ventures ✦</a></td><td>Seed/Series A · $5M–12M</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://fika.vc" target="_blank">Fika Ventures ✦</a></td><td>Seed/Series A · LA</td><td><span class="dot d1"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d0"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <tr class="tr2"><td class="fw"><a href="https://accion.org" target="_blank">Accion Venture Lab ✦</a></td><td>Seed · $61.6M Fund II</td><td><span class="dot d0"></span></td><td><span class="dot d2"></span></td><td><span class="dot d0"></span></td><td><span class="dot d4"></span></td><td><span class="dot d5"></span></td><td><span class="dot d6"></span></td><td>4/6</td></tr>
+      <!-- TIER 3 -->
+      <tr class="tr3"><td class="fw">Albatross AI Capital</td><td>Seed · $95M fund · Austin</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>1/6</td></tr>
+      <tr class="tr3"><td class="fw">AIX Ventures</td><td>Seed</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>1/6</td></tr>
+      <tr class="tr3"><td class="fw"><a href="https://banyan-vc.com" target="_blank">Banyan Ventures</a></td><td>Pre-Seed/Seed · NYC</td><td><span class="dot d1"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td><span class="dot d0"></span></td><td>1/6</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:12px">✦ = New addition from expanded search. 🟢 = Actively deploying right now (just closed). Green left border = Tier 1. Amber = Tier 2. Gray = Tier 3.</p>
+</div>
+</section>
+
+<!-- OUTREACH -->
+<section id="outreach">
+<div class="wrap">
+  <div class="sec-label">Execution Guide</div>
+  <div class="sec-title">Priority Outreach Sequence</div>
+  <div class="sec-desc">Ordered by a combination of thesis alignment strength, narrative readiness, and timing signal. Each entry specifies the narrative angle that will land — not a generic pitch, the specific hook for that firm's worldview.</div>
+
+  <ol class="seq-list">
+
+    <li class="seq-item">
+      <div class="seq-num">1</div>
+      <div class="seq-body">
+        <div class="seq-firm">Sympatico Ventures</div>
+        <div class="seq-angle"><span class="at at1">AI Trust Infrastructure</span><span class="at at6">Multi-Stakeholder</span></div>
+        <div class="seq-note">Built for exactly this category. Open with: "3rd-party behavioral validity measurement for AI in essential services." No education required — the market thesis is their fund thesis.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">2</div>
+      <div class="seq-body">
+        <div class="seq-firm">ex/ante</div>
+        <div class="seq-angle"><span class="at at1">AI Risk as Opportunity</span><span class="at at6">Human Agency</span></div>
+        <div class="seq-note">Their entire fund thesis is turning AI risk into opportunity through human agency infrastructure. The pitch is the thesis they already hold. Open: "Here is the measurement layer that makes AI risk in multi-party services quantifiable."</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">3</div>
+      <div class="seq-body">
+        <div class="seq-firm">Mozilla Ventures</div>
+        <div class="seq-angle"><span class="at at1">AI Governance Cohort</span><span class="at at5">Trustworthy AI</span></div>
+        <div class="seq-note">Open with the portfolio cohort: "You've backed Credo AI, Fiddler AI, Holistic AI. uMODA is the missing piece in that stack — behavioral validity for AI in essential services communities." They recognize the category immediately.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">4</div>
+      <div class="seq-body">
+        <div class="seq-firm">Kalos Ventures 🟢 Actively Deploying</div>
+        <div class="seq-angle"><span class="at at4">Human Infrastructure</span><span class="at at6">Multi-Stakeholder</span></div>
+        <div class="seq-note">Just closed $78.8M, oversubscribed, May 2026. They are writing checks right now. Open: "Your human infrastructure thesis — AI reshaping multi-party service relationships — applies directly to auto care." Time-sensitive: first-mover advantage with a fresh fund.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">5</div>
+      <div class="seq-body">
+        <div class="seq-firm">Cortical Ventures</div>
+        <div class="seq-angle"><span class="at at1">AI Production Gap</span><span class="at at4">Infrastructure</span></div>
+        <div class="seq-note">Open: "Your AI Production Gap is what uMODA measures. Every demo is cognitive validity. What consumers experience is behavioral validity. We close that gap." Operators-backing-operators means they evaluate founder conviction directly — come prepared with precision.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">6</div>
+      <div class="seq-body">
+        <div class="seq-firm">NFX</div>
+        <div class="seq-angle"><span class="at at6">Network Effects</span><span class="at at2">Data Moat</span></div>
+        <div class="seq-note">This is a defensibility pitch only — do not lead with impact. Open: "Three-sided data network effect: every behavioral validity measurement improves the system for consumer, provider, and platform simultaneously. The moat compounds with every transaction." Impact is a consequence, not the hook.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">7</div>
+      <div class="seq-body">
+        <div class="seq-firm">Work-Bench</div>
+        <div class="seq-angle"><span class="at at1">Evaluation Tooling</span><span class="at at4">Enterprise AI</span></div>
+        <div class="seq-note">They've already published the thesis that evaluation tooling is the enterprise AI bottleneck. Open: "You identified the gap. We built the layer — extended to essential services where all three parties need simultaneous assurance, not just the enterprise buyer."</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">8</div>
+      <div class="seq-body">
+        <div class="seq-firm">Autotech Ventures</div>
+        <div class="seq-angle"><span class="at at4">Automotive Domain</span><span class="at at1">Sector Infrastructure</span></div>
+        <div class="seq-note">The only VC fund organized entirely around automotive. Open: "You explicitly back non-obvious niches requiring sector expertise. The trust asymmetry in auto care AI is that niche." Show you know the sector at the same depth they do — they'll recognize the domain expertise immediately.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">9</div>
+      <div class="seq-body">
+        <div class="seq-firm">Equal Opportunity (EO) Ventures</div>
+        <div class="seq-angle"><span class="at at1">Measurement</span><span class="at at5">Economic Mobility</span></div>
+        <div class="seq-note">Open: "Your Social Money Multiplier requires measuring impact per dollar. uMODA is the equivalent measurement layer for AI systems — proving whether the AI creates or destroys economic value for underserved communities." Roland Fryer will recognize the measurement logic immediately.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">10</div>
+      <div class="seq-body">
+        <div class="seq-firm">Swell VC</div>
+        <div class="seq-angle"><span class="at at4">Hidden Complexity</span><span class="at at1">Commerce Infrastructure</span></div>
+        <div class="seq-note">Open: "Hidden complexity that has quietly taxed the economy for decades — that is the Problematic Triad in auto care. We make it measurable." They built AI companies before it was a category; they need to see why measurement is the next layer, not a restatement of the problem.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">11</div>
+      <div class="seq-body">
+        <div class="seq-firm">Kapor Capital</div>
+        <div class="seq-angle"><span class="at at5">Situated Fairness</span><span class="at at6">Portfolio Infrastructure</span></div>
+        <div class="seq-note">Open through the HumanityAI ecosystem angle — uMODA's measurement methodology as validation infrastructure for the $500M initiative. Alternatively: "uMODA proves that your portfolio companies' AI actually works equitably for the communities they serve."</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">12</div>
+      <div class="seq-body">
+        <div class="seq-firm">Collab Capital</div>
+        <div class="seq-angle"><span class="at at5">Proximity is Power</span><span class="at at6">Community Infrastructure</span></div>
+        <div class="seq-note">Open: "Your 'proximity is power' thesis is the epistemological foundation of uMODA's Situated Fairness Principle." Auto care as community infrastructure — the sector where trust failures most directly tax the communities Jewel Burks Solomon and Barry Givens explicitly back.</div>
+      </div>
+    </li>
+
+    <li class="seq-item">
+      <div class="seq-num">13</div>
+      <div class="seq-body">
+        <div class="seq-firm">Inertia VC</div>
+        <div class="seq-angle"><span class="at at1">Context Layer</span><span class="at at4">Legacy Industry</span></div>
+        <div class="seq-note">Open: "Legacy platforms stored what happened. Your thesis is that next-gen captures why. uMODA's behavioral validity layer is the 'why' in the consumer-service-AI triad — the context no foundation model can replicate from outside the relationship."</div>
+      </div>
+    </li>
+
+    <li class="seq-item" style="background:var(--light);border-radius:8px;padding:16px 16px;margin-top:8px">
+      <div class="seq-num" style="background:var(--muted)">→</div>
+      <div class="seq-body">
+        <div class="seq-firm" style="color:var(--slate);font-size:13px">Warm Intro Pathway</div>
+        <div class="seq-note"><strong>Omidyar Network</strong> — approach through the Kapor Capital relationship (co-investors in HumanityAI). Not a direct seed pitch; a network access play.<br><br><strong>Reframe Venture / Project Liberty</strong> — access to 56+ responsible AI investors managing $500B+ in AUM. Their December 2025 Responsible AI Due Diligence Toolkit is the entry point — offer uMODA as a case study in the infrastructure category they're documenting.<br><br><strong>Bloomberg Beta · Obvious Ventures · Fika Ventures · Accion Venture Lab</strong> — all Tier 2; monitor for thesis evolution, approach after Tier 1 closes.</div>
+      </div>
+    </li>
+
+  </ol>
+</div>
+</section>
+
+<footer>
+  <div class="wrap">
+    uMODA · VC Alignment Research · May 2026 · Working Document — Not for External Distribution
+  </div>
+</footer>
+
+</body>
+</html>
