@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solving Distrust in Personal &amp; Private Lending — Market Opportunity</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #FAF6EE;
+      --sand:         #F0E8D8;
+      --border:       #D8C9B0;
+      --orange-pale:  #F0C090;
+      --orange:       #C85A24;
+      --orange-deep:  #8A2E0C;
+      --rust:         #621A06;
+      --dark:         #2A1206;
+      --muted:        #8A6858;
+      --body-text:    #3C1E0C;
+      --tam-fill:     #EDE0C8;
+      --sam-fill:     #C06028;
+      --som-fill:     #742008;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+      padding: 60px 48px 88px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* ─── HEADER ──────────────────────────────────────────── */
+    header { text-align: center; margin-bottom: 72px; }
+    .eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+    }
+    header h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 40px; font-weight: normal; color: var(--dark);
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .subtitle {
+      font-size: 14.5px; color: var(--muted);
+      max-width: 500px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ─── SECTION SHELL ───────────────────────────────────── */
+    .section { margin-bottom: 72px; }
+    .sec-eye {
+      font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 5px;
+    }
+    .sec-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px; font-weight: normal; color: var(--dark);
+      padding-bottom: 12px; border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+
+    /* ─── SECTION 1: CONCENTRIC CIRCLES ──────────────────── */
+    .tam-layout { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+
+    .circles {
+      position: relative; width: 360px; height: 360px; flex-shrink: 0;
+    }
+    .circle {
+      position: absolute; border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .circle.tam { width: 360px; height: 360px; background: var(--tam-fill); border: 1.5px solid #CDBF9E; }
+    .circle.sam { width: 224px; height: 224px; background: var(--sam-fill); }
+    .circle.som { width:  96px; height:  96px; background: var(--som-fill); }
+
+    .rl {
+      position: absolute; font-size: 8.5px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      left: 50%; transform: translateX(-50%); white-space: nowrap; pointer-events: none;
+    }
+    .rl.tam { top: 24px;  color: var(--muted); }
+    .rl.sam { top: 88px;  color: rgba(255,255,255,0.75); }
+    .rl.som { top: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.7); }
+
+    .tam-legend { flex: 1; min-width: 280px; }
+    .tam-item { padding-left: 14px; border-left: 3px solid transparent; margin-bottom: 26px; }
+    .tam-item:last-child { margin-bottom: 0; }
+    .tam-item.tam { border-color: #CDAF82; }
+    .tam-item.sam { border-color: var(--sam-fill); }
+    .tam-item.som { border-color: var(--som-fill); }
+
+    .ti-layer { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 3px; }
+    .ti-amount { font-family: Georgia, serif; font-size: 32px; color: var(--dark); line-height: 1.1; margin-bottom: 5px; }
+    .ti-def    { font-size: 12.5px; color: var(--body-text); line-height: 1.55; margin-bottom: 5px; }
+    .ti-source { font-size: 10px; color: var(--muted); font-style: italic; line-height: 1.5; }
+
+    /* ─── SECTION 2: DUMBBELL CHART ──────────────────────── */
+    .db-legend { display: flex; gap: 22px; margin-bottom: 18px; }
+    .db-legend-item { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--muted); }
+    .db-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.5); }
+
+    .db-rows { border-top: 1px solid var(--border); }
+
+    .db-row {
+      display: grid; grid-template-columns: 205px 1fr 155px;
+      align-items: center; gap: 20px; padding: 16px 0;
+      border-bottom: 1px solid var(--sand);
+    }
+    .db-output {
+      background: var(--sand); border-radius: 8px; padding: 16px 14px;
+      border-bottom: none; margin-top: 10px;
+    }
+
+    .db-label { font-size: 13px; font-weight: 500; color: var(--dark); line-height: 1.3; }
+    .db-sub   { font-size: 11px; color: var(--muted); font-weight: normal; margin-top: 2px; }
+
+    .db-track-wrap { position: relative; padding-top: 22px; }
+
+    .db-vlabels { position: absolute; top: 0; left: 0; right: 0; height: 18px; }
+    .db-vlabels span { position: absolute; font-size: 10px; font-weight: 600; color: var(--muted); white-space: nowrap; line-height: 1; }
+    .vl-bear { left: 0; }
+    .vl-base { transform: translateX(-50%); }
+    .vl-bull { right: 0; text-align: right; }
+
+    .db-track { position: relative; height: 4px; background: var(--border); border-radius: 2px; }
+    .db-fill  { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(to right, var(--orange-pale), var(--orange-deep)); }
+    .db-dot   { position: absolute; width: 13px; height: 13px; border-radius: 50%; top: 50%; transform: translate(-50%, -50%); border: 2px solid var(--bg); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+    .db-dot.bear { left:   0%; background: var(--orange-pale); }
+    .db-dot.base {            background: var(--orange); }
+    .db-dot.bull { left: 100%; background: var(--orange-deep); }
+    .db-output .db-dot { width: 15px; height: 15px; }
+
+    .db-source { font-size: 10px; font-style: italic; color: var(--muted); line-height: 1.5; text-align: right; }
+
+    /* ─── SECTION 3: EVIDENCE CARDS ──────────────────────── */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card { background: var(--sand); border-radius: 10px; padding: 24px 20px; border-left: 4px solid var(--orange); }
+    .card-tag  { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .card-head { font-family: Georgia, serif; font-size: 15.5px; line-height: 1.35; color: var(--dark); margin-bottom: 12px; }
+    .card-stat { font-family: Georgia, serif; font-size: 40px; color: var(--orange-deep); line-height: 1; margin-bottom: 8px; }
+    .card-body { font-size: 12.5px; color: var(--body-text); line-height: 1.65; margin-bottom: 14px; }
+    .card-src  { font-size: 10px; font-style: italic; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; line-height: 1.5; }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer { text-align: center; font-size: 10px; color: var(--muted); padding-top: 24px; border-top: 1px solid var(--border); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════ -->
+  <header>
+    <div class="eyebrow">Market Opportunity Analysis · May 2026</div>
+    <h1>Solving Distrust in Personal &amp; Private Lending</h1>
+    <p class="subtitle">A quantitative market sizing of the trust gap — and the opportunity it creates for a trust-first platform in the US personal lending market.</p>
+  </header>
+
+
+  <!-- ═══ SECTION 1: TAM / SAM / SOM ══════════════════════ -->
+  <div class="section">
+    <div class="sec-eye">Market Sizing</div>
+    <div class="sec-title">TAM · SAM · SOM</div>
+
+    <div class="tam-layout">
+
+      <div class="circles" aria-hidden="true">
+        <div class="circle tam"></div>
+        <div class="circle sam"></div>
+        <div class="circle som"></div>
+        <div class="rl tam">TAM</div>
+        <div class="rl sam">SAM</div>
+        <div class="rl som">SOM</div>
+      </div>
+
+      <div class="tam-legend">
+
+        <div class="tam-item tam">
+          <div class="ti-layer">TAM — Total Addressable Market</div>
+          <div class="ti-amount">$172B</div>
+          <div class="ti-def">All US personal lending annually — every loan origination where a borrower-lender trust decision determines whether a deal is made, on what terms, and at what risk.</div>
+          <div class="ti-source">North America personal loans market $172.44B (Fortune Business Insights, 2025) · 40.10% of $430B global market · Cross-check: $249B outstanding US personal loan debt (Q3 2024); 24.2M active borrowers (LendingTree, 2026)</div>
+        </div>
+
+        <div class="tam-item sam">
+          <div class="ti-layer">SAM — Serviceable Addressable Market</div>
+          <div class="ti-amount">$60B</div>
+          <div class="ti-def">Digitally-originated personal loans where a trust layer can operate between borrower and lender at the point of application, verification, and approval.</div>
+          <div class="ti-source">TAM × 35% digital origination share · Cross-check: 24.2M borrowers × 35% digital channel × avg. $10,289 balance = $87B · Digital lending market $507B globally at ~12% US personal share (Mordor Intelligence, 2025)</div>
+        </div>
+
+        <div class="tam-item som">
+          <div class="ti-layer">SOM — Serviceable Obtainable Market</div>
+          <div class="ti-amount">$150–220M</div>
+          <div class="ti-def">Annual platform revenue realistically capturable within 5 years — lender trust SaaS, per-loan verification fees on digitally-facilitated transactions, and fraud prevention contracts with institutional lenders.</div>
+          <div class="ti-source">~4,500 personal lending institutions × 10% penetration at $40K/yr = $18M ARR · $60B SAM × 5% routing × $35/loan = $105M · Fraud prevention contracts at $3.3B exposure (TransUnion, 2024): ~$30M pipeline</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 2: SENSITIVITIES ════════════════════════ -->
+  <div class="section">
+    <div class="sec-eye">Risk &amp; Range</div>
+    <div class="sec-title">Key Assumptions &amp; Sensitivities</div>
+
+    <div class="db-legend">
+      <div class="db-legend-item"><div class="db-legend-dot" style="background:var(--orange-pale)"></div> Bear case</div>
+      <div class="db-legend-item"><div class="db-legend-dot" style="background:var(--orange)"></div> Base case</div>
+      <div class="db-legend-item"><div class="db-legend-dot" style="background:var(--orange-deep)"></div> Bull case</div>
+    </div>
+
+    <div class="db-rows">
+
+      <!-- Row 1: Digital Adoption Rate — base at 40%: (35-25)/(50-25) = 10/25 -->
+      <div class="db-row">
+        <div class="db-label">Digital Origination Rate
+          <div class="db-sub">TAM → SAM boundary</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">25%</span>
+            <span class="vl-base" style="left:40%">35%</span>
+            <span class="vl-bull">50%</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:40%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">Mordor Intelligence<br>Digital Lending, 2025</div>
+      </div>
+
+      <!-- Row 2: Lender Platform Penetration — base at 33%: (10-5)/(20-5) = 5/15 -->
+      <div class="db-row">
+        <div class="db-label">Lender Platform Penetration
+          <div class="db-sub">% of ~4,500 lending institutions</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">5%</span>
+            <span class="vl-base" style="left:33%">10%</span>
+            <span class="vl-bull">20%</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:33%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">FDIC / NCUA institution<br>count benchmarks</div>
+      </div>
+
+      <!-- Row 3: Revenue Per Trust-Verified Loan — base at 40%: (35-15)/(65-15) = 20/50 -->
+      <div class="db-row">
+        <div class="db-label">Revenue Per Trust-Verified Loan
+          <div class="db-sub">Per-transaction platform fee</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">$15</span>
+            <span class="vl-base" style="left:40%">$35</span>
+            <span class="vl-bull">$65</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:40%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">Fintech verification<br>pricing benchmarks</div>
+      </div>
+
+      <!-- Row 4: % of Digital Loans Routed Through Trust Platform — base at 38%: (5-2)/(10-2) = 3/8 -->
+      <div class="db-row">
+        <div class="db-label">Digital Loans Through Platform
+          <div class="db-sub">% of SAM routed via trust layer</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">2%</span>
+            <span class="vl-base" style="left:38%">5%</span>
+            <span class="vl-bull">10%</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:38%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">LendingTree / Bankrate<br>platform data, 2025</div>
+      </div>
+
+    </div>
+
+    <!-- Output row -->
+    <div class="db-row db-output">
+      <div class="db-label" style="font-weight:600">SOM Revenue — Year 5
+        <div class="db-sub">Combined hybrid model output</div>
+      </div>
+      <div class="db-track-wrap">
+        <div class="db-vlabels">
+          <span class="vl-bear">$80–120M</span>
+          <span class="vl-base" style="left:50%">$150–220M</span>
+          <span class="vl-bull">$400M+</span>
+        </div>
+        <div class="db-track">
+          <div class="db-fill"></div>
+          <div class="db-dot bear"></div>
+          <div class="db-dot base" style="left:50%"></div>
+          <div class="db-dot bull"></div>
+        </div>
+      </div>
+      <div class="db-source" style="font-style:normal;font-weight:500;color:var(--dark)">Derived from<br>assumptions above</div>
+    </div>
+
+  </div>
+
+
+  <!-- ═══ SECTION 3: TIMING ════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-eye">Why Now</div>
+    <div class="sec-title">Four Converging Forces</div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-tag">01 · CFPB Protection Vacuum</div>
+        <div class="card-head">The bureau that protected 24 million borrowers just lost 90% of its staff</div>
+        <div class="card-stat">90%</div>
+        <div class="card-body">In February 2025, the CFPB was suspended, with its budget cut 46% and staff by nearly 90%. A May 2025 rollback revoked 70 guidance documents in a single action. The bureau formally eliminated fair lending's disparate-impact doctrine — the core tool for challenging discriminatory practices. With no federal watchdog, private trust infrastructure becomes the only protection layer for borrowers.</div>
+        <div class="card-src">Bankrate CFPB Deregulation Analysis, 2025 · Morgan Lewis CFPB Rollback Report, June 2025 · Politico Pro Fair Lending Rollback, December 2025</div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">02 · AI &amp; Deepfake Identity Crisis</div>
+        <div class="card-head">Deepfake fraud incidents grew from 42 in 2023 to 179 in Q1 2025 alone</div>
+        <div class="card-stat">$3.3B</div>
+        <div class="card-body">US lenders faced $3.3B in synthetic identity fraud exposure in 2024 (TransUnion). Deepfake fraud incidents hit 179 in Q1 2025 — exceeding all of 2024. FinCEN issued an emergency alert in November 2024 on AI-generated identities bypassing bank verification. The fraud is now two-sided: borrowers can't trust lenders, lenders can't trust borrowers. A verified trust layer is the only structural solution.</div>
+        <div class="card-src">TransUnion Synthetic Identity Fraud Report, 2024 · FinCEN Alert FIN-2024-Alert004, November 2024 · DeepStrike Deepfake Statistics, 2025</div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">03 · Racial Lending Gap</div>
+        <div class="card-head">Black borrowers are 78% more likely to be denied — and now have no federal recourse</div>
+        <div class="card-stat">78%</div>
+        <div class="card-body">Black borrowers are 78% more likely than White borrowers to have loan applications denied (2018–2024 HMDA data). In 2024, 39% of Black-owned businesses were denied loans — the highest rejection rate of any group. With the CFPB's disparate-impact doctrine now eliminated, no federal mechanism exists to challenge systematically discriminatory lending. Trust tools that surface lending patterns are the only remaining accountability layer.</div>
+        <div class="card-src">Springer Race &amp; Social Problems, 2025 · Word in Black Capital Access Survey, 2025 · CFPB Fair Lending Rollback, December 2025</div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">04 · Digital Lending Tipping Point</div>
+        <div class="card-head">Trust scores 203 points higher when borrowers perceive a secure lending process</div>
+        <div class="card-stat">203 pts</div>
+        <div class="card-body">J.D. Power's 2025 Consumer Lending Satisfaction Study found trust scores 203 points higher when borrowers perceive a secure lending process. Digital lending grows at 11.68% CAGR with 24.2M Americans holding personal loans — outstanding debt up 64% in five years. The demand for a trust-first digital lending layer is documented. The infrastructure to deliver it at scale is now viable.</div>
+        <div class="card-src">J.D. Power 2025 Consumer Lending Satisfaction Study · Mordor Intelligence Digital Lending Market, 2025 · LendingTree Personal Loan Statistics, 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
+    Market data current as of May 2026 &nbsp;·&nbsp;
+    Sources: Fortune Business Insights · LendingTree · Mordor Intelligence · TransUnion · FinCEN · J.D. Power · FDIC · NCUA · Bankrate · Morgan Lewis · Politico Pro · Word in Black · Springer Nature · DeepStrike
+  </footer>
+
+</body>
+</html>
