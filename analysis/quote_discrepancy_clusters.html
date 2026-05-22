@@ -62,13 +62,14 @@
   .tt-desc { color: #8b949e; font-size: 12px; margin-bottom: 8px; }
   .tt-n    { font-size: 12px; color: #8b949e; padding-top: 7px; border-top: 1px solid #21262d; }
   .tt-n span { font-weight: 700; color: #e6edf3; }
+  .tt-top  { font-size: 10px; color: #f39c12; margin-top: 4px; font-weight: 600; }
 </style>
 </head>
 <body>
 
 <div id="header">
   <h1>Auto Repair Quote → Final Bill Discrepancies</h1>
-  <p>114 consumer complaint observations &nbsp;·&nbsp; 8 categories &nbsp;·&nbsp; bubble area ∝ observation count &nbsp;·&nbsp; hover to explore</p>
+  <p>89 encounters · rows A2:A165 · bubble area ∝ observation count · hover to explore</p>
 </div>
 
 <div id="chart-wrap">
@@ -76,76 +77,148 @@
 </div>
 
 <script>
-// ── Data ─────────────────────────────────────────────────────────────────────
+// ── Data — classified from rows A2:A165 (89 unique encounters) ────────────────
+// Top 3 sub-categories: 1c (n=13) · 4b (n=12) · 8c (n=10)
 const CATS = [
-  { id:1, name:"Unauthorized\nWork Added",   total:29, color:"#e74c3c",
+  { id:1, name:"Unauthorized\nWork Added", total:24, color:"#e74c3c",
     nodes:[
-      {id:"1a", lbl:"No prior authorization",    desc:"Shop began repairs with zero consumer consent; diagnostic-only request ignored and full repair performed.",  n:6},
-      {id:"1b", lbl:"Coerced post-hoc approval", desc:"Car disassembled before approval was sought — consumer trapped: pay inflated bill or get parts back loose.", n:1},
-      {id:"1c", lbl:"Limited auth exceeded",     desc:"Consumer approved one specific item; shop performed many more without any callback. Most common sub-type.", n:18},
-      {id:"1d", lbl:"Blank work order exploited",desc:"Estimate left blank then inflated after signing; 'necessary repairs' clause used to authorize anything.", n:4},
+      { id:"1a", lbl:"No prior authorization",
+        desc:"Shop began repairs with zero consumer consent — diagnostic-only requests ignored, full repairs performed.",
+        n:7 },
+      { id:"1b", lbl:"Coerced post-hoc approval",
+        desc:"Car already disassembled before approval was sought — consumer trapped between paying an inflated bill or retrieving parts loose.",
+        n:3 },
+      { id:"1c", lbl:"Limited auth exceeded ★",
+        desc:"Consumer approved one specific item; shop performed many more without any callback. Most common sub-type across all 89 encounters.",
+        n:13 },
+      { id:"1d", lbl:"Blank work order exploited",
+        desc:"Estimate left blank then inflated after signing; 'necessary repairs' clause used to authorize any additional work.",
+        n:4 },
     ]},
-  { id:2, name:"Undisclosed\nFees",          total:6,  color:"#e67e22",
+  { id:2, name:"Undisclosed\nFees", total:9, color:"#e67e22",
     nodes:[
-      {id:"2a", lbl:"Shop supply / misc charges",desc:"Not listed on estimate; appears as a surprise line item only at pickup.", n:3},
-      {id:"2c", lbl:"Diagnostic fee undisclosed",desc:"Free towing and diagnostic promised; $650 charged on pickup with no prior notice.", n:1},
-      {id:"2d", lbl:"Storage / lot fees",        desc:"$85/day storage fee added to an already-disputed job without prior disclosure.", n:1},
-      {id:"2e", lbl:"Subcontractor fees",         desc:"Machine shop fees invoked to justify verbal-only estimate increase at billing.", n:1},
+      { id:"2a", lbl:"Shop supply / misc charges",
+        desc:"Not listed on estimate; appears as a surprise line item only at pickup — e.g., $54 discrepancy found on two separate invoices.",
+        n:4 },
+      { id:"2c", lbl:"Diagnostic fee undisclosed",
+        desc:"Free towing and diagnostic promised; $650 charged on pickup with no prior notice.",
+        n:2 },
+      { id:"2d", lbl:"Storage / lot fees",
+        desc:"$85/day storage fee added to an already-disputed job without prior disclosure.",
+        n:1 },
+      { id:"2e", lbl:"Subcontractor fees",
+        desc:"Machine shop fees invoked at billing to justify a verbal-only estimate increase.",
+        n:1 },
     ]},
-  { id:3, name:"Scope\nDiscovery",           total:13, color:"#d4ac0d",
+  { id:3, name:"Scope\nDiscovery", total:16, color:"#d4ac0d",
     nodes:[
-      {id:"3a", lbl:"Legitimate hidden damage",  desc:"Teardown reveals deeper failure that was invisible before disassembly. Also applies in insurance supplement context.", n:4},
-      {id:"3c", lbl:"Fabricated findings",       desc:"Repairs recommended by shop proved completely unnecessary by independent second opinion.", n:2},
-      {id:"3d", lbl:"Real problem, padded bill", desc:"Damage is real but scope is wildly inflated as a pretext to dramatically raise the bill.", n:7},
+      { id:"3a", lbl:"Legitimate hidden damage",
+        desc:"Teardown reveals deeper failure invisible before disassembly. Endurance class action: $13,515 quote rose to $19,056 after confirmed damage.",
+        n:4 },
+      { id:"3b", lbl:"Cascading part failures",
+        desc:"Parts break or fail during access to the originally targeted component — ball joints → rods → bearing; radiator → head gasket → timing belt.",
+        n:5 },
+      { id:"3c", lbl:"Fabricated findings",
+        desc:"Repairs recommended by shop proved completely unnecessary by independent second opinion. $900 inspection at Colonial Nissan: battery fine, fog lights fine, seat belt not broken.",
+        n:3 },
+      { id:"3d", lbl:"Real problem, padded bill ★",
+        desc:"Damage is real but scope is wildly inflated as a pretext. Engine swap: $8,500 / 3 wks → $13,000 / 32 wks; only $1,300 were legitimate adds.",
+        n:8 },
     ]},
-  { id:4, name:"Pricing\nDisputes",          total:16, color:"#27ae60",
+  { id:4, name:"Pricing\nDisputes", total:27, color:"#27ae60",
     nodes:[
-      {id:"4a", lbl:"Book time vs actual hours", desc:"Consumer billed 12 labor hours; car was completed and ready for pickup in just 4 hours.", n:5},
-      {id:"4b", lbl:"Parts markup above quote",  desc:"Parts sourced locally at higher cost without consumer knowledge or approval; no adjustment made.", n:2},
-      {id:"4c", lbl:"Insurance payout reveal",   desc:"Original quote $1,700; shop learned insurance payout was $2,300; shop now demands $2,300.", n:1},
-      {id:"4e", lbl:"Verbal < written invoice",  desc:"Text or phone quote was lower; final written invoice is higher with no explanation. Second most common sub-type.", n:8},
+      { id:"4a", lbl:"Book time vs actual hours",
+        desc:"Charged 12 labor hours; car was completed and ready in 4 hours. Mobile mechanic: 'I quote by the book — if I finish in 2 hrs I still get paid for 3.'",
+        n:4 },
+      { id:"4b", lbl:"Parts markup above quote ★",
+        desc:"Parts cost rises above quoted price with no consumer approval — e.g., $3,560 quoted, $3,863 charged same day; turbo parts $2,500–3K quoted, billed $3,700. Second most common sub-type.",
+        n:12 },
+      { id:"4c", lbl:"Insurance payout reveal",
+        desc:"Shop originally quoted $1,700; learned insurance payout was $2,300; immediately revised quote to $2,300.",
+        n:1 },
+      { id:"4e", lbl:"Verbal < written invoice",
+        desc:"Text or phone quote lower than final written invoice with no explanation — $6,300 verbal day-of, $18,000 email quote days later (2016 Jeep Wrangler).",
+        n:8 },
     ]},
-  { id:5, name:"Quality &\nCompletion",      total:17, color:"#16a085",
+  { id:5, name:"Quality &\nCompletion", total:21, color:"#16a085",
     nodes:[
-      {id:"5a", lbl:"Same repair failed, new charge",desc:"Transmission rebuilt; failed again within months; shop demands new charge for the same underlying problem.", n:3},
-      {id:"5b", lbl:"Wrong part installed",       desc:"Wrong shifter cable installed; failed within a month; consumer charged again for the correction.", n:2},
-      {id:"5c", lbl:"Incidental damage denied",   desc:"Dashboard drilled during transmission work; A/C failed after water-pump job. Shop denies all responsibility.", n:7},
-      {id:"5d", lbl:"Incomplete delivery",        desc:"Transmission not programmed; loose wiring left exposed; promised items missing on delivery.", n:5},
+      { id:"5a", lbl:"Same repair failed, new charge",
+        desc:"Universal Transmission: returned 4 times in 1 year for same transmission. A Plus: insufficient oil in rebuilt transmission. Consumer charged again each time.",
+        n:8 },
+      { id:"5b", lbl:"Wrong part installed",
+        desc:"Wrong shifter cable installed — failed within a month. Lopez Auto Repair: timing belt installed wrong and too tight, engine valves tampered.",
+        n:5 },
+      { id:"5c", lbl:"Incidental damage denied",
+        desc:"Dashboard drilled during transmission work; A/C failed after water-pump job; bumper severely damaged and punctured while car in shop's care — shop denies all.",
+        n:7 },
+      { id:"5d", lbl:"Incomplete work delivered",
+        desc:"Transmission not programmed; missing parts; car held under warranty since May 2022 with Logan repeatedly promising 'ready within a week.'",
+        n:3 },
     ]},
-  { id:6, name:"Deceptive &\nFraudulent",   total:16, color:"#8e44ad",
+  { id:6, name:"Deceptive &\nFraudulent", total:18, color:"#8e44ad",
     nodes:[
-      {id:"6a", lbl:"Bait-and-switch quote",     desc:"Low online quote secures the appointment; day-of price jump required before any work begins.", n:3},
-      {id:"6b", lbl:"Work billed, never done",   desc:"Charged for new starter; old one quietly reinstalled. $63K lien placed on exotic vehicles never actually worked on.", n:5},
-      {id:"6c", lbl:"Parts substitution fraud",  desc:"Junkyard transmission billed as a full rebuild at OEM price; repainted used parts presented as new.", n:5},
-      {id:"6d", lbl:"Fabricated lien fraud",     desc:"$105K swindle (Montes, charged); $63K in phantom repair liens placed on vehicles never touched (Obeid, arrested).", n:1},
-      {id:"6e", lbl:"Mechanic absconded",        desc:"Shop vanished overnight with vehicle and deposit; Jeep illegally sold to third party. Charges filed.", n:2},
+      { id:"6a", lbl:"Bait-and-switch quote",
+        desc:"Low online quote to secure appointment; day-of price jump required before any work begins. $340 quoted → $570 demanded on day of service.",
+        n:3 },
+      { id:"6b", lbl:"Work billed, never done",
+        desc:"Charged for new starter; old one quietly reinstalled. VRF Auto Service collected $2,552.50 for repairs never performed (BAR finding). Obeid: $63K lien on vehicles never touched.",
+        n:7 },
+      { id:"6c", lbl:"Parts substitution fraud",
+        desc:"Junkyard transmission billed as full rebuild at OEM price. Universal Transmission: used and repainted parts installed; invoice said all new. Happened twice at same Houston shop.",
+        n:5 },
+      { id:"6d", lbl:"Fabricated lien / fraud",
+        desc:"Montes: $105K swindle, charged with aggregate theft. Obeid: $63K in phantom repair liens on exotic vehicles never worked on. Mechanic held vehicle with no documentation.",
+        n:2 },
+      { id:"6e", lbl:"Mechanic absconded",
+        desc:"Shop vanished overnight with deposit and vehicle. Agosto/Mireles: Jeep illegally sold; Mireles charged April 2025 with aggregate theft >$40K from 4+ customers.",
+        n:2 },
     ]},
-  { id:7, name:"Vehicle Held\nHostage",      total:13, color:"#2980b9",
+  { id:7, name:"Vehicle Held\nHostage", total:9, color:"#2980b9",
     nodes:[
-      {id:"7a", lbl:"Keys withheld",             desc:"Consumer called 911 from locked car in parking lot while shop workers surrounded the vehicle demanding payment.", n:4},
-      {id:"7b", lbl:"Lien threatened",           desc:"Agreed amount was $600; mechanic now demands $2,600 and threatens to place a mechanical lien on the vehicle.", n:7},
-      {id:"7c", lbl:"Impound threat",            desc:"Shop threatens to have vehicle impounded as coercion tactic to force payment of inflated or unauthorized bill.", n:2},
+      { id:"7a", lbl:"Keys withheld",
+        desc:"Consumer called 911 from locked car in parking lot while shop workers surrounded the vehicle demanding payment for unauthorized work.",
+        n:5 },
+      { id:"7b", lbl:"Lien threatened",
+        desc:"Agreed amount $600; mechanic demands $2,600 and threatens mechanical lien. Shop threatened lien on consumer's own purchased parts.",
+        n:3 },
+      { id:"7c", lbl:"Impound threat",
+        desc:"Mechanic told consumer vehicle would go to impound in a week if new inflated quote wasn't paid. Used as coercion with no paperwork or contract.",
+        n:1 },
     ]},
-  { id:8, name:"Communication\nBreakdown",  total:14, color:"#7f8c8d",
+  { id:8, name:"Communication\nBreakdown", total:22, color:"#7f8c8d",
     nodes:[
-      {id:"8a", lbl:"No written estimate given", desc:"Verbal-only interaction throughout entire job; no paper trail; consumer has no proof of the agreed amount.", n:4},
-      {id:"8b", lbl:"Increase not communicated", desc:"Extra work performed silently; total cost revealed only at pickup when car is already finished and held.", n:6},
-      {id:"8c", lbl:"No status updates",         desc:"Car held for months; shop unanswered; repeated broken promises of a completion date.", n:3},
-      {id:"8d", lbl:"Ambiguous approval",        desc:"Consumer unclear whether signing an estimate or providing card number automatically authorized all further work.", n:1},
+      { id:"8a", lbl:"No written estimate given",
+        desc:"Verbal-only interaction throughout entire job; no paper trail; consumer cannot prove the agreed amount. BAR: 'Without written estimate they cannot charge you a cent.'",
+        n:7 },
+      { id:"8b", lbl:"Increase not communicated",
+        desc:"Extra work performed silently; total cost revealed only at pickup when car is already finished and held. $12K verbally approved → $18K email surprise.",
+        n:8 },
+      { id:"8c", lbl:"No status updates ★",
+        desc:"Car held for months; shop unanswered; repeated broken promises of a completion date. Average shop misses 62% of incoming calls. Third most common sub-type.",
+        n:10 },
+      { id:"8d", lbl:"Ambiguous approval",
+        desc:"Consumer unclear whether signing an estimate or handing over card number automatically authorized all further work on the vehicle.",
+        n:2 },
+      { id:"8e", lbl:"Informal quote not honored",
+        desc:"Text or phone quote contradicted at billing — $3,000 agreed via text; car sat in same spot for months; different price demanded on pickup.",
+        n:4 },
     ]},
 ];
 
 // ── Flat node array ───────────────────────────────────────────────────────────
-const RS = 13.5; // radius scale: r = sqrt(n) * RS
+const RS = 14.5;
 const nodes = [];
 CATS.forEach(cat => {
   cat.nodes.forEach(nd => {
     nodes.push({ ...nd, catId:cat.id, catName:cat.name, color:cat.color,
-                 r: Math.max(11, Math.sqrt(nd.n) * RS) });
+                 r: Math.max(12, Math.sqrt(nd.n) * RS) });
   });
 });
 
-// ── Canvas size ───────────────────────────────────────────────────────────────
+// Top sub-categories for badge
+const TOP3 = ["1c","4b","8c"];
+
+// ── Canvas ────────────────────────────────────────────────────────────────────
 const W  = Math.max(window.innerWidth,  1000);
 const H  = Math.max(window.innerHeight - 72, 680);
 document.getElementById('chart-wrap').style.minHeight = H + 'px';
@@ -153,19 +226,18 @@ document.getElementById('chart-wrap').style.minHeight = H + 'px';
 const CX = W / 2, CY = H / 2;
 const ORBIT = Math.min(W, H) * 0.31;
 
-// ── Cluster centres (radial) ──────────────────────────────────────────────────
-const CP = {};  // id → {x, y, angle}
+// ── Cluster centres ───────────────────────────────────────────────────────────
+const CP = {};
 CATS.forEach((cat, i) => {
   const a = (i / CATS.length) * 2 * Math.PI - Math.PI / 2;
   CP[cat.id] = { x: CX + ORBIT * Math.cos(a), y: CY + ORBIT * Math.sin(a), a };
 });
 
-// Seed node positions near cluster centres
 nodes.forEach(nd => {
   const cp = CP[nd.catId];
   nd.x  = cp.x + (Math.random() - 0.5) * 40;
   nd.y  = cp.y + (Math.random() - 0.5) * 40;
-  nd.cx = cp.x;  // static cluster target
+  nd.cx = cp.x;
   nd.cy = cp.y;
 });
 
@@ -173,10 +245,9 @@ nodes.forEach(nd => {
 const svg = d3.select('#chart-wrap').append('svg')
   .attr('width', W).attr('height', H);
 
-// Background
 svg.append('rect').attr('width', W).attr('height', H).attr('fill', '#0d1117');
 
-// ── Defs: per-colour glow ─────────────────────────────────────────────────────
+// ── Defs: glow filters ────────────────────────────────────────────────────────
 const defs = svg.append('defs');
 CATS.forEach(cat => {
   const f = defs.append('filter').attr('id', `gl${cat.id}`)
@@ -187,9 +258,16 @@ CATS.forEach(cat => {
   m.append('feMergeNode').attr('in','SourceGraphic');
 });
 
-// ── Halo rings ────────────────────────────────────────────────────────────────
-const haloR = ORBIT * 0.46;  // fixed fraction — decorative boundary
+// Gold star glow for top-3 nodes
+const fStar = defs.append('filter').attr('id','gl-star')
+  .attr('x','-80%').attr('y','-80%').attr('width','260%').attr('height','260%');
+fStar.append('feGaussianBlur').attr('in','SourceGraphic').attr('stdDeviation', 8).attr('result','blur');
+const mStar = fStar.append('feMerge');
+mStar.append('feMergeNode').attr('in','blur');
+mStar.append('feMergeNode').attr('in','SourceGraphic');
 
+// ── Halo rings ────────────────────────────────────────────────────────────────
+const haloR = ORBIT * 0.46;
 const haloG = svg.append('g');
 CATS.forEach(cat => {
   const cp = CP[cat.id];
@@ -202,8 +280,8 @@ CATS.forEach(cat => {
     .attr('stroke-dasharray', '6 4');
 });
 
-// ── Cluster labels (placed radially outward) ──────────────────────────────────
-const LH = 14;  // line height px
+// ── Cluster labels ────────────────────────────────────────────────────────────
+const LH = 14;
 const labelG = svg.append('g');
 
 CATS.forEach(cat => {
@@ -211,45 +289,40 @@ CATS.forEach(cat => {
   const a  = cp.a;
   const lx = cp.x + Math.cos(a) * (haloR + 16);
   const ly = cp.y + Math.sin(a) * (haloR + 16);
-
-  // Text anchor based on horizontal position
   const anchor = Math.cos(a) > 0.25 ? 'start' : Math.cos(a) < -0.25 ? 'end' : 'middle';
-
-  // Vertical offset so the label block centres on ly for side clusters,
-  // sits below ly for bottom clusters, above ly for top clusters
-  const lines    = cat.name.split('\n');
-  const blockH   = lines.length * LH + 14;
-  const sinA     = Math.sin(a);
-  const yOffset  = sinA >  0.25 ? 0
-                 : sinA < -0.25 ? -blockH
-                 : -blockH / 2;
+  const lines  = cat.name.split('\n');
+  const blockH = lines.length * LH + 14;
+  const sinA   = Math.sin(a);
+  const yOff   = sinA >  0.25 ? 0 : sinA < -0.25 ? -blockH : -blockH / 2;
 
   const g = labelG.append('g');
   lines.forEach((line, li) => {
     g.append('text')
-      .attr('x', lx).attr('y', ly + yOffset + li * LH)
+      .attr('x', lx).attr('y', ly + yOff + li * LH)
       .attr('text-anchor', anchor)
       .attr('fill', cat.color)
       .attr('font-size', '12px').attr('font-weight', '700')
-      .attr('letter-spacing', '0.2px')
       .text(line);
   });
   g.append('text')
-    .attr('x', lx).attr('y', ly + yOffset + lines.length * LH)
+    .attr('x', lx).attr('y', ly + yOff + lines.length * LH)
     .attr('text-anchor', anchor)
     .attr('fill', cat.color).attr('fill-opacity', 0.55)
     .attr('font-size', '10px')
     .text(`n = ${cat.total}`);
 });
 
-// ── Nodes ─────────────────────────────────────────────────────────────────────
+// ── Node circles ──────────────────────────────────────────────────────────────
 const nodeG = svg.append('g');
 
 const circles = nodeG.selectAll('circle.nd')
   .data(nodes).join('circle').attr('class','nd')
   .attr('r', d => d.r)
-  .attr('fill', d => d.color).attr('fill-opacity', 0.72)
-  .attr('stroke', d => d.color).attr('stroke-width', 1.5).attr('stroke-opacity', 0.85)
+  .attr('fill', d => TOP3.includes(d.id) ? d.color : d.color)
+  .attr('fill-opacity', d => TOP3.includes(d.id) ? 0.85 : 0.70)
+  .attr('stroke', d => TOP3.includes(d.id) ? '#f1c40f' : d.color)
+  .attr('stroke-width', d => TOP3.includes(d.id) ? 2.5 : 1.5)
+  .attr('stroke-opacity', d => TOP3.includes(d.id) ? 1.0 : 0.85)
   .attr('filter', d => `url(#gl${d.catId})`)
   .style('cursor', 'pointer');
 
@@ -262,9 +335,8 @@ const countLbl = nodeG.selectAll('text.cnt')
   .attr('pointer-events','none')
   .text(d => d.n);
 
-// Sub-ID label for larger bubbles
 const idLbl = nodeG.selectAll('text.sid')
-  .data(nodes.filter(d => d.r >= 30)).join('text').attr('class','sid')
+  .data(nodes.filter(d => d.r >= 28)).join('text').attr('class','sid')
   .attr('text-anchor','middle').attr('dominant-baseline','central')
   .attr('fill','#fff').attr('fill-opacity', 0.45)
   .attr('font-size','8px').attr('pointer-events','none')
@@ -272,15 +344,17 @@ const idLbl = nodeG.selectAll('text.sid')
 
 // ── Tooltip ───────────────────────────────────────────────────────────────────
 const tip = document.getElementById('tt');
+const isTop3 = d => TOP3.includes(d.id);
 
 circles
   .on('mouseover', function(event, d) {
-    d3.select(this).attr('fill-opacity', 1).attr('r', d.r * 1.1).attr('stroke-width', 2.5);
+    d3.select(this).attr('fill-opacity', 1).attr('r', d.r * 1.1).attr('stroke-width', isTop3(d) ? 3.5 : 2.5);
+    const rankTag = d.id === '1c' ? ' · #1 most common' : d.id === '4b' ? ' · #2 most common' : d.id === '8c' ? ' · #3 most common' : '';
     tip.innerHTML = `
       <div class="tt-cat" style="color:${d.color}">${d.catName.replace('\n',' ')}</div>
       <div class="tt-name">${d.lbl}</div>
       <div class="tt-desc">${d.desc}</div>
-      <div class="tt-n">Observations: <span>${d.n}</span></div>`;
+      <div class="tt-n">Observations: <span>${d.n}</span>${rankTag ? `<br><span style="color:#f39c12;font-weight:600">${rankTag.trim()}</span>` : ''}</div>`;
     tip.style.opacity = '1';
   })
   .on('mousemove', function(event) {
@@ -288,12 +362,12 @@ circles
     tip.style.top  = Math.max(event.clientY - 14, 4) + 'px';
   })
   .on('mouseout', function(event, d) {
-    d3.select(this).attr('fill-opacity', 0.72).attr('r', d.r).attr('stroke-width', 1.5);
+    d3.select(this).attr('fill-opacity', isTop3(d) ? 0.85 : 0.70).attr('r', d.r).attr('stroke-width', isTop3(d) ? 2.5 : 1.5);
     tip.style.opacity = '0';
   });
 
 // ── Force simulation ──────────────────────────────────────────────────────────
-const sim = d3.forceSimulation(nodes)
+d3.forceSimulation(nodes)
   .force('collide', d3.forceCollide(d => d.r + 4.5).strength(1.0).iterations(4))
   .force('cx', d3.forceX(d => d.cx).strength(0.09))
   .force('cy', d3.forceY(d => d.cy).strength(0.09))
@@ -305,30 +379,41 @@ const sim = d3.forceSimulation(nodes)
     idLbl   .attr('x',  d => d.x).attr('y',  d => d.y + 12);
   });
 
-// ── Central caption ───────────────────────────────────────────────────────────
+// ── Central badge ─────────────────────────────────────────────────────────────
 const capG = svg.append('g').attr('pointer-events','none');
-
-capG.append('circle')
-  .attr('cx', CX).attr('cy', CY).attr('r', 48)
+capG.append('circle').attr('cx', CX).attr('cy', CY).attr('r', 52)
   .attr('fill','#0d1117').attr('stroke','#21262d').attr('stroke-width', 1);
-
-capG.append('text')
-  .attr('x', CX).attr('y', CY - 8)
+capG.append('text').attr('x', CX).attr('y', CY - 10)
   .attr('text-anchor','middle').attr('dominant-baseline','central')
-  .attr('fill','#c9d1d9').attr('font-size','22px').attr('font-weight','700')
-  .text('114');
-
-capG.append('text')
-  .attr('x', CX).attr('y', CY + 10)
+  .attr('fill','#c9d1d9').attr('font-size','24px').attr('font-weight','700')
+  .text('89');
+capG.append('text').attr('x', CX).attr('y', CY + 8)
   .attr('text-anchor','middle').attr('dominant-baseline','central')
   .attr('fill','#484f58').attr('font-size','9px').attr('letter-spacing','1px')
-  .text('OBSERVATIONS');
-
-capG.append('text')
-  .attr('x', CX).attr('y', CY + 22)
+  .text('ENCOUNTERS');
+capG.append('text').attr('x', CX).attr('y', CY + 21)
   .attr('text-anchor','middle').attr('dominant-baseline','central')
   .attr('fill','#484f58').attr('font-size','9px').attr('letter-spacing','1px')
-  .text('8 CATEGORIES');
+  .text('ROWS A2:A165');
+
+// ── Top-3 legend strip ────────────────────────────────────────────────────────
+const legData = [
+  { id:'1c', label:'#1 · Limited auth exceeded', n:13, color:'#e74c3c' },
+  { id:'4b', label:'#2 · Parts markup above quote', n:12, color:'#27ae60' },
+  { id:'8c', label:'#3 · No status updates', n:10, color:'#7f8c8d' },
+];
+const legG = svg.append('g').attr('transform', `translate(${W/2 - 280}, ${H - 26})`);
+legG.append('rect').attr('x',-10).attr('y',-14).attr('width',580).attr('height',22)
+  .attr('fill','#0d1117').attr('rx',4).attr('opacity',0.8);
+legData.forEach((d, i) => {
+  const gx = i * 194;
+  const g = legG.append('g').attr('transform', `translate(${gx}, 0)`);
+  g.append('circle').attr('r', 5).attr('cy', -4).attr('fill', d.color)
+    .attr('stroke','#f1c40f').attr('stroke-width',1.5);
+  g.append('text').attr('x', 10).attr('y', 0)
+    .attr('fill','#8b949e').attr('font-size','10px')
+    .text(`${d.label}  (n=${d.n})`);
+});
 </script>
 </body>
 </html>
