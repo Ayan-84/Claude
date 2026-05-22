@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solving Distrust in Palliative Care — Market Opportunity</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #FAF6EE;
+      --sand:         #F0E8D8;
+      --border:       #D8C9B0;
+      --orange-pale:  #F0C090;
+      --orange:       #C85A24;
+      --orange-deep:  #8A2E0C;
+      --rust:         #621A06;
+      --dark:         #2A1206;
+      --muted:        #8A6858;
+      --body-text:    #3C1E0C;
+      --tam-fill:     #EDE0C8;
+      --sam-fill:     #C06028;
+      --som-fill:     #742008;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+      padding: 60px 48px 88px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* ─── HEADER ──────────────────────────────────────────── */
+    header { text-align: center; margin-bottom: 72px; }
+    .eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+    }
+    header h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 40px; font-weight: normal; color: var(--dark);
+      line-height: 1.15; margin-bottom: 14px;
+    }
+    .subtitle {
+      font-size: 14.5px; color: var(--muted);
+      max-width: 500px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ─── SECTION SHELL ───────────────────────────────────── */
+    .section { margin-bottom: 72px; }
+    .sec-eye {
+      font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 5px;
+    }
+    .sec-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px; font-weight: normal; color: var(--dark);
+      padding-bottom: 12px; border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+
+    /* ─── SECTION 1: CONCENTRIC CIRCLES ──────────────────── */
+    .tam-layout { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+
+    .circles {
+      position: relative; width: 360px; height: 360px; flex-shrink: 0;
+    }
+    .circle {
+      position: absolute; border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .circle.tam { width: 360px; height: 360px; background: var(--tam-fill); border: 1.5px solid #CDBF9E; }
+    .circle.sam { width: 224px; height: 224px; background: var(--sam-fill); }
+    .circle.som { width:  96px; height:  96px; background: var(--som-fill); }
+
+    .rl {
+      position: absolute; font-size: 8.5px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      left: 50%; transform: translateX(-50%); white-space: nowrap; pointer-events: none;
+    }
+    .rl.tam { top: 24px;  color: var(--muted); }
+    .rl.sam { top: 88px;  color: rgba(255,255,255,0.75); }
+    .rl.som { top: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.7); }
+
+    .tam-legend { flex: 1; min-width: 280px; }
+    .tam-item { padding-left: 14px; border-left: 3px solid transparent; margin-bottom: 26px; }
+    .tam-item:last-child { margin-bottom: 0; }
+    .tam-item.tam { border-color: #CDAF82; }
+    .tam-item.sam { border-color: var(--sam-fill); }
+    .tam-item.som { border-color: var(--som-fill); }
+
+    .ti-layer { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 3px; }
+    .ti-amount { font-family: Georgia, serif; font-size: 32px; color: var(--dark); line-height: 1.1; margin-bottom: 5px; }
+    .ti-def    { font-size: 12.5px; color: var(--body-text); line-height: 1.55; margin-bottom: 5px; }
+    .ti-source { font-size: 10px; color: var(--muted); font-style: italic; line-height: 1.5; }
+
+    /* ─── SECTION 2: DUMBBELL CHART ──────────────────────── */
+    .db-legend { display: flex; gap: 22px; margin-bottom: 18px; }
+    .db-legend-item { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--muted); }
+    .db-legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.5); }
+
+    .db-rows { border-top: 1px solid var(--border); }
+
+    .db-row {
+      display: grid; grid-template-columns: 205px 1fr 155px;
+      align-items: center; gap: 20px; padding: 16px 0;
+      border-bottom: 1px solid var(--sand);
+    }
+    .db-output {
+      background: var(--sand); border-radius: 8px; padding: 16px 14px;
+      border-bottom: none; margin-top: 10px;
+    }
+
+    .db-label { font-size: 13px; font-weight: 500; color: var(--dark); line-height: 1.3; }
+    .db-sub   { font-size: 11px; color: var(--muted); font-weight: normal; margin-top: 2px; }
+
+    .db-track-wrap { position: relative; padding-top: 22px; }
+
+    .db-vlabels { position: absolute; top: 0; left: 0; right: 0; height: 18px; }
+    .db-vlabels span { position: absolute; font-size: 10px; font-weight: 600; color: var(--muted); white-space: nowrap; line-height: 1; }
+    .vl-bear { left: 0; }
+    .vl-base { transform: translateX(-50%); }
+    .vl-bull { right: 0; text-align: right; }
+
+    .db-track { position: relative; height: 4px; background: var(--border); border-radius: 2px; }
+    .db-fill  { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(to right, var(--orange-pale), var(--orange-deep)); }
+    .db-dot   { position: absolute; width: 13px; height: 13px; border-radius: 50%; top: 50%; transform: translate(-50%, -50%); border: 2px solid var(--bg); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+    .db-dot.bear { left:   0%; background: var(--orange-pale); }
+    .db-dot.base {            background: var(--orange); }
+    .db-dot.bull { left: 100%; background: var(--orange-deep); }
+    .db-output .db-dot { width: 15px; height: 15px; }
+
+    .db-source { font-size: 10px; font-style: italic; color: var(--muted); line-height: 1.5; text-align: right; }
+
+    /* ─── SECTION 3: EVIDENCE CARDS ──────────────────────── */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card { background: var(--sand); border-radius: 10px; padding: 24px 20px; border-left: 4px solid var(--orange); }
+    .card-tag  { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .card-head { font-family: Georgia, serif; font-size: 15.5px; line-height: 1.35; color: var(--dark); margin-bottom: 12px; }
+    .card-stat { font-family: Georgia, serif; font-size: 40px; color: var(--orange-deep); line-height: 1; margin-bottom: 8px; }
+    .card-body { font-size: 12.5px; color: var(--body-text); line-height: 1.65; margin-bottom: 14px; }
+    .card-src  { font-size: 10px; font-style: italic; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; line-height: 1.5; }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer { text-align: center; font-size: 10px; color: var(--muted); padding-top: 24px; border-top: 1px solid var(--border); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════ -->
+  <header>
+    <div class="eyebrow">Market Opportunity Analysis · May 2026</div>
+    <h1>Solving Distrust in Palliative Care</h1>
+    <p class="subtitle">A quantitative market sizing of the trust gap — and the opportunity it creates for a trust-first platform in the US palliative care market.</p>
+  </header>
+
+
+  <!-- ═══ SECTION 1: TAM / SAM / SOM ══════════════════════ -->
+  <div class="section">
+    <div class="sec-eye">Market Sizing</div>
+    <div class="sec-title">TAM · SAM · SOM</div>
+
+    <div class="tam-layout">
+
+      <div class="circles" aria-hidden="true">
+        <div class="circle tam"></div>
+        <div class="circle sam"></div>
+        <div class="circle som"></div>
+        <div class="rl tam">TAM</div>
+        <div class="rl sam">SAM</div>
+        <div class="rl som">SOM</div>
+      </div>
+
+      <div class="tam-legend">
+
+        <div class="tam-item tam">
+          <div class="ti-layer">TAM — Total Addressable Market</div>
+          <div class="ti-amount">$57B</div>
+          <div class="ti-def">All US palliative care services spend annually — every care encounter where a patient or family trust decision shapes access, engagement, and outcomes.</div>
+          <div class="ti-source">Global palliative care market $152.85B (Precedence Research, 2025) × 43.81% North America share (Mordor Intelligence) · Cross-check: Medicare hospice alone = $28.2B (MedPAC, 2024) + non-hospice palliative + non-Medicare payers</div>
+        </div>
+
+        <div class="tam-item sam">
+          <div class="ti-layer">SAM — Serviceable Addressable Market</div>
+          <div class="ti-amount">$22B</div>
+          <div class="ti-def">The digitally-enabled and trust-critical segment — telehealth palliative encounters, digital advance care planning, and platform-mediated family communication where a trust solution can intervene.</div>
+          <div class="ti-source">TAM × 38% digital/platform penetration · Telehealth leads palliative care tech adoption at 41.2% market share (Market.us, 2025) · AI in telehealth market $6.17B, 36.4% CAGR (SNS Insider, 2025)</div>
+        </div>
+
+        <div class="tam-item som">
+          <div class="ti-layer">SOM — Serviceable Obtainable Market</div>
+          <div class="ti-amount">$120–180M</div>
+          <div class="ti-def">Annual platform revenue realistically capturable within 5 years — healthcare system SaaS subscriptions, patient and family digital platform, and payer value-based care contracts.</div>
+          <div class="ti-source">~4,200 hospital palliative programs × 15% penetration at $50K/yr = $31.5M ARR (CAPC, 2024) · 5% of 14M annual patients + families × $96/yr = $67M · Payer contracts pipeline: $70M</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 2: SENSITIVITIES ════════════════════════ -->
+  <div class="section">
+    <div class="sec-eye">Risk &amp; Range</div>
+    <div class="sec-title">Key Assumptions &amp; Sensitivities</div>
+
+    <div class="db-legend">
+      <div class="db-legend-item"><div class="db-legend-dot" style="background:var(--orange-pale)"></div> Bear case</div>
+      <div class="db-legend-item"><div class="db-legend-dot" style="background:var(--orange)"></div> Base case</div>
+      <div class="db-legend-item"><div class="db-legend-dot" style="background:var(--orange-deep)"></div> Bull case</div>
+    </div>
+
+    <div class="db-rows">
+
+      <!-- Row 1: Digital Adoption — base at 43%: (38-25)/(55-25) = 13/30 -->
+      <div class="db-row">
+        <div class="db-label">Digital Adoption Rate
+          <div class="db-sub">TAM → SAM boundary</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">25%</span>
+            <span class="vl-base" style="left:43%">38%</span>
+            <span class="vl-bull">55%</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:43%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">Market.us Palliative<br>Services Report, 2025</div>
+      </div>
+
+      <!-- Row 2: Healthcare System Penetration — base at 50%: (15-5)/(25-5) = 10/20 -->
+      <div class="db-row">
+        <div class="db-label">Healthcare System Penetration
+          <div class="db-sub">% of ~4,200 hospital programs</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">5%</span>
+            <span class="vl-base" style="left:50%">15%</span>
+            <span class="vl-bull">25%</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:50%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">CAPC Hospital<br>Survey, 2024</div>
+      </div>
+
+      <!-- Row 3: Platform Fee Per Patient/Year — base at 40%: ($96-$60)/($150-$60) = 36/90 -->
+      <div class="db-row">
+        <div class="db-label">Platform Fee Per Patient/Year
+          <div class="db-sub">Consumer + family subscription</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">$60</span>
+            <span class="vl-base" style="left:40%">$96</span>
+            <span class="vl-bull">$150</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:40%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">Digital health SaaS<br>pricing benchmarks</div>
+      </div>
+
+      <!-- Row 4: Trust Barrier Conversion Rate — base at 47%: (12-5)/(20-5) = 7/15 -->
+      <div class="db-row">
+        <div class="db-label">Trust Barrier Conversion Rate
+          <div class="db-sub">% of unserved patients reached</div>
+        </div>
+        <div class="db-track-wrap">
+          <div class="db-vlabels">
+            <span class="vl-bear">5%</span>
+            <span class="vl-base" style="left:47%">12%</span>
+            <span class="vl-bull">20%</span>
+          </div>
+          <div class="db-track">
+            <div class="db-fill"></div>
+            <div class="db-dot bear"></div>
+            <div class="db-dot base" style="left:47%"></div>
+            <div class="db-dot bull"></div>
+          </div>
+        </div>
+        <div class="db-source">Health equity research,<br>2024–2025</div>
+      </div>
+
+    </div>
+
+    <div class="db-row db-output">
+      <div class="db-label" style="font-weight:600">SOM Revenue — Year 5
+        <div class="db-sub">Combined hybrid model output</div>
+      </div>
+      <div class="db-track-wrap">
+        <div class="db-vlabels">
+          <span class="vl-bear">$60–90M</span>
+          <span class="vl-base" style="left:50%">$120–180M</span>
+          <span class="vl-bull">$300M+</span>
+        </div>
+        <div class="db-track">
+          <div class="db-fill"></div>
+          <div class="db-dot bear"></div>
+          <div class="db-dot base" style="left:50%"></div>
+          <div class="db-dot bull"></div>
+        </div>
+      </div>
+      <div class="db-source" style="font-style:normal;font-weight:500;color:var(--dark)">Derived from<br>assumptions above</div>
+    </div>
+
+  </div>
+
+
+  <!-- ═══ SECTION 3: TIMING ════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-eye">Why Now</div>
+    <div class="sec-title">Four Converging Forces</div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-tag">01 · Healthcare Trust Collapse</div>
+        <div class="card-head">Physician trust fell 44% in four years — and the sickest patients trust least</div>
+        <div class="card-stat">40%</div>
+        <div class="card-body">Trust in physicians and hospitals fell from 72% in April 2020 to just 40% by January 2024. Among Black patients with serious illness, medical mistrust reaches 14.2% — twenty times the rate in White patients (0.7%). The population that needs palliative care most carries the deepest institutional distrust.</div>
+        <div class="card-src">Health Affairs / JAMA, January 2024 · Multicenter HCC patient survey, 2018–2023 (PMC12150933)</div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">02 · Chronic Underutilization</div>
+        <div class="card-head">Two-thirds of eligible patients die without ever receiving palliative care</div>
+        <div class="card-stat">67%</div>
+        <div class="card-body">Two-thirds of patients with advanced cancer die without receiving palliative care. 55.4% of the public incorrectly believe it is only for the last 6 months of life. Clinicians initiate referrals on average just 2 months before death — years after evidence-based guidelines recommend. Distrust and misconception, not supply, is the dominant barrier.</div>
+        <div class="card-src">Newswise / National Cancer Database, 2024 · PLOS One national survey · Palliative &amp; Supportive Care review, 2025</div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">03 · Medicare &amp; CMS Reform Pressure</div>
+        <div class="card-head">$28.2B in Medicare hospice payments is under active quality scrutiny</div>
+        <div class="card-stat">$28.2B</div>
+        <div class="card-body">Medicare paid hospice providers $28.2B in 2024 — up 10.1% year-over-year. CMS finalized 2025 hospice payment rules with new CAHPS survey quality measures effective April 2025. For the first time, 53.1% of Medicare decedents received hospice care. Regulatory pressure is converting trust improvement from a differentiator into a compliance imperative.</div>
+        <div class="card-src">MedPAC March 2025 Report to Congress · CMS FY 2025 Hospice Final Rule · National Alliance for Care at Home, 2025</div>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">04 · AI-Enabled Trust Infrastructure</div>
+        <div class="card-head">62% of digital health VC in H1 2025 went to AI-enabled companies</div>
+        <div class="card-stat">62%</div>
+        <div class="card-body">AI in telehealth is growing at a 36.4% CAGR, reaching $6.17B in 2025. In H1 2025, AI-enabled health startups raised an average of $34.4M per round with 11 mega-deals. Telehealth now accounts for 41.2% of the palliative care tech market. The infrastructure to deliver scalable, personalized, trust-building communication at low unit cost is arriving now.</div>
+        <div class="card-src">Rock Health Digital Health VC Report, H1 2025 · SNS Insider AI Telehealth Report, 2025 · Market.us Palliative Services Market, 2025</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
+    Market data current as of May 2026 &nbsp;·&nbsp;
+    Sources: Precedence Research · Mordor Intelligence · MedPAC · CMS · Market.us · SNS Insider · CAPC · PLOS One · Health Affairs · Rock Health · National Alliance for Care at Home
+  </footer>
+
+</body>
+</html>
