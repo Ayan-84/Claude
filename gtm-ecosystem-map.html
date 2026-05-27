@@ -83,6 +83,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <a href="#p1-institutions">P1 · Institutions</a>
     <a href="#p1-events">P1 · Events</a>
     <a href="#p1-amplifiers">P1 · Amplifiers</a>
+    <a href="#p1-infra">P1 · AI Infra</a>
     <a href="#p2">P2 · Cultivation</a>
   </div>
 </nav>
@@ -92,7 +93,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <h1>Ecosystem<br>Map</h1>
   <p class="hero-sub">A tiered map of validators, institutions, communities, events, and amplifiers whose mandates align with the proof of concept being built — Black builders with proximity to the problem, low/no-code AI infrastructure, ethnocentric design, and evaluation as foundation.</p>
   <div class="stats-row">
-    <div><div class="stat-num">65+</div><div class="stat-label">Entities Mapped</div></div>
+    <div><div class="stat-num">95+</div><div class="stat-label">Entities Mapped</div></div>
     <div><div class="stat-num">7</div><div class="stat-label">Roles Defined</div></div>
     <div><div class="stat-num">20</div><div class="stat-label">P0 Activations</div></div>
     <div><div class="stat-num">2</div><div class="stat-label">Geographies</div></div>
@@ -139,7 +140,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="section-header">
     <span class="section-tag" style="background:#2d1f5e;color:#8b5cf6">P1 · Validators</span>
     <span class="section-title">Individual Validators &amp; Researchers</span>
-    <span class="section-count">9 individuals &nbsp;·&nbsp; next 90 days</span>
+    <span class="section-count">13 individuals &nbsp;·&nbsp; next 90 days</span>
   </div>
   <div class="entity-grid" id="p1-validators-grid"></div>
 </section>
@@ -148,7 +149,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="section-header">
     <span class="section-tag" style="background:#0d3540;color:#06b6d4">P1 · Institutions</span>
     <span class="section-title">Research &amp; Community Institutions</span>
-    <span class="section-count">10 institutions &nbsp;·&nbsp; next 90 days</span>
+    <span class="section-count">12 institutions &nbsp;·&nbsp; next 90 days</span>
   </div>
   <div class="entity-grid" id="p1-institutions-grid"></div>
 </section>
@@ -157,7 +158,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="section-header">
     <span class="section-tag" style="background:#1a2e1a;color:#22c55e">P1 · Events</span>
     <span class="section-title">Conferences &amp; Submission Opportunities</span>
-    <span class="section-count">6 events &nbsp;·&nbsp; submission windows open</span>
+    <span class="section-count">8 events &nbsp;·&nbsp; submission windows open</span>
   </div>
   <div class="entity-grid" id="p1-events-grid"></div>
 </section>
@@ -165,10 +166,19 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <section class="section" id="p1-amplifiers">
   <div class="section-header">
     <span class="section-tag" style="background:#451a00;color:#f97316">P1 · Amplifiers</span>
-    <span class="section-title">Media, Podcasts &amp; Communities</span>
-    <span class="section-count">7 channels &nbsp;·&nbsp; next 90 days</span>
+    <span class="section-title">Media, Podcasts &amp; Press</span>
+    <span class="section-count">10 channels &nbsp;·&nbsp; next 90 days</span>
   </div>
   <div class="entity-grid" id="p1-amplifiers-grid"></div>
+</section>
+
+<section class="section" id="p1-infra">
+  <div class="section-header">
+    <span class="section-tag" style="background:#0d2d1a;color:#4ade80">P1 · AI Infra</span>
+    <span class="section-title">AI Infrastructure Communities</span>
+    <span class="section-count">7 communities &nbsp;·&nbsp; practitioner builders</span>
+  </div>
+  <div class="entity-grid" id="p1-infra-grid"></div>
 </section>
 
 <section class="section" id="p2">
@@ -182,7 +192,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
 </div>
 
-<footer>GTM Ecosystem Map &nbsp;·&nbsp; Phase 1 &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; 65+ entities mapped across Texas and national ecosystems</footer>
+<footer>GTM Ecosystem Map &nbsp;·&nbsp; Phase 1 &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; 95+ entities mapped across Texas and national ecosystems</footer>
 
 <script>
 const RM={
@@ -203,7 +213,7 @@ const ENTITIES={
   hook:'The largest community organization for Black tech professionals in Houston. Over a decade of operation. Runs BITCON annually. Nationally headquartered here. This is the room where Black builders in Houston already gather.',
   why:['<strong>First room:</strong> Your methodology — low/no-code, Black builders, AI as participant — needs to land locally before it travels nationally. BIT Houston is that first room.',
        '<strong>Demo opportunity:</strong> Speak at a meetup. Demo the flows. Let the community see it working before the stage gets bigger.',
-       '<strong>Pipeline:</strong> The next cohort of builders in this model could come from this community directly'],
+       '<strong>Pipeline:</strong> The next cohort of builders in this model could come from this community directly.'],
   roles:['R4','R5','R6','R7']},
 
   {name:'AfroTech',url:'https://afrotech.com',type:'Event · Media · Channel',
@@ -236,7 +246,7 @@ const ENTITIES={
 
   {name:'AITX Community',url:'https://aitxcommunity.com',type:'Group · Houston + Austin',
   hook:'7,000+ AI innovators and builders. Monthly meetups in Houston and Austin. Six hackathons completed. A practitioner-first builder community — not academic, not corporate.',
-  why:['<strong>Builder adoption:</strong> Langflow and Ollama demonstrations land here. This is where the stack gets adopted by other practitioners.',
+  why:['<strong>Builder adoption:</strong> Demonstrations of the open-source AI stack land here. This is where the methodology gets adopted by other practitioners.',
        '<strong>Hackathon:</strong> A methodology-first hackathon built around the low/no-code framework would be a landmark event in this community.',
        '<strong>Cross-city reach:</strong> Houston and Austin chapters expand Texas footprint simultaneously.'],
   roles:['R2','R4','R6','R7']},
@@ -274,7 +284,7 @@ const ENTITIES={
   {name:'DAIR Institute',url:'https://dair-institute.org',type:'Institution · Timnit Gebru',
   hook:'Founded by Timnit Gebru after leaving Google over a paper on large language model harms. The Institute\'s premise: research must be done by people proximate to harm. DAIR is on the original list — Gebru\'s name belongs there too.',
   why:['<strong>This work is her thesis applied:</strong> DAIR argues community-proximate research is more rigorous. This build is that, deployed as infrastructure.',
-       '<strong>Low-cost stack alignment:</strong> The Ollama/Langflow approach is a direct practical response to the compute concentration problem she documented. She will recognize it immediately.',
+       '<strong>Low-cost stack alignment:</strong> The open-source local AI approach is a direct practical response to the compute concentration problem she documented. She will recognize it immediately.',
        '<strong>Warm intro:</strong> Dr. Alex Hanna (DAIR Director of Research) is already on the validator list. That is the first connection.'],
   roles:['R1','R2','R6']},
 
@@ -295,7 +305,7 @@ const ENTITIES={
   {name:'Logic(s) Magazine',url:'https://logicmag.io',type:'Channel · Publication',
   hook:'Stated editorial mission: "to draw in voices and perspectives that remain outside, underexplored, and essential to thinking critically about technology from below." Khadijah Abdurahman — on the validator list — writes for Logic(s) on the labor behind AI.',
   why:['<strong>This is their mission statement:</strong> Black low/no-code builders creating AI infrastructure from below is exactly what Logic(s) exists to publish.',
-       '<strong>Practitioner voice:</strong> Logic(s) publishes practitioners writing about their own experience. This is not a place for press releases — it is a place for the builder\'s voice directly.',
+       '<strong>Practitioner voice:</strong> Logic(s) publishes practitioners writing about their own experience. This is a place for the builder\'s voice directly, not press releases.',
        '<strong>Warm intro:</strong> Khadijah Abdurahman is the connection into Logic(s) editorial.'],
   roles:['R1','R4']},
 
@@ -357,6 +367,20 @@ const ENTITIES={
        '<strong>D4BL connection:</strong> His Data for Black Lives affiliation connects this work to a data justice advocacy network.'],
   roles:['R1','R2']},
 
+  {name:'Merve Hickok — AIethicist.org',url:'https://aiethicist.org',type:'Validator · AI Governance',
+  hook:'AI ethics strategist, governance advisor, and educator. Founder of AIethicist.org — a widely-used practitioner-facing AI ethics resource. Works with UNESCO, OECD, and EU AI Act working groups on responsible AI training and governance frameworks globally.',
+  why:['<strong>Governance translation:</strong> She bridges AI ethics theory and practitioner implementation — exactly the gap this methodology addresses from the build side.',
+       '<strong>Training framework alignment:</strong> Her work on responsible AI training programs is a direct complement to evaluation-as-infrastructure as pedagogy.',
+       '<strong>International policy reach:</strong> Her connections in UNESCO, OECD, and EU AI Act discussions carry this methodology into governance conversations beyond the US.'],
+  roles:['R1','R3']},
+
+  {name:'Yeshimabeit Milner — Data for Black Lives',url:'https://d4bl.org',type:'Validator · Data Activist',
+  hook:'Co-founder of Data for Black Lives (D4BL). Data scientist and activist using data as a tool for Black liberation. Has organized around algorithmic decision-making in criminal justice, healthcare, and education. Donald Martin Jr. (also on this map) is a D4BL member.',
+  why:['<strong>Data liberation framing:</strong> D4BL uses data to fight for Black lives. Evaluation-as-infrastructure is that applied to the build process — data accountability baked into the foundation.',
+       '<strong>D4BL network:</strong> The Data for Black Lives community extends this methodology\'s reach into organizing and advocacy spaces that academic AI ethics does not reach.',
+       '<strong>Warm connection:</strong> Donald Martin Jr. (Google Research / D4BL) is already on this map and is the natural introduction.'],
+  roles:['R1','R5']},
+
   {name:'Brandeis Marshall — DataedX Group',url:'https://dataedx.com',type:'Validator · Educator · Founder',
   hook:'Founder and CEO of DataedX Group. NSF-funded Principal Investigator for Data Science eXtension at Spelman College and Morehouse College. Co-lead of Atlanta Interdisciplinary AI Network. Data ethics, culturally responsive pedagogy. Faculty-to-founder practitioner.',
   why:['<strong>HBCU pipeline:</strong> She is building data literacy inside HBCUs. This work builds AI infrastructure inside a Black-led company. These are adjacent pipelines that strengthen each other.',
@@ -366,7 +390,7 @@ const ENTITIES={
 
   {name:'Rediet Abebe — UC Berkeley / MD4SG',url:'https://people.eecs.berkeley.edu/~rabebe/',type:'Validator · Researcher',
   hook:'CS professor at UC Berkeley. Co-founder of Black in AI (with Timnit Gebru). Co-founder of Mechanism Design for Social Good (MD4SG). First Black woman CS PhD from Cornell. Harvard Society of Fellows. Research: AI techniques focused on inequality and distributive justice.',
-  why:['<strong>Technical validation:</strong> If Rediet Abebe engages with the evaluation-as-infrastructure methodology, it becomes credible in the most rigorous technical research community.',
+  why:['<strong>Technical validation:</strong> If Rediet Abebe engages with evaluation-as-infrastructure, it becomes credible in the most rigorous technical research community.',
        '<strong>MD4SG alignment:</strong> MD4SG uses algorithmic tools to address inequality — this is the theoretical framework for what this build applies in practice.',
        '<strong>Black in AI co-founder:</strong> She is the warm path into the Black in AI Workshop NeurIPS submission.'],
   roles:['R1','R2']},
@@ -375,7 +399,7 @@ const ENTITIES={
   hook:'Associate Professor of Black Digital Media, Georgia Tech. Author of Distributed Blackness: African American Cybercultures (NYU Press, 2020). Charter member of NYU Center for Critical Race and Digital Studies. His Critical Technocultural Discourse Analysis (CTDA) and Libidinal Economy frameworks provide the academic language for what is being built here.',
   why:['<strong>The theoretical frame:</strong> Libidinal economy — how Black people use technology in ways rationalist IT theory cannot account for — is the intellectual foundation for ethnocentric AI building.',
        '<strong>Living case study:</strong> This build is a practitioner instantiation of his CTDA framework. That is a paper he might co-author.',
-       '<strong>Cultural depth signal:</strong> His engagement says this work has cultural and intellectual depth, not just product depth. That signal matters to every institution on this map.'],
+       '<strong>Cultural depth signal:</strong> His engagement says this work has cultural and intellectual depth, not just product depth.'],
   roles:['R1','R6']},
 
   {name:'Antionette Carroll — Creative Reaction Lab',url:'https://creativereactionlab.com',type:'Validator · Designer · Founder',
@@ -395,16 +419,30 @@ const ENTITIES={
   {name:'Charlton McIlwain — NYU',url:'https://steinhardt.nyu.edu/people/charlton-mcilwain',type:'Validator · Academic · Author',
   hook:'NYU Professor. Author of Black Software: The Internet and Racial Justice, from the AfroNet to Black Lives Matter (Oxford University Press). He documented the history of Black people building digital infrastructure before anyone called it that.',
   why:['<strong>Historical legitimacy:</strong> This work continues the lineage he documented in Black Software. His presence says it did not emerge from nowhere.',
-       '<strong>Oxford University Press:</strong> His book\'s institutional publishing home signals that this story has deep academic credibility — not a new trend, a long tradition.',
-       '<strong>Narrative framing:</strong> His historical research provides the "why this matters over time" context that makes this proof-of-concept a chapter in a longer story.'],
+       '<strong>Oxford University Press:</strong> His book\'s institutional publishing home signals deep academic credibility — not a new trend, a long tradition.',
+       '<strong>Narrative framing:</strong> His research provides the "why this matters over time" context that makes this proof-of-concept a chapter in a longer story.'],
   roles:['R1']},
 
   {name:'Ube Urban — Design Leadership',url:'https://www.ubeurban.com',type:'Amplifier · Practitioner',
   hook:'Designer and design leader. Previously Fjord at Accenture Interactive. Coaches and mentors practitioners globally in the Experience and product space. Focus: how emerging designers integrate data, experimentation, and AI into creative practice without losing humanity.',
   why:['<strong>Practitioner bridge:</strong> He reaches design and product practitioners who do not follow academic AI ethics discourse but would immediately adopt this methodology if they saw it demonstrated.',
        '<strong>Mentorship network:</strong> His mentorship practice is a direct channel into the design-adjacent builder community globally.',
-       '<strong>Empathy framing:</strong> His emphasis on human-centered building is the design community version of the ethnocentric methodology — different language, same root.'],
+       '<strong>Empathy framing:</strong> His emphasis on human-centered building is the design community version of the ethnocentric methodology.'],
   roles:['R4','R6']},
+
+  {name:'Abeba Birhane — Accountability Lab',url:'https://abebabirhane.com',type:'Validator · Cognitive Scientist',
+  hook:'Cognitive Scientist at Trinity College Dublin. Research on values embedded in datasets and AI systems. Her dataset documentation and value alignment work is directly adjacent to evaluation-as-infrastructure. Senior Fellow at DAIR Institute.',
+  why:['<strong>Evaluation alignment:</strong> Her research on what values are embedded in AI systems is the theoretical basis for the evaluation-as-infrastructure claim.',
+       '<strong>DAIR connection:</strong> She is a Senior Fellow at DAIR Institute — already the first node in this map. Same warm network.',
+       '<strong>International visibility:</strong> She operates outside the US mainstream, making engagement with this work internationally visible.'],
+  roles:['R1','R2']},
+
+  {name:'Khadijah Abdurahman — Logic(s) Magazine',url:'https://logicmag.io',type:'Validator · Writer',
+  hook:'Writer at Logic(s) Magazine. Research on the labor behind AI and the political economy of technology. Her work centers the people who build, train, and maintain AI systems — especially workers who are invisible in mainstream narratives.',
+  why:['<strong>Labor behind the build:</strong> Her frame — who does the actual work of building AI, under what conditions — is the structural story inside the proof-of-concept.',
+       '<strong>Logic(s) editorial connection:</strong> She is the direct introduction to Logic(s) editorial for a practitioner piece.',
+       '<strong>Political economy frame:</strong> Her writing gives this methodology a political economy language that travels beyond the tech ethics community.'],
+  roles:['R1','R4']},
 ],
 
 'p1-institutions':[
@@ -412,7 +450,14 @@ const ENTITIES={
   hook:'Policy research institute at NYU. Publishes the AI Now Report annually — one of the most cited AI policy documents produced. Active Bluesky presence. Research lands in regulatory conversations at the state and federal level.',
   why:['<strong>Policy translation:</strong> They carry practitioner evidence into policy rooms. Documented build methodology is the evidence they need.',
        '<strong>Annual report placement:</strong> A citation in the AI Now Report is a landmark credibility event that reaches legislators, regulators, and researchers simultaneously.',
-       '<strong>TRAIGA relevance:</strong> Their research influences state-level AI regulation — including the kinds of governance conversations happening in Texas right now.'],
+       '<strong>TRAIGA relevance:</strong> Their research influences state-level AI regulation — directly relevant to the governance conversation happening in Texas right now.'],
+  roles:['R1','R3']},
+
+  {name:'Upturn',url:'https://upturn.us',type:'Institution · Policy · Civil Rights',
+  hook:'Nonprofit working at the intersection of technology, power, and justice. Publishes rigorous research on how AI and data systems affect marginalized communities — predictive policing, benefits algorithms, hiring systems. Read by civil rights organizations, policymakers, and researchers.',
+  why:['<strong>Civil rights translation:</strong> Upturn carries practitioner evidence into civil rights legal and policy frameworks. Documented build methodology is the practitioner evidence they operationalize.',
+       '<strong>TRAIGA relevance:</strong> They research exactly the kinds of AI systems Texas\' new law governs. A community-proximate voice aligned with their research is high-value.',
+       '<strong>Research amplification:</strong> An Upturn report feature or citation reaches a civil rights and policy audience distinct from academic AI ethics venues.'],
   roles:['R1','R3']},
 
   {name:'Design Justice Network',url:'https://designjustice.org',type:'Group · Practitioner Network',
@@ -424,7 +469,7 @@ const ENTITIES={
 
   {name:'Mozilla Foundation',url:'https://mozilla.org',type:'Institution · Open Source',
   hook:'Open source, internet health, and responsible AI. Mozilla Ventures has invested in Credo AI, Fiddler AI, and Holistic AI. The Foundation publishes Internet Health Reports and funds responsible tech projects through grants.',
-  why:['<strong>Open source alignment:</strong> The Langflow and Ollama stack is fully open source. Mozilla\'s identity is organized entirely around this.',
+  why:['<strong>Open source alignment:</strong> The Ollama and Langflow stack is fully open source. Mozilla\'s identity is organized entirely around this.',
        '<strong>Grant pathway:</strong> Mozilla Foundation funds responsible tech projects. A documented methodology could be grant-eligible.',
        '<strong>Internet Health Report:</strong> A high-visibility annual document. This methodology as a practitioner case study belongs in it.'],
   roles:['R1','R2','R3']},
@@ -433,8 +478,15 @@ const ENTITIES={
   hook:'Media justice, community organizing, and technology. Detroit-rooted. Hosts Allied Media Conference (AMC) annually — one of the most important practitioner-to-practitioner exchange spaces that does not originate in academia or Silicon Valley.',
   why:['<strong>Practitioner-to-practitioner:</strong> AMC is where real knowledge transfer happens. This methodology arrives as practice, not theory.',
        '<strong>Community infrastructure lineage:</strong> Allied Media exists because Black and Brown communities needed to build their own media infrastructure. This story resonates structurally.',
-       '<strong>Cross-movement reach:</strong> Their community spans media justice, tech justice, and community organizing — all three are the intended audience.'],
+       '<strong>Cross-movement reach:</strong> Their community spans media justice, tech justice, and community organizing.'],
   roles:['R4','R6']},
+
+  {name:'Indigenous Protocol and AI Working Group',url:'https://indigenousprotocolai.org',type:'Institution · Working Group',
+  hook:'Interdisciplinary working group developing ethical frameworks for AI from Indigenous perspectives. Published the Indigenous Protocol and Artificial Intelligence Position Paper — a landmark governance document centering Indigenous knowledge systems and data sovereignty in AI.',
+  why:['<strong>Sovereignty coalition:</strong> Indigenous data sovereignty and ethnocentric AI building share foundational arguments about self-determination in technology. A coalition here produces a stronger policy argument than either community advances alone.',
+       '<strong>Position paper precedent:</strong> Their published framework demonstrates that practitioner coalitions can produce policy-grade documents. That is the template for this methodology.',
+       '<strong>Native Nations Institute connection:</strong> NNI (also on this map) works in the same sovereign governance space — natural connective tissue.'],
+  roles:['R1','R3','R6']},
 
   {name:'Critical Race Digital Studies',url:'https://criticalracedigitalstudies.com',type:'Institution · Research',
   hook:'Research exploring bias in AI, impact of data on marginalized communities, and challenges of predictive algorithms. Connected to NYU and broader digital humanities networks. AI and data education focus.',
@@ -454,14 +506,14 @@ const ENTITIES={
   hook:'The primary open-source AI platform and community. Margaret Mitchell (Chief Ethics Scientist) is on the original validator list. Where Responsible AI meets Technical Builders at scale. Model cards, datasets, and open-source tooling are the lingua franca.',
   why:['<strong>Technical distribution:</strong> Publishing methodology, flows, or tooling on Hugging Face makes it discoverable by the global ML builder community.',
        '<strong>Margaret Mitchell connection:</strong> She is the warm introduction to Hugging Face\'s ethics and community teams.',
-       '<strong>Open source artifact:</strong> Langflow flows published here become a methodology artifact that travels without active promotion.'],
+       '<strong>Open source artifact:</strong> Published flows become a methodology artifact that travels without active promotion.'],
   roles:['R2','R4','R6']},
 
   {name:'Native Nations Institute',url:'https://nni.arizona.edu',type:'Institution · Indigenous Data Governance',
   hook:'Indigenous Data Governance institute at University of Arizona. Works on data sovereignty, tribal governance, and self-determination through technology. Developed the CARE Principles for Indigenous Data Governance.',
   why:['<strong>Sovereignty frame:</strong> Indigenous data governance and ethnocentric AI building share the same foundational argument — communities should control the technology built for them.',
        '<strong>Coalition potential:</strong> A coalition between Black and Indigenous community-proximate AI builders produces a stronger policy argument than either community makes alone.',
-       '<strong>CARE Principles:</strong> Their governance framework for data sovereignty is a direct complement to evaluation-as-infrastructure methodology.'],
+       '<strong>CARE Principles:</strong> Their governance framework is a direct complement to evaluation-as-infrastructure methodology.'],
   roles:['R1','R6']},
 
   {name:'DataedX Group',url:'https://dataedx.com',type:'Institution · Education',
@@ -475,7 +527,7 @@ const ENTITIES={
   hook:'Builder programs for responsible technology. Focuses on ethical AI and responsible innovation through community-centered builder cohorts. Creates structured environments for practitioners building with equity as a design principle.',
   why:['<strong>Builder cohort model:</strong> Their builder program structure is a direct distribution channel for this methodology.',
        '<strong>Equity design frame:</strong> Responsible Innovation Labs applies ethics as a builder practice, not an afterthought — aligned with evaluation-as-infrastructure.',
-       '<strong>Pipeline:</strong> Graduates of their programs are practitioners who would carry this methodology into their own work.'],
+       '<strong>Pipeline:</strong> Graduates of their programs are practitioners who carry this methodology into their own work.'],
   roles:['R5','R6']},
 ],
 
@@ -494,6 +546,20 @@ const ENTITIES={
        '<strong>Platform:</strong> Workshop acceptance puts this work in front of NeurIPS attendees — one of the largest ML research audiences globally.'],
   roles:['R1','R2','R5']},
 
+  {name:'AIES — AI, Ethics, and Society',url:'https://www.aies-conference.com',type:'Event · Peer-Reviewed · AAAI/ACM',
+  hook:'AAAI/ACM Conference on AI, Ethics, and Society. Annual peer-reviewed conference dedicated entirely to the intersection of AI and its societal, ethical, and governance implications. Draws policymakers, researchers, and practitioners in a single room.',
+  why:['<strong>Direct scope match:</strong> AIES is built for exactly this kind of work — applied ethics methodology with practitioner evidence and community context.',
+       '<strong>Lower barrier than FAccT:</strong> A strong submission here is achievable before FAccT-level polish. Test the academic framing here first.',
+       '<strong>Policy audience:</strong> AIES draws policymakers and governance researchers alongside academics — the cross-section needed for methodology adoption.'],
+  roles:['R1','R2','R3']},
+
+  {name:'WiNLP — Widening NLP',url:'https://www.winlp.org',type:'Event · Workshop · ACL',
+  hook:'Widening NLP workshop, co-located with ACL (Association for Computational Linguistics). Mission: diversify who builds and studies natural language processing. Focuses on underrepresented groups in NLP research and practice.',
+  why:['<strong>Community before mainstream:</strong> WiNLP is where this NLP methodology gets presented to a community of underrepresented builders before the mainstream ACL audience.',
+       '<strong>Direct alignment:</strong> NLP flows built by non-traditional practitioners are a WiNLP contribution — methodology from the margins of the field.',
+       '<strong>Pipeline:</strong> WiNLP attendees are the next cohort of NLP practitioners this methodology is designed to empower.'],
+  roles:['R1','R2','R5']},
+
   {name:'CHI Conference',url:'https://sigchi.org',type:'Event · Peer-Reviewed',
   hook:'ACM Conference on Human Factors in Computing Systems. The leading venue for HCI research. "AI as participant in the build" is a CHI paper — it is a human-computer interaction contribution, not just an AI contribution.',
   why:['<strong>HCI angle:</strong> Framing AI as a participant in the build process is a methodological contribution to HCI research. CHI is the correct venue for that claim.',
@@ -509,9 +575,9 @@ const ENTITIES={
   roles:['R1','R4']},
 
   {name:'CSCW — Computer Supported Cooperative Work',url:'https://cscw.acm.org',type:'Event · Peer-Reviewed',
-  hook:'ACM Conference on Computer-Supported Cooperative Work and Social Computing. Studies how technology supports collaboration and social systems. The Langflow multi-agent automation built collaboratively with AI fits the CSCW scope precisely.',
+  hook:'ACM Conference on Computer-Supported Cooperative Work and Social Computing. Studies how technology supports collaboration and social systems. Human and AI collaborating to build infrastructure fits the CSCW scope precisely.',
   why:['<strong>Cooperative work angle:</strong> Humans and AI collaborating to produce infrastructure is a CSCW research contribution.',
-       '<strong>Social computing:</strong> The community governance automation use case in the Langflow guide is directly relevant to CSCW\'s social computing focus.',
+       '<strong>Social computing:</strong> The community governance automation use case is directly relevant to CSCW\'s social computing focus.',
        '<strong>Peer review credential:</strong> CSCW acceptance credentializes this methodology for a research community that FAccT does not fully reach.'],
   roles:['R1','R2']},
 
@@ -524,6 +590,41 @@ const ENTITIES={
 ],
 
 'p1-amplifiers':[
+  {name:'The Verge',url:'https://theverge.com',type:'Media · Tech Press',
+  hook:'Major tech media outlet with deep AI coverage. Has reported extensively on responsible AI, algorithmic bias, and community impact. The Verge reaches a large tech-literate audience and covers stories at the intersection of technology and society with narrative depth.',
+  why:['<strong>Mainstream reach:</strong> A Verge feature carries this story into the broadest possible tech audience — readers who don\'t follow academic AI ethics but shape how technology is adopted.',
+       '<strong>AI ethics beat:</strong> Their AI coverage has increasingly centered bias, labor, and community impact. This methodology is that story with evidence.',
+       '<strong>Long-form potential:</strong> The Verge publishes investigative long-form. The Black builders / proximity thesis is a feature, not a news item.'],
+  roles:['R4']},
+
+  {name:'TWIML — This Week in Machine Learning',url:'https://twimlai.com',type:'Amplifier · Podcast',
+  hook:'Sam Charrington\'s long-running ML practitioner podcast. One of the most respected ML practitioner interview formats globally. Interviews researchers, founders, and practitioners building and studying ML systems. Large, technically literate audience.',
+  why:['<strong>Practitioner legitimacy:</strong> A TWIML appearance signals that this methodology has crossed from community practice into the ML research and builder mainstream.',
+       '<strong>Technical audience:</strong> Listeners are builders and researchers who evaluate methodology on technical merit. This is the stress test.',
+       '<strong>Archive value:</strong> TWIML episodes are indexed, shared, and cited for years. The appearance becomes a long-lived asset.'],
+  roles:['R2','R4']},
+
+  {name:'The Gradient',url:'https://thegradient.pub',type:'Channel · Newsletter · Podcast',
+  hook:'Research-forward AI newsletter and podcast. Publishes long-form explainers on ML research, practitioner methodology, and AI systems. Produced by researchers and practitioners for a highly informed technical audience. Guest contributors include leading AI researchers.',
+  why:['<strong>Research-to-practice bridge:</strong> The Gradient publishes work that connects ML theory to applied practice. Evaluation-as-infrastructure is precisely that kind of contribution.',
+       '<strong>Technical credibility signal:</strong> A Gradient piece signals methodological rigor to the ML research community.',
+       '<strong>Contributor pathway:</strong> They accept practitioner contributions. This methodology — written by the builders — is the format they publish.'],
+  roles:['R2','R4']},
+
+  {name:'Import AI — Jack Clark',url:'https://importai.substack.com',type:'Amplifier · Newsletter',
+  hook:'Weekly AI newsletter by Jack Clark (co-founder of Anthropic, former OpenAI Policy Director). One of the most read AI research newsletters globally. Synthesizes research developments, policy moves, and practitioner work for a senior AI research and policy audience.',
+  why:['<strong>Policy and research crossover:</strong> Jack Clark\'s readership spans senior AI researchers, founders, and policymakers — the exact audience that validates methodology at the highest tier.',
+       '<strong>Policy framing:</strong> His newsletter covers AI governance extensively. The TRAIGA + community-proximate practitioner angle is squarely his beat.',
+       '<strong>Reach without intermediary:</strong> A newsletter mention reaches the senior AI ecosystem directly, without needing a conference or publication as a gate.'],
+  roles:['R2','R3','R4']},
+
+  {name:'Distributed Future',url:'https://distributedfuture.substack.com',type:'Amplifier · Podcast',
+  hook:'Podcast and newsletter exploring the future of distributed technology, decentralized systems, and community-centered tech. Covers how distributed architectures shift power and who benefits from decentralized infrastructure.',
+  why:['<strong>Structural alignment:</strong> Distributed AI governance and a distributed build model — community-proximate builders — are the same argument in different registers.',
+       '<strong>Decentralization audience:</strong> Listeners understand why distributed approaches to AI infrastructure matter. The argument arrives to a primed audience.',
+       '<strong>Cross-community bridge:</strong> Connects the AI ethics community to the distributed systems and Web3-adjacent communities who care about governance architecture.'],
+  roles:['R4','R6']},
+
   {name:'Houston Defender Network',url:'https://defendernetwork.com',type:'Media · Black Press · Houston',
   hook:'Houston\'s Black press outlet. Covered AfroTech 2025 and the digital equity gap extensively. Editorial interest in both tech innovation and community impact stories. Reaches the community this work is building for AND the institutions that serve them.',
   why:['<strong>Community press first:</strong> The Defender reaches Houston\'s Black community directly. This story arrives here as a community story, not a tech press release.',
@@ -535,7 +636,7 @@ const ENTITIES={
   hook:'Podcast explicitly covering justice-centered AI. Interviews practitioners, researchers, and activists working at the intersection of AI and social justice. The methodology — Black builders, proximity-first, low/no-code, evaluation as infrastructure — is their exact editorial brief.',
   why:['<strong>Primed audience:</strong> Every listener already understands why this work matters. The argument does not need to be built from scratch.',
        '<strong>Practitioner format:</strong> Podcast depth lets the methodology be demonstrated and explained conversationally in ways a paper cannot.',
-       '<strong>Community reach:</strong> Podcast appearances in this ecosystem travel as citations and shares across Twitter, LinkedIn, and Bluesky within the responsible AI community.'],
+       '<strong>Community reach:</strong> Episodes in this ecosystem travel as citations and shares across the responsible AI community.'],
   roles:['R1','R4']},
 
   {name:'Rest of World',url:'https://restofworld.org',type:'Media · Journalism',
@@ -558,6 +659,36 @@ const ENTITIES={
        '<strong>Evidence layer:</strong> They cover Black founders building. This story adds the methodological layer — not just that the building is happening, but how and why it works.',
        '<strong>Research arm:</strong> The Plug publishes research reports. This methodology could be featured in their research track.'],
   roles:['R4']},
+],
+
+'p1-infra':[
+  {name:'r/LocalLLaMA — Reddit',url:'https://reddit.com/r/LocalLLaMA',type:'Community · AI Infrastructure',
+  hook:'The largest community for local LLM deployment. Ollama users, quantized model practitioners, and builders running inference without cloud APIs. This is the native community for the open-source local AI stack at the foundation of this build.',
+  why:['<strong>Stack community:</strong> This is where Ollama users and local LLM practitioners gather. The stack being used here has its home community here.',
+       '<strong>Open source culture:</strong> r/LocalLLaMA actively evaluates, shares, and improves local inference tooling. The flows and methodology are that kind of artifact.',
+       '<strong>Proof-of-concept audience:</strong> Demonstrating real-world application with a local stack to this community validates the technical approach for a skeptical and rigorous audience.'],
+  roles:['R2','R4']},
+
+  {name:'MLOps Community',url:'https://mlops.community',type:'Community · AI Infrastructure',
+  hook:'Global community for ML practitioners building, deploying, and maintaining AI systems in production. Podcasts, Slack, conferences, and newsletter. Covers the full lifecycle of ML infrastructure — from model selection to evaluation to monitoring.',
+  why:['<strong>Evaluation-as-infrastructure alignment:</strong> MLOps is fundamentally about treating AI deployment as engineering infrastructure. Evaluation-as-infrastructure is the responsible AI version of that same principle.',
+       '<strong>Practitioner audience:</strong> MLOps Community reaches builders who think about AI systemically, not just as models. They understand the methodology at a systems level.',
+       '<strong>Infrastructure framing:</strong> This is the community where "evaluation as infrastructure" reads as a technical claim, not just an ethical one.'],
+  roles:['R2','R4','R6']},
+
+  {name:'Latent Space — AI Engineering',url:'https://www.latent.space',type:'Channel · Newsletter · Podcast',
+  hook:'Podcast and newsletter by Swyx and Alessio for AI engineers and practitioners. Covers the applied engineering side of AI — building products, choosing models, infrastructure decisions. One of the fastest-growing AI practitioner media outlets.',
+  why:['<strong>AI engineering audience:</strong> Latent Space readers are building AI products. A low/no-code infrastructure methodology built by non-traditional engineers challenges their default assumptions productively.',
+       '<strong>Practitioner credibility:</strong> The framing that matters here is engineering and product, not ethics. The responsible AI story lands as a feature, not a constraint.',
+       '<strong>Reach:</strong> Latent Space has grown rapidly and reaches a senior AI engineering audience across startups and enterprise.'],
+  roles:['R2','R4']},
+
+  {name:'r/MachineLearning — Reddit',url:'https://reddit.com/r/MachineLearning',type:'Community · Research + Builders',
+  hook:'The largest ML practitioner and researcher community on Reddit. Research papers, technical discussions, and applied ML debate. 3M+ members. The community where new methodology gets scrutinized, validated, and — if it survives — adopted.',
+  why:['<strong>Stress test:</strong> If the evaluation-as-infrastructure methodology lands on r/MachineLearning and earns engagement, it has been validated by the broadest technical community available.',
+       '<strong>Research-adjacent:</strong> This community bridges academic ML and applied practitioners — both are targets.',
+       '<strong>Discovery:</strong> Papers and methodologies that gain traction here travel into the broader ML ecosystem within days.'],
+  roles:['R2','R4']},
 
   {name:'HackerNews',url:'https://news.ycombinator.com',type:'Community · Amplifier',
   hook:'The primary technical community forum. Skeptical, rigorous, global. The "evaluation as infrastructure" framing and the demonstration that low/no-code builders can create meaningful AI infrastructure challenges assumptions in this audience in productive ways.',
@@ -566,11 +697,18 @@ const ENTITIES={
        '<strong>Framing key:</strong> The angle is not "Black company builds AI." It is "open-source AI infrastructure built without traditional engineering credentials." That is a HN-worthy technical argument.'],
   roles:['R2','R4']},
 
-  {name:'r/Languagetechnology — Reddit',url:'https://reddit.com/r/languagetechnology',type:'Community · NLP Practitioners',
-  hook:'NLP theory, careers, and applications. Active technical community. The Langflow and Ollama NLP flows — content atomization, social listening, engagement routing — are directly relevant content for this practitioner community.',
-  why:['<strong>Technical audience:</strong> NLP practitioners who would understand and evaluate this methodology at a technical level.',
-       '<strong>Open source culture:</strong> The Reddit NLP community actively shares and evaluates open-source tooling. These flows are that.',
-       '<strong>Feedback loop:</strong> Posting the methodology here generates technical feedback that strengthens the evaluation-as-infrastructure claim with community evidence.'],
+  {name:'AI Infrastructure Community — Discord / Slack',url:'https://discord.gg/ai-infrastructure',type:'Community · Builder Network',
+  hook:'Distributed Discord and Slack communities around AI infrastructure tools — Langflow, LlamaIndex, LangChain, Ollama, and related open-source AI tooling. Practitioners sharing builds, debugging together, and developing the ecosystem in real time.',
+  why:['<strong>Native ecosystem:</strong> The Langflow and Ollama communities are exactly here. Publishing methodology flows in these spaces is the lowest-friction distribution path.',
+       '<strong>Peer builders:</strong> These communities are composed of people actively building what this methodology produces. Feedback is immediate and technically grounded.',
+       '<strong>Infrastructure credibility:</strong> Being a recognized voice in these communities validates the technical legitimacy of the build before it reaches academic or policy venues.'],
+  roles:['R2','R6']},
+
+  {name:'LessWrong',url:'https://lesswrong.com',type:'Community · AI Reasoning',
+  hook:'Community dedicated to improving human reasoning and decision-making, with a strong focus on AI alignment, safety, and epistemics. Skeptical, rigorous, and engaged with questions about who should build AI and under what governance.',
+  why:['<strong>Governance challenge:</strong> The ethnocentric build model and proximity thesis challenges assumptions in this community in a productive way. The argument is worth making here.',
+       '<strong>Alignment-adjacent:</strong> Evaluation-as-infrastructure connects to alignment concepts — building AI systems whose outputs can be rigorously assessed against community values.',
+       '<strong>Technical depth:</strong> LessWrong posts with rigorous methodology get read and debated. This community generates citations and secondary amplification.'],
   roles:['R2','R4']},
 ],
 
@@ -610,13 +748,6 @@ const ENTITIES={
        '<strong>Entry via OSTP work:</strong> Engage her Biden-era policy work in the methodology documentation. That is the credible connection.'],
   roles:['R1','R3']},
 
-  {name:'Abeba Birhane — Accountability Lab',url:'https://abebabirhane.com',type:'Validator · Cognitive Scientist',
-  hook:'Cognitive Scientist at Trinity College Dublin. Research on values embedded in datasets and AI systems, and what accountability means in practice. Her dataset documentation and value alignment work is directly adjacent to evaluation as infrastructure.',
-  why:['<strong>Evaluation alignment:</strong> Her research on what values are embedded in AI systems is the theoretical basis for the evaluation-as-infrastructure claim.',
-       '<strong>Dataset documentation:</strong> Her work on documentation methodology is conceptually adjacent. This is a direct research conversation, not a pitch.',
-       '<strong>International visibility:</strong> She operates outside the US mainstream, making her engagement with this work internationally visible.'],
-  roles:['R1','R2']},
-
   {name:'Ron Eglash — University of Michigan',url:'https://lsa.umich.edu/ac/people/faculty/reglash.html',type:'Validator · Researcher',
   hook:'Author of African Fractals: Modern Computing and Indigenous Design. Work on ethnocomputing — documenting how African mathematical and computational traditions are embedded in cultural practice. He has spent decades proving non-Western communities have always been technical innovators.',
   why:['<strong>30-year lineage:</strong> His work provides the deepest historical and intellectual lineage for ethnocentric building. This work is a contemporary case study in his framework.',
@@ -629,6 +760,13 @@ const ENTITIES={
   why:['<strong>Princeton network:</strong> Ruha Benjamin and Alondra Nelson are already on this map. CITP is the institutional home that connects them to this work formally.',
        '<strong>Policy working papers:</strong> CITP papers are read by legislators and regulators. A working paper featuring this methodology is a policy artifact.',
        '<strong>Fellow pathway:</strong> CITP\'s fellow and visitor program provides access to the Princeton research network.'],
+  roles:['R1','R3']},
+
+  {name:'AI Now Institute',url:'https://ainowinstitute.org',type:'Institution · Policy Research',
+  hook:'Policy research institute at NYU. Publishes the AI Now Report annually. At this tier because a direct citation or feature requires prior peer-reviewed credentialing — but the AI Now Report remains the highest-value single policy document on this map.',
+  why:['<strong>Ultimate policy artifact:</strong> A citation in the AI Now Report changes how legislators and regulators see this methodology at the federal level.',
+       '<strong>Reaches P0 national first:</strong> Data & Society and CDQOV are the on-ramps. AI Now is the destination.',
+       '<strong>Long-term target:</strong> Work toward this through FAccT and Black in AI credentials, then approach.'],
   roles:['R1','R3']},
 ],
 
@@ -670,6 +808,7 @@ render('p1-validators','p1-validators-grid');
 render('p1-institutions','p1-institutions-grid');
 render('p1-events','p1-events-grid');
 render('p1-amplifiers','p1-amplifiers-grid');
+render('p1-infra','p1-infra-grid');
 render('p2','p2-grid');
 </script>
 </body>
