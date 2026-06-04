@@ -74,6 +74,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <a href="#p1-amplifiers">P1 · Amplifiers</a>
     <a href="#p1-research">P1 · Research</a>
     <a href="#p1-infra">P1 · AI Infra</a>
+    <a href="#programs">Programs</a>
     <a href="#p2">P2 · Cultivation</a>
   </div>
 </nav>
@@ -83,7 +84,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <h1>Ecosystem<br>Map</h1>
   <p class="hero-sub">A tiered map of validators, institutions, communities, events, and amplifiers whose mandates align with the proof of concept being built — Black builders with proximity to the problem, low/no-code AI infrastructure, ethnocentric design, and evaluation as foundation.</p>
   <div class="stats-row">
-    <div><div class="stat-num">130+</div><div class="stat-label">Entities Mapped</div></div>
+    <div><div class="stat-num">150+</div><div class="stat-label">Entities Mapped</div></div>
     <div><div class="stat-num">7</div><div class="stat-label">Roles Defined</div></div>
     <div><div class="stat-num">20</div><div class="stat-label">P0 Activations</div></div>
     <div><div class="stat-num">2</div><div class="stat-label">Geographies</div></div>
@@ -187,6 +188,15 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <span class="section-count">7 communities &nbsp;·&nbsp; practitioner builders</span>
   </div>
   <div class="entity-grid" id="p1-infra-grid"></div>
+</section>
+
+<section class="section" id="programs">
+  <div class="section-header">
+    <span class="section-tag" style="background:#2a1f00;color:#f59e0b">Programs</span>
+    <span class="section-title">Incubators, Credits &amp; Grants — Zero or Low Equity</span>
+    <span class="section-count">21 programs &nbsp;·&nbsp; apply now</span>
+  </div>
+  <div class="entity-grid" id="programs-grid"></div>
 </section>
 
 <section class="section" id="p2">
@@ -1152,6 +1162,155 @@ const ENTITIES={
   roles:['R1','R3']},
 ],
 
+'programs':[
+  {name:'NVIDIA Inception',url:'https://www.nvidia.com/en-us/startups/',type:'Program · Hardware · Zero Equity',
+  hook:'Free, no-equity, no-funding-required AI startup program. 19,000+ global members. Benefits: GPU discounts, technical support, co-marketing, and marketplace exposure. Requirements: incorporated, at least one developer, working website, under 10 years old. Critical unlock: Inception membership creates an AWS Activate pathway worth $10K that is otherwise closed to bootstrapped teams.',
+  why:['<strong>Apply first:</strong> Zero friction, zero cost, zero equity. Membership is the unlock for the downstream credit stack — AWS Activate, Hugging Face, and more become accessible after this.',
+       '<strong>GPU access:</strong> Discounted NVIDIA infrastructure directly reduces compute costs without touching equity.',
+       '<strong>Signal:</strong> In the AI infrastructure community, NVIDIA Inception membership is a widely recognized legitimacy marker.'],
+  roles:['R2','R6']},
+
+  {name:'DigitalOcean Hatch — AI/ML Tier',url:'https://www.digitalocean.com/startups',type:'Program · Cloud Infra · Zero Equity',
+  hook:'Zero-equity startup program. The AI/ML tier offers $100K in compute credits plus discounted GPU Droplet pricing. Bootstrapped direct tier: $1K. Partner-referred standard: $20K. No VC backing required. Series A or less (under $10M) threshold. 3–10 business day review cycle.',
+  why:['<strong>$100K compute, zero equity:</strong> The AI/ML tier covers serious GPU workload costs for a full year.',
+       '<strong>Bootstrapped pathway:</strong> Direct application exists for self-funded teams — no accelerator affiliation required.',
+       '<strong>Stack piece:</strong> DO Hatch + NVIDIA Inception + AWS Activate builds 12+ months of zero-equity infrastructure runway.'],
+  roles:['R2','R6']},
+
+  {name:'Intel Liftoff for Startups',url:'https://www.intel.com/content/www/us/en/developer/tools/oneapi/liftoff.html',type:'Program · Hardware · Zero Equity',
+  hook:'Intel\'s global no-equity, no-cohort AI startup program. Two tracks: Community (resources, events, Intel Liftoff Days) and Catalyst (dedicated technical mentorship + full deployment on Intel Tiber AI Cloud). Open to pre-alpha through Series B. Complements NVIDIA Inception — both can be held simultaneously.',
+  why:['<strong>No cohort, no waiting:</strong> Apply and participate on your timeline. No batch cycle to wait for.',
+       '<strong>Catalyst track:</strong> For selected startups — direct mentorship from Intel AI engineers and full Tiber AI Cloud deployment.',
+       '<strong>Hardware diversity:</strong> Intel + NVIDIA coverage means the stack is not locked to one GPU architecture.'],
+  roles:['R2','R6']},
+
+  {name:'Anthropic Startup Program',url:'https://www.anthropic.com',type:'Program · AI Model Access · Zero Equity',
+  hook:'$5K–$25K in Claude API credits depending on tier. No VC backing required for the base tier. Includes priority rate limits and early model access. The architecture extends naturally to Claude for cloud inference alongside local Ollama models — and verified Anthropic startup status is a community signal that hardware credits alone do not produce.',
+  why:['<strong>Architecture fit:</strong> Claude (cloud) + Ollama (local) is a natural hybrid design. Anthropic startup status validates that identity publicly.',
+       '<strong>No funding required:</strong> Base tier is accessible to bootstrapped teams.',
+       '<strong>Community signal:</strong> In the AI practitioner community, Anthropic partnership is a technical credibility marker.'],
+  roles:['R2','R6']},
+
+  {name:'AWS Activate (via NVIDIA Inception)',url:'https://aws.amazon.com/startups/credits/',type:'Program · Cloud Infra · Zero Equity',
+  hook:'Self-serve bootstrapped tier: $1,000. Through NVIDIA Inception membership, the accessible tier jumps to $10,000 — otherwise unreachable for self-funded teams. Larger tiers ($100K+) require accelerator affiliation. The stacking logic: NVIDIA Inception first, AWS Activate second.',
+  why:['<strong>Inception unlock:</strong> NVIDIA Inception membership is the key that opens the $10K AWS tier for bootstrapped founders.',
+       '<strong>Infrastructure redundancy:</strong> AWS + DigitalOcean + Intel builds a multi-cloud safety net with no equity cost.',
+       '<strong>Order matters:</strong> Apply to NVIDIA Inception first. Then use that membership to apply here.'],
+  roles:['R2']},
+
+  {name:'Microsoft for Startups Founders Hub',url:'https://foundershub.startups.microsoft.com',type:'Program · Cloud Credits · Zero Equity',
+  hook:'$1,000 in Azure credits plus GitHub Copilot access. Instant approval — no review cycle, no funding required. The GitHub Copilot access is the most practical daily benefit for a team managing flow configurations, documentation, and the 13-chapter guide.',
+  why:['<strong>Instant approval:</strong> No review cycle. Active the same day.',
+       '<strong>GitHub Copilot:</strong> For documentation, the guide, and repo management — this is the day-to-day benefit.',
+       '<strong>Stack piece:</strong> Small but completely friction-free addition to the full credit stack.'],
+  roles:['R2']},
+
+  {name:'Hugging Face Startup Program',url:'https://huggingface.co',type:'Program · Open Source AI · Zero Equity',
+  hook:'Free Pro access (6 months) and inference credits. No equity. The Hugging Face community is where open-source AI practitioners discover, evaluate, and share tools. Verified startup status positions this work inside that discovery layer — something hardware credits cannot do.',
+  why:['<strong>Community positioning:</strong> Hugging Face is where open-source AI practitioners find new tools. Startup listing puts this work in front of the right audience.',
+       '<strong>Open-source identity:</strong> Langflow + Ollama is a fully open-source stack. Hugging Face startup status validates and signals that identity.',
+       '<strong>Model access:</strong> Inference credits reduce local compute costs during development and testing.'],
+  roles:['R2','R4','R6']},
+
+  {name:'Google for Startups Black Founders Fund',url:'https://startup.google.com/programs/black-founders-fund/united-states/',type:'Grant · Google · Non-Dilutive Cash',
+  hook:'Cash awards — not credits, actual money — with zero equity. $40M+ awarded since 2020. Comes with GCP credits, ongoing Google mentorship, and product support. The only major tech company program that writes checks to Black-led startups without taking equity. Directly aligned with the Black-led builder identity and ethnocentric design framing.',
+  why:['<strong>Cash, not credits:</strong> Most startup programs offer infrastructure credits. This program writes checks. That distinction matters for operational sustainability.',
+       '<strong>Zero equity:</strong> The only cost is the application and the relationship. No dilution.',
+       '<strong>Ecosystem multiplier:</strong> GCP credits + mentorship + product support on top of the cash makes this the single highest-value program for this profile.'],
+  roles:['R1','R3','R5']},
+
+  {name:'NSF SBIR/STTR — AI Track',url:'https://seedfund.nsf.gov/topics/artificial-intelligence/',type:'Grant · Federal · Non-Dilutive Cash',
+  hook:'Up to $305K in Phase I non-dilutive cash — not credits, actual operating capital. Phase II reaches $1.25M. The AI topic explicitly targets trustworthy AI, fairness, and responsible AI systems. New project pitches opened June 2, 2026. NSF explicitly encourages underrepresented and underserved founder communities.',
+  why:['<strong>Cash at scale:</strong> $305K Phase I, $1.25M Phase II. No equity. The highest non-dilutive federal cash available to AI startups.',
+       '<strong>Language match:</strong> "Trustworthy AI," "fair," "responsible" — the NSF AI topic reads like a description of this methodology. Write the application to mirror that language exactly.',
+       '<strong>Diverse founder priority:</strong> NSF actively names underrepresented communities. This door is held open.'],
+  roles:['R2','R3']},
+
+  {name:'HBCU Founders Initiative (HBCUFI)',url:'https://www.hbcufi.org',type:'Program · HBCU · Non-Dilutive',
+  hook:'First and largest HBCU-centered pre-accelerator in the country. 8-week hybrid program backed by Nex Cubed. Non-dilutive grants awarded through a pitch competition at program end. Relevant both as a direct program pathway and as a downstream pipeline for bringing the next generation of builders into this methodology.',
+  why:['<strong>Pipeline, both directions:</strong> HBCU students are a primary population for this builder model. HBCUFI is the structured on-ramp for the next generation.',
+       '<strong>Non-dilutive grants:</strong> Pitch competition at program end awards non-dilutive capital.',
+       '<strong>Community signal:</strong> Embedded in the largest HBCU founder network in the country.'],
+  roles:['R1','R5']},
+
+  {name:'Black Ambition — So Ambitious HBCU Pre-Accelerator',url:'https://blackambitionprize.com/so-ambitious-hbcu-pre-accelerator-program/',type:'Program · HBCU · Non-Dilutive',
+  hook:'8-week non-dilutive program for HBCU students and recent alumni. AI is an explicit target vertical. Cross-institutional — one application, multiple HBCU campuses. Covers entrepreneurship education, leadership development, and ecosystem connections. Pharrell Williams–founded network with cultural credibility that academic programs cannot replicate.',
+  why:['<strong>AI vertical is explicit:</strong> AI is named as a target sector — not an adjacent application.',
+       '<strong>Cross-institutional reach:</strong> A single application surfaces this methodology to students across multiple HBCUs simultaneously.',
+       '<strong>Cultural legitimacy:</strong> Pharrell\'s network carries a signal that corporate and academic programs cannot.'],
+  roles:['R1','R5']},
+
+  {name:'Humanity AI Initiative',url:'https://www.macfound.org/press/press-releases/humanity-ai-commits-500-million-to-build-a-people-centered-future-for-ai',type:'Grant · Foundation Coalition · $500M Pooled Fund',
+  hook:'Largest coordinated philanthropic bet on responsible AI ever assembled. $500M over five years. Co-chaired by MacArthur Foundation and Omidyar Network. Coalition: MacArthur, Ford, Mellon, Packard, Mozilla, Omidyar, Kapor, Doris Duke, Lumina, Siegel Family. Pooled grants begin flowing in 2026 via Rockefeller Philanthropy Advisors. Focus: democracy, education, labor, cultural preservation.',
+  why:['<strong>Ten foundations, one door:</strong> Rockefeller Philanthropy Advisors manages the pooled fund. One relationship surfaces this work to a ten-funder coalition simultaneously.',
+       '<strong>Framing alignment:</strong> "AI by and for people" — the proximity principle and evaluation-as-infrastructure thesis maps directly to their mission.',
+       '<strong>Build now:</strong> Grants begin flowing in 2026. The relationship built now shapes what gets funded in the first cycle.'],
+  roles:['R1','R3']},
+
+  {name:'Patrick J. McGovern Foundation',url:'https://www.mcgovern.org',type:'Grant · Foundation · AI for Public Purpose',
+  hook:'$75.8M in 149 grants in 2026 alone. Ranked among the largest public-purpose AI funders globally ($500M+ over the last decade). Focus: health equity, digital literacy, crisis response, human rights. Explicitly invests in AI work outside the traditional Silicon Valley pipeline. 149 grants per year means accessible application cycles — not a closed club.',
+  why:['<strong>Outside the pipeline is the point:</strong> McGovern explicitly funds AI work that does not fit the conventional technical founder profile. This build is that.',
+       '<strong>Volume:</strong> 149 grants in one year. Multiple application windows, not three annual winners.',
+       '<strong>Narrative fit:</strong> "AI as participant in the build" and "evaluation as infrastructure" reads directly into their public-purpose AI mandate.'],
+  roles:['R1','R3']},
+
+  {name:'Mozilla Foundation — Democracy × AI Cohort',url:'https://www.mozillafoundation.org/en/what-we-do/grantmaking/incubator/democracy-x-ai-cohort/',type:'Grant · Foundation · $50K–$300K',
+  hook:'$50K per project, 10 selected. Top two performers advance to a $250K Sustain Track — maximum award $300K. Focus: algorithmic transparency, information ecosystem resilience, civic protection. Requires working technology and an open-source commitment. The Langflow + Ollama stack already satisfies the open-source requirement that most applicants treat as a barrier.',
+  why:['<strong>Open-source requirement is an advantage:</strong> Most applicants see it as a barrier. This stack already qualifies.',
+       '<strong>Working technology required:</strong> No concept submissions. Completed flows are the qualifier.',
+       '<strong>$250K Sustain Track:</strong> Top two performers receive a second $250K investment. A two-stage capital pathway, not a one-time grant.'],
+  roles:['R1','R3','R4']},
+
+  {name:'Kapor Foundation Research Fellowship',url:'https://kaporfoundation.org/research-fellowship/',type:'Fellowship · Foundation · $35K Non-Dilutive',
+  hook:'Up to 15 grants of $35K each in 2026. Focus: racial equity in tech, responsible AI, tech accountability. Two tracks: investigative journalism and tech policy research. Rolling applications, first awards by June 30, 2026. The build methodology — Black builders, no traditional engineering background, evaluation as infrastructure, documented process — is itself the research subject.',
+  why:['<strong>The process is the contribution:</strong> Documenting how this build was made is a valid research deliverable for this fellowship. The build story IS the fellowship.',
+       '<strong>June 30 window:</strong> First notifications are imminent. Near-term opportunity with a hard deadline.',
+       '<strong>Racial equity + responsible AI:</strong> The Kapor Foundation exists at this exact intersection. This work lives there.'],
+  roles:['R1','R3','R5']},
+
+  {name:'Capital Factory',url:'https://capitalfactory.com',type:'Accelerator · Texas · 1% Equity',
+  hook:'Texas\'s most connected accelerator. 1% equity — the lowest of any major accelerator in the state. $100K investment. 2,000+ investments since 2009. Presence in Austin, Dallas, Houston, San Antonio, and DC. Called the center of gravity for entrepreneurs outside of Silicon Valley. The network is the asset — the capital is secondary.',
+  why:['<strong>Network density:</strong> Capital Factory connects to every meaningful investor, corporate partner, and institution in Texas. 1% is a reasonable price for that access.',
+       '<strong>Texas anchor:</strong> The single entity connecting Austin ↔ Dallas ↔ Houston ↔ San Antonio simultaneously.',
+       '<strong>Growing AI portfolio:</strong> AI, enterprise, and social tech are all active. Defense tech is growing — federal contracts are non-dilutive revenue.'],
+  roles:['R1','R5','R7']},
+
+  {name:'MassChallenge Texas',url:'https://masschallenge.org',type:'Accelerator · Texas · Zero Equity',
+  hook:'World\'s largest equity-free accelerator. Texas operations in Austin, Houston, and Dallas. Virtual programming open to any Texas founder. Explicitly supports underrepresented founders as a core mission. Alumni: 2,000+ startups, $9B+ raised, 1,200+ jobs created.',
+  why:['<strong>Zero equity, global credibility:</strong> MassChallenge is globally recognized. Texas chapters give local access to that brand.',
+       '<strong>Underrepresented founder focus:</strong> Core mission, not a sidebar — MassChallenge actively recruits diverse founders.',
+       '<strong>Multi-city Texas reach:</strong> Austin, Houston, and Dallas simultaneously. The most comprehensive zero-equity Texas accelerator footprint.'],
+  roles:['R1','R5','R7']},
+
+  {name:'Austin Technology Incubator (ATI) — UT Austin',url:'https://ati.utexas.edu',type:'Incubator · Texas · Zero Equity',
+  hook:'Up to 3 years of deep tech incubation. Zero equity. University-backed by UT Austin. Explicitly focused on technology infrastructure companies — not apps or SaaS. The academic credibility of UT Austin attached to the build without any ownership cost.',
+  why:['<strong>Zero equity, 3 years:</strong> Long-duration support without dilution. Rare in Texas.',
+       '<strong>Deep tech framing:</strong> AI infrastructure is their explicit focus. This is not a stretch application.',
+       '<strong>Institutional anchor:</strong> UT Austin ATI on the company profile changes how every institutional partner reads the work.'],
+  roles:['R1','R2','R7']},
+
+  {name:'The Ion — Houston',url:'https://ionhouston.com',type:'Hub · Houston · Rice University',
+  hook:'250,000 sq ft innovation hub in Midtown Houston. Joint venture: Rice University + City of Houston. Partners: Microsoft, Chevron, Rice. The physical and institutional anchor for Houston\'s startup ecosystem. Location in Midtown is adjacent to Houston\'s historically Black neighborhoods — a proximity signal that matters for this story.',
+  why:['<strong>Houston legitimacy:</strong> Physical presence at the Ion signals Texas seriousness. The address is a credential.',
+       '<strong>Warm intros:</strong> Microsoft, Chevron, and Rice University all have offices in the building.',
+       '<strong>Proximity signal:</strong> Location adjacent to historically Black Houston neighborhoods aligns with the proximity principle this work is built on.'],
+  roles:['R1','R7']},
+
+  {name:'digitalundivided (DID)',url:'https://digitalundivided.com',type:'Incubator · Black & Latinx Women Founders',
+  hook:'Business incubator specifically for Black and Latinx women founders. Two tracks: early-stage refinement and advanced (scalable, tech-forward companies). The Doonie Fund has invested in 500+ Black women entrepreneurs. DID\'s research — ProjectDiane, ProjectLunah — produces the data that defines the gap this build operates inside.',
+  why:['<strong>Intersectional alignment:</strong> For any team members identifying as Black women founders, this is a direct and tailored resource.',
+       '<strong>Research anchor:</strong> DID\'s data on Black women in tech is the most-cited source on this exact gap. Being in their ecosystem connects this work to its own evidence base.',
+       '<strong>Community signal:</strong> DID\'s network is the Black women in tech ecosystem nationally.'],
+  roles:['R1','R5']},
+
+  {name:'Camelback Ventures',url:'https://www.camelbackventures.org',type:'Fellowship · Founders of Color · Small Investment',
+  hook:'16-week fellowship for entrepreneurs of color and women. 220+ alumni who have collectively raised $50M+. Forbes 30 Under 30 pipeline. Invests in both founder development and venture development simultaneously. The network and legitimacy signal are the primary assets.',
+  why:['<strong>Founder-first design:</strong> Camelback invests in the builder, not just the product. Rare and relevant for a team building outside traditional engineering structures.',
+       '<strong>Alumni network:</strong> 220+ entrepreneurs of color with $50M+ raised. This is the peer community.',
+       '<strong>Credential:</strong> Camelback Fellow is a recognized signal in the responsible tech and equity-focused funding ecosystem.'],
+  roles:['R1','R5']},
+],
+
 };
 
 function badges(active){
@@ -1193,6 +1352,7 @@ render('p1-events','p1-events-grid');
 render('p1-amplifiers','p1-amplifiers-grid');
 render('p1-research','p1-research-grid');
 render('p1-infra','p1-infra-grid');
+render('programs','programs-grid');
 render('p2','p2-grid');
 </script>
 </body>
