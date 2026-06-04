@@ -116,7 +116,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="section-header">
     <span class="section-tag" style="background:#2a1f00;color:#f59e0b">Programs</span>
     <span class="section-title">Incubators, Credits &amp; Grants — Zero or Low Equity</span>
-    <span class="section-count">21 programs &nbsp;·&nbsp; apply now</span>
+    <span class="section-count">18 programs &nbsp;·&nbsp; apply now</span>
   </div>
   <div class="entity-grid" id="programs-grid"></div>
 </section>
@@ -808,6 +808,13 @@ const ENTITIES={
 ],
 
 'p1-amplifiers':[
+  {name:'Beyond the Build',url:'https://beyondthebuild.buzzsprout.com/',type:'Podcast · Software Engineering · Practitioner Voice',
+  hook:'Hosted by Uma and Ope — two seasoned engineers who cover the real, unfiltered experience of being in tech. Career growth, technical challenges, work-life balance, and the parts of the industry that don\'t get talked about enough. The practitioner voice that speaks the same language as this build.',
+  why:['<strong>Practitioner framing:</strong> The show speaks to working builders, not investors or academics. This methodology lands with their audience naturally.',
+       '<strong>Unfiltered angle:</strong> "Beyond the Build" is about what building actually looks like — which is exactly the proof-of-concept story being told here.',
+       '<strong>Community reach:</strong> An audience of software engineers who came up through non-traditional or challenging paths is the most receptive audience for low/no-code AI infrastructure built by Black practitioners.'],
+  roles:['R4','R6']},
+
   {name:'@nicoleinthecloud',url:'https://tiktok.com/@nicoleinthecloud',type:'Amplifier · TikTok · Responsible AI',
   hook:'TikTok creator focused on Responsible AI content. Reaches a younger, non-academic audience that consumes AI ethics content in short-form video. Content makes complex AI ethics arguments accessible and shareable.',
   why:['<strong>Short-form reach:</strong> TikTok amplification reaches communities that do not read academic papers or attend conferences — the community this methodology is built for.',
@@ -1208,13 +1215,6 @@ const ENTITIES={
        '<strong>Order matters:</strong> Apply to NVIDIA Inception first. Then use that membership to apply here.'],
   roles:['R2']},
 
-  {name:'Microsoft for Startups Founders Hub',url:'https://foundershub.startups.microsoft.com',type:'Program · Cloud Credits · Zero Equity',
-  hook:'$1,000 in Azure credits plus GitHub Copilot access. Instant approval — no review cycle, no funding required. The GitHub Copilot access is the most practical daily benefit for a team managing flow configurations, documentation, and the 13-chapter guide.',
-  why:['<strong>Instant approval:</strong> No review cycle. Active the same day.',
-       '<strong>GitHub Copilot:</strong> For documentation, the guide, and repo management — this is the day-to-day benefit.',
-       '<strong>Stack piece:</strong> Small but completely friction-free addition to the full credit stack.'],
-  roles:['R2']},
-
   {name:'Hugging Face Startup Program',url:'https://huggingface.co',type:'Program · Open Source AI · Zero Equity',
   hook:'Free Pro access (6 months) and inference credits. No equity. The Hugging Face community is where open-source AI practitioners discover, evaluate, and share tools. Verified startup status positions this work inside that discovery layer — something hardware credits cannot do.',
   why:['<strong>Community positioning:</strong> Hugging Face is where open-source AI practitioners find new tools. Startup listing puts this work in front of the right audience.',
@@ -1235,20 +1235,6 @@ const ENTITIES={
        '<strong>Language match:</strong> "Trustworthy AI," "fair," "responsible" — the NSF AI topic reads like a description of this methodology. Write the application to mirror that language exactly.',
        '<strong>Diverse founder priority:</strong> NSF actively names underrepresented communities. This door is held open.'],
   roles:['R2','R3']},
-
-  {name:'HBCU Founders Initiative (HBCUFI)',url:'https://www.hbcufi.org',type:'Program · HBCU · Non-Dilutive',
-  hook:'First and largest HBCU-centered pre-accelerator in the country. 8-week hybrid program backed by Nex Cubed. Non-dilutive grants awarded through a pitch competition at program end. Relevant both as a direct program pathway and as a downstream pipeline for bringing the next generation of builders into this methodology.',
-  why:['<strong>Pipeline, both directions:</strong> HBCU students are a primary population for this builder model. HBCUFI is the structured on-ramp for the next generation.',
-       '<strong>Non-dilutive grants:</strong> Pitch competition at program end awards non-dilutive capital.',
-       '<strong>Community signal:</strong> Embedded in the largest HBCU founder network in the country.'],
-  roles:['R1','R5']},
-
-  {name:'Black Ambition — So Ambitious HBCU Pre-Accelerator',url:'https://blackambitionprize.com/so-ambitious-hbcu-pre-accelerator-program/',type:'Program · HBCU · Non-Dilutive',
-  hook:'8-week non-dilutive program for HBCU students and recent alumni. AI is an explicit target vertical. Cross-institutional — one application, multiple HBCU campuses. Covers entrepreneurship education, leadership development, and ecosystem connections. Pharrell Williams–founded network with cultural credibility that academic programs cannot replicate.',
-  why:['<strong>AI vertical is explicit:</strong> AI is named as a target sector — not an adjacent application.',
-       '<strong>Cross-institutional reach:</strong> A single application surfaces this methodology to students across multiple HBCUs simultaneously.',
-       '<strong>Cultural legitimacy:</strong> Pharrell\'s network carries a signal that corporate and academic programs cannot.'],
-  roles:['R1','R5']},
 
   {name:'Humanity AI Initiative',url:'https://www.macfound.org/press/press-releases/humanity-ai-commits-500-million-to-build-a-people-centered-future-for-ai',type:'Grant · Foundation Coalition · $500M Pooled Fund',
   hook:'Largest coordinated philanthropic bet on responsible AI ever assembled. $500M over five years. Co-chaired by MacArthur Foundation and Omidyar Network. Coalition: MacArthur, Ford, Mellon, Packard, Mozilla, Omidyar, Kapor, Doris Duke, Lumina, Siegel Family. Pooled grants begin flowing in 2026 via Rockefeller Philanthropy Advisors. Focus: democracy, education, labor, cultural preservation.',
