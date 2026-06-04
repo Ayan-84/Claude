@@ -1171,25 +1171,16 @@ render('institutional','institutional-grid');
   tip.id='stage-tooltip';
   document.body.appendChild(tip);
   document.querySelectorAll('.filter-btn[data-tooltip]').forEach(btn=>{
-    btn.addEventListener('mouseenter',function(e){
+    btn.addEventListener('mouseenter',function(){
       tip.textContent=this.dataset.tooltip;
       const r=this.getBoundingClientRect();
+      const tw=220;
+      let left=r.left+r.width/2-tw/2;
+      if(left<8)left=8;
+      if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
+      tip.style.left=left+'px';
+      tip.style.top=(r.bottom+8)+'px';
       tip.classList.add('visible');
-      const tw=220;
-      let left=r.left+r.width/2-tw/2;
-      if(left<8)left=8;
-      if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
-      tip.style.left=left+'px';
-      tip.style.top=(r.top-tip.offsetHeight-10+window.scrollY)+'px';
-    });
-    btn.addEventListener('mousemove',function(e){
-      const r=this.getBoundingClientRect();
-      const tw=220;
-      let left=r.left+r.width/2-tw/2;
-      if(left<8)left=8;
-      if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
-      tip.style.left=left+'px';
-      tip.style.top=(r.top-tip.offsetHeight-10)+'px';
     });
     btn.addEventListener('mouseleave',function(){
       tip.classList.remove('visible');
