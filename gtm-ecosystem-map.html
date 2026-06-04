@@ -53,9 +53,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(9,9,15,.94);backdrop-filte
 .badge{font-size:.63rem;font-weight:700;letter-spacing:.04em;padding:.18rem .52rem;border-radius:20px;text-transform:uppercase}
 .badge-off{background:var(--surface);color:#2a2a3a;border:1px solid var(--border)}
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.76rem;color:var(--muted)}
+.entity-grid-compact{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem}
+.entity-card-compact{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,transform .2s}
+.entity-card-compact:hover{border-color:var(--border-hover);transform:translateY(-2px)}
 @media(max-width:820px){
   .hero{padding:3rem 1.5rem 2.5rem}.container{padding:0 1.5rem 4rem}
-  .entity-grid{grid-template-columns:1fr}.criteria-grid{grid-template-columns:1fr}
+  .entity-grid{grid-template-columns:1fr}.entity-grid-compact{grid-template-columns:1fr}.criteria-grid{grid-template-columns:1fr}
   .stats-row{gap:2rem}.section-count{display:none}.entity-type-pill{display:none}
 }
 </style>
@@ -65,16 +68,16 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="nav-inner">
     <span class="nav-logo">GTM Ecosystem Map</span>
     <a href="#roles">Roles</a>
+    <a href="#programs">Programs</a>
     <a href="#p0-texas">P0 · Texas</a>
     <a href="#p0-national">P0 · National</a>
     <a href="#p1-validators">P1 · Validators</a>
     <a href="#p1-institutions">P1 · Institutions</a>
     <a href="#p1-groups">P1 · Groups</a>
     <a href="#p1-events">P1 · Events</a>
-    <a href="#p1-amplifiers">P1 · Amplifiers</a>
     <a href="#p1-research">P1 · Research</a>
+    <a href="#p1-amplifiers">P1 · Amplifiers</a>
     <a href="#p1-infra">P1 · AI Infra</a>
-    <a href="#programs">Programs</a>
     <a href="#p2">P2 · Cultivation</a>
   </div>
 </nav>
@@ -109,6 +112,15 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   </div>
 </section>
 
+<section class="section" id="programs">
+  <div class="section-header">
+    <span class="section-tag" style="background:#2a1f00;color:#f59e0b">Programs</span>
+    <span class="section-title">Incubators, Credits &amp; Grants — Zero or Low Equity</span>
+    <span class="section-count">21 programs &nbsp;·&nbsp; apply now</span>
+  </div>
+  <div class="entity-grid" id="programs-grid"></div>
+</section>
+
 <section class="section" id="p0-texas">
   <div class="section-header">
     <span class="section-tag" style="background:#2d0f0f;color:#ef4444">P0 · Texas</span>
@@ -140,7 +152,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="section-header">
     <span class="section-tag" style="background:#0d3540;color:#06b6d4">P1 · Institutions</span>
     <span class="section-title">Research &amp; Community Institutions</span>
-    <span class="section-count">22 institutions &nbsp;·&nbsp; next 90 days</span>
+    <span class="section-count">23 institutions &nbsp;·&nbsp; next 90 days</span>
   </div>
   <div class="entity-grid" id="p1-institutions-grid"></div>
 </section>
@@ -163,15 +175,6 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="entity-grid" id="p1-events-grid"></div>
 </section>
 
-<section class="section" id="p1-amplifiers">
-  <div class="section-header">
-    <span class="section-tag" style="background:#451a00;color:#f97316">P1 · Amplifiers</span>
-    <span class="section-title">Media, Podcasts &amp; Voices</span>
-    <span class="section-count">15 channels &nbsp;·&nbsp; next 90 days</span>
-  </div>
-  <div class="entity-grid" id="p1-amplifiers-grid"></div>
-</section>
-
 <section class="section" id="p1-research">
   <div class="section-header">
     <span class="section-tag" style="background:#1a1030;color:#a78bfa">P1 · Research</span>
@@ -181,22 +184,22 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <div class="entity-grid" id="p1-research-grid"></div>
 </section>
 
+<section class="section" id="p1-amplifiers">
+  <div class="section-header">
+    <span class="section-tag" style="background:#451a00;color:#f97316">P1 · Amplifiers</span>
+    <span class="section-title">Media, Podcasts &amp; Voices</span>
+    <span class="section-count">15 channels &nbsp;·&nbsp; at a glance</span>
+  </div>
+  <div class="entity-grid-compact" id="p1-amplifiers-grid"></div>
+</section>
+
 <section class="section" id="p1-infra">
   <div class="section-header">
     <span class="section-tag" style="background:#0d2d1a;color:#4ade80">P1 · AI Infra</span>
     <span class="section-title">AI Infrastructure Communities</span>
-    <span class="section-count">7 communities &nbsp;·&nbsp; practitioner builders</span>
+    <span class="section-count">7 communities &nbsp;·&nbsp; at a glance</span>
   </div>
-  <div class="entity-grid" id="p1-infra-grid"></div>
-</section>
-
-<section class="section" id="programs">
-  <div class="section-header">
-    <span class="section-tag" style="background:#2a1f00;color:#f59e0b">Programs</span>
-    <span class="section-title">Incubators, Credits &amp; Grants — Zero or Low Equity</span>
-    <span class="section-count">21 programs &nbsp;·&nbsp; apply now</span>
-  </div>
-  <div class="entity-grid" id="programs-grid"></div>
+  <div class="entity-grid-compact" id="p1-infra-grid"></div>
 </section>
 
 <section class="section" id="p2">
@@ -209,7 +212,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 </section>
 
 </div>
-<footer>GTM Ecosystem Map &nbsp;·&nbsp; Phase 1 &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; 130+ entities across Texas and national ecosystems</footer>
+<footer>GTM Ecosystem Map &nbsp;·&nbsp; Phase 1 &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; 150+ entities across Texas and national ecosystems</footer>
 
 <script>
 const RM={
@@ -665,6 +668,13 @@ const ENTITIES={
        '<strong>TRAIGA relevance:</strong> They research exactly the kinds of AI systems Texas\' new law governs. A community-proximate practitioner voice aligned with their research is high-value.',
        '<strong>Research amplification:</strong> An Upturn report feature reaches a civil rights and policy audience distinct from academic AI ethics venues.'],
   roles:['R1','R3']},
+
+  {name:'Houston Community College — Automotive Technology',url:'https://www.hccs.edu/programs/areas-of-study/transportation/automotive-technology/',type:'Institution · Workforce · Houston',
+  hook:'HCC\'s Automotive Technology program is a working model for building deep technical competency in people without traditional academic credentials — the same structural logic this methodology applies to AI infrastructure. HCC is the largest community college system in Texas, serving 50,000+ students across campuses embedded in every Houston neighborhood, including Fifth Ward, Northside, and Southeast Houston.',
+  why:['<strong>Structural analog:</strong> HCC Automotive trains non-traditional students in complex technical systems without a 4-year prerequisite. This methodology does the same for AI infrastructure. The approach is identical — only the domain changes. That parallel is a story worth telling.',
+       '<strong>Community reach:</strong> HCC campuses sit inside Houston\'s historically underserved neighborhoods — the same communities this work is proximate to. A partnership here puts AI infrastructure skills exactly where they are needed most.',
+       '<strong>Pipeline model:</strong> A community AI skills track modeled on HCC\'s workforce development approach is a direct and replicable expansion of this methodology — the clearest path to scale in Houston.'],
+  roles:['R5','R6','R7']},
 ],
 
 'p1-groups':[
@@ -1342,17 +1352,34 @@ function render(key,id){
   const el=document.getElementById(id);
   if(el) el.innerHTML=ENTITIES[key].map(card).join('');
 }
+function cardCompact(e){
+  return `<div class="entity-card-compact">
+    <div class="entity-top">
+      <div>
+        <div class="entity-name"><a href="${e.url}" target="_blank" rel="noopener">${e.name}</a></div>
+        <div class="entity-url">${e.url.replace('https://','').replace('http://','')}</div>
+      </div>
+      <div class="entity-type-pill">${e.type}</div>
+    </div>
+    <p class="entity-hook">${e.hook}</p>
+    <div class="entity-badges">${badges(e.roles)}</div>
+  </div>`;
+}
+function renderCompact(key,id){
+  const el=document.getElementById(id);
+  if(el) el.innerHTML=ENTITIES[key].map(cardCompact).join('');
+}
 
+render('programs','programs-grid');
 render('p0-texas','p0-texas-grid');
 render('p0-national','p0-national-grid');
 render('p1-validators','p1-validators-grid');
 render('p1-institutions','p1-institutions-grid');
 render('p1-groups','p1-groups-grid');
 render('p1-events','p1-events-grid');
-render('p1-amplifiers','p1-amplifiers-grid');
 render('p1-research','p1-research-grid');
-render('p1-infra','p1-infra-grid');
-render('programs','programs-grid');
+renderCompact('p1-amplifiers','p1-amplifiers-grid');
+renderCompact('p1-infra','p1-infra-grid');
 render('p2','p2-grid');
 </script>
 </body>
