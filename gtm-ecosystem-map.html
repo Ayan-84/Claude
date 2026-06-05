@@ -39,14 +39,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(9,9,15,.94);backdrop-filte
 .entity-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.65rem;display:flex;flex-direction:column;gap:.9rem;transition:border-color .2s,transform .2s}
 .entity-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
 .entity-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
-.entity-name{font-size:1.08rem;font-weight:700;line-height:1.25}
+.entity-top>div:first-child{min-width:0}
+.entity-name{font-size:1.08rem;font-weight:700;line-height:1.25;overflow-wrap:break-word}
 .entity-name a{color:var(--text);text-decoration:none}
 .entity-name a:hover{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--muted)}
-.entity-url{font-size:.7rem;color:var(--muted);margin-top:.2rem}
-.entity-type-pill{font-size:.68rem;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.28rem .65rem;border-radius:20px;white-space:normal;flex-shrink:0;line-height:1.45;text-align:right;max-width:180px}
-.entity-hook{font-size:.83rem;color:var(--muted);line-height:1.65}
+.entity-url{font-size:.7rem;color:var(--muted);margin-top:.2rem;overflow-wrap:break-word;word-break:break-all}
+.entity-type-pill{font-size:.68rem;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.28rem .65rem;border-radius:20px;white-space:normal;flex-shrink:0;line-height:1.45;text-align:right;max-width:160px}
+.entity-hook{font-size:.83rem;color:var(--muted);line-height:1.65;overflow-wrap:break-word}
 .entity-why{list-style:none;display:flex;flex-direction:column;gap:.4rem}
-.entity-why li{font-size:.8rem;color:var(--text);line-height:1.5;padding-left:1.1rem;position:relative}
+.entity-why li{font-size:.8rem;color:var(--text);line-height:1.5;padding-left:1.1rem;position:relative;overflow-wrap:break-word}
 .entity-why li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:.74rem;top:.05rem}
 .entity-why li strong{font-weight:600}
 .entity-badges{display:flex;flex-wrap:wrap;gap:.28rem;padding-top:.7rem;border-top:1px solid var(--border);margin-top:auto}
