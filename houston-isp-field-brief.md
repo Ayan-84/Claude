@@ -4,23 +4,9 @@
 
 ---
 
-## PART I — MISSION CONTEXT
-
-### What We're Building
-
-uMODA is a Quote Transparency API built for the independent auto repair market. It creates structured, time-stamped documentation of the full quote-to-bill lifecycle: initial estimate, scope changes, authorization events, parts sourcing decisions, and final billing. The platform gives honest shops a way to prove their honesty — to every customer, before and after every repair.
-
-### Why We're Building It
-
-The independent auto repair market has a trust deficit — not because most shops are dishonest, but because consumers have no infrastructure to distinguish the honest from the dishonest. Every verbal estimate that escalates looks identical to consumer fraud. Every teardown revision looks like a bait-and-switch. Every communication gap looks like avoidance. Honest shops pay the full reputational cost of an industry-wide opacity problem they did not create.
-
-uMODA is not a consumer complaint tool. It is shop-side transparency infrastructure that turns documented process into competitive advantage — and turns a 1-star review from a misunderstood verbal estimate into a defensible, timestamped record the shop can point to.
-
 ### Who We Are
 
 [TEAM PROFILE — Insert uMODA founding team bios before field distribution.]
-
-We have spent months embedded in the Houston ISP market: conducting field interviews, mapping corridors, collecting 326 shop profiles across 12 geographic clusters, and documenting over 100 distinct consumer encounters across 17 categories of quote change mechanisms. We know this market. We know these shops. We know the pain.
 
 ---
 
