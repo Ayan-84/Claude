@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Houston ISP — Pain Driver Covariance Dendrogram</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --panel: #1a212b;
+    --panel-2: #202a36;
+    --ink: #e8edf2;
+    --ink-dim: #9aa7b4;
+    --accent: #4fb3ff;
+    --accent-2: #ffb347;
+    --warn: #ff6b6b;
+    --line: #3a4654;
+    --core: #4fb3ff;
+    --dispute: #ffb347;
+    --integrity: #ff6b6b;
+    --rare: #9d8cff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 32px 24px 64px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.2px; }
+  h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--accent); }
+  .sub { color: var(--ink-dim); font-size: 13px; margin-top: 6px; margin-bottom: 28px; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 28px;
+  }
+  /* info chips ------------------------------------------------------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .chip {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--ink-dim);
+    cursor: help;
+    transition: border-color .15s, color .15s;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--ink); }
+  .chip b { color: var(--accent); font-weight: 600; }
+  /* tooltip ----------------------------------------------------------- */
+  #tip {
+    position: fixed;
+    pointer-events: none;
+    background: #0a0e13;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 12.5px;
+    max-width: 320px;
+    color: var(--ink);
+    box-shadow: 0 8px 24px rgba(0,0,0,.55);
+    opacity: 0;
+    transition: opacity .12s;
+    z-index: 50;
+    line-height: 1.45;
+  }
+  #tip .t-head { font-weight: 700; color: var(--accent); margin-bottom: 4px; font-size: 12px; letter-spacing: .3px; }
+  #tip.show { opacity: 1; }
+  /* dendrogram svg ----------------------------------------------------- */
+  svg text { font-family: inherit; }
+  .leaf-label { font-size: 12.5px; fill: var(--ink); cursor: help; }
+  .leaf-sub { font-size: 10px; fill: var(--ink-dim); }
+  .branch { stroke-width: 2; fill: none; }
+  .merge-dot { cursor: help; stroke: var(--bg); stroke-width: 2; }
+  .merge-dot:hover { stroke: #fff; }
+  .axis-line { stroke: var(--line); stroke-dasharray: 3 4; stroke-width: 1; }
+  .axis-text { font-size: 10px; fill: var(--ink-dim); }
+  .cluster-tag { font-size: 10.5px; font-weight: 700; letter-spacing: .6px; cursor: help; }
+  /* matrix ------------------------------------------------------------- */
+  table.matrix { border-collapse: collapse; margin-top: 4px; }
+  table.matrix th, table.matrix td {
+    width: 64px; height: 44px; text-align: center;
+    font-size: 13px; border: 1px solid var(--bg);
+  }
+  table.matrix th { color: var(--ink-dim); font-weight: 600; background: var(--panel-2); font-size: 12px; }
+  table.matrix td { cursor: help; font-weight: 600; border-radius: 4px; transition: outline .1s; }
+  table.matrix td:hover { outline: 2px solid #fff; outline-offset: -2px; }
+  td.diag { color: var(--ink-dim); background: var(--panel-2) !important; font-style: italic; font-weight: 400; }
+  td.blank { background: transparent !important; cursor: default; }
+  td.blank:hover { outline: none; }
+  /* frequency ----------------------------------------------------------- */
+  .freq-row { display: grid; grid-template-columns: 200px 1fr 56px; align-items: center; gap: 12px; margin-bottom: 8px; cursor: help; }
+  .freq-row:hover .freq-name { color: var(--accent); }
+  .freq-name { font-size: 13px; transition: color .12s; }
+  .freq-name b { color: var(--ink); }
+  .freq-bar-track { background: var(--panel-2); border-radius: 4px; height: 18px; overflow: hidden; }
+  .freq-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2e7cc4, var(--accent)); }
+  .freq-count { font-size: 12.5px; color: var(--ink-dim); text-align: right; }
+  .caveat { font-size: 12px; color: var(--ink-dim); border-left: 3px solid var(--accent-2); padding: 8px 12px; background: var(--panel-2); border-radius: 0 8px 8px 0; margin-top: 18px; }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: var(--ink-dim); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Houston ISP — Pain Driver Covariance</h1>
+  <div class="sub">58 shops · uMODA Quote Change Driver framework · hover anything for an explanation</div>
+
+  <!-- ============ DENDROGRAM ============ -->
+  <div class="panel">
+    <h2>Driver Clustering Dendrogram</h2>
+
+    <div class="chips">
+      <span class="chip" data-tip-head="How to read: left to right" data-tip="Each pain driver starts as a leaf on the left. Moving right, branches merge — the FURTHER RIGHT two drivers merge, the LESS often they appear together at the same shops. Early (left-side) merges = strong covariance.">📖 <b>How to read</b> — hover me</span>
+      <span class="chip" data-tip-head="Merge distance" data-tip="The horizontal axis is dissimilarity (1 − Jaccard similarity of the shop sets carrying each driver). D10+D8 merge at ~0.42 — they co-occur at 32 of 58 shops. The integrity-flag drivers only join the tree near 1.0 — they barely co-occur with anything mainstream.">📏 <b>Merge distance</b></span>
+      <span class="chip" data-tip-head="Dots are hoverable" data-tip="Every junction dot carries a tooltip with the shop count and what the merge means. Leaf labels on the left explain each driver and its frequency.">🔵 <b>Dots & labels</b></span>
+      <span class="chip" data-tip-head="Color = cluster family" data-tip="Blue = Core Documentation cluster (the everyday uMODA wedge). Amber = Disputed-History pair. Red = Integrity-Flag cluster (⚠️ observe-first shops). Purple = rare specialty singletons.">🎨 <b>Colors</b></span>
+    </div>
+
+    <svg id="dendro" width="100%" viewBox="0 0 1010 660" preserveAspectRatio="xMidYMid meet"></svg>
+
+    <div class="legend">
+      <span><i class="swatch" style="background:var(--core)"></i> Core Documentation cluster</span>
+      <span><i class="swatch" style="background:var(--dispute)"></i> Disputed-History pair</span>
+      <span><i class="swatch" style="background:var(--integrity)"></i> Integrity-Flag cluster</span>
+      <span><i class="swatch" style="background:var(--rare)"></i> Rare specialty singletons</span>
+    </div>
+
+    <div class="caveat">
+      Caveat: drivers were assigned analytically (review language, specialty, shop profile) — covariance reflects a mix of real shop traits and assignment logic. Read this as a structural map, not statistical proof.
+    </div>
+  </div>
+
+  <!-- ============ CO-OCCURRENCE MATRIX ============ -->
+  <div class="panel">
+    <h2>Co-Occurrence Matrix — Top 5 Drivers</h2>
+    <div class="chips">
+      <span class="chip" data-tip-head="How to read the matrix" data-tip="Each cell = the number of shops (out of 58) carrying BOTH drivers. Darker blue = more co-occurrence. The diagonal shows each driver's own total. Hover any cell for the interpretation — including the one true zero.">📖 <b>How to read</b> — hover me</span>
+    </div>
+    <table class="matrix" id="matrix"></table>
+  </div>
+
+  <!-- ============ DRIVER FREQUENCY ============ -->
+  <div class="panel">
+    <h2>Driver Frequency (n = 58 shops)</h2>
+    <div class="chips">
+      <span class="chip" data-tip-head="How to read the bars" data-tip="Bar length = the share of the 58-shop corpus carrying that driver. Hover each row for the driver's definition. D10 and D8 are near-universal; everything below D9 is a niche or red-flag signal.">📖 <b>How to read</b> — hover me</span>
+    </div>
+    <div id="freq"></div>
+  </div>
+
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ---------------- shared tooltip ---------------- */
+const tip = document.getElementById('tip');
+function showTip(evt, head, body){
+  tip.innerHTML = (head ? '<div class="t-head">'+head+'</div>' : '') + body;
+  tip.classList.add('show');
+  moveTip(evt);
+}
+function moveTip(evt){
+  const pad = 16;
+  let x = evt.clientX + pad, y = evt.clientY + pad;
+  const r = tip.getBoundingClientRect();
+  if (x + r.width > window.innerWidth - 8)  x = evt.clientX - r.width - pad;
+  if (y + r.height > window.innerHeight - 8) y = evt.clientY - r.height - pad;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip(){ tip.classList.remove('show'); }
+document.querySelectorAll('.chip').forEach(c => {
+  c.addEventListener('mousemove', e => showTip(e, c.dataset.tipHead, c.dataset.tip));
+  c.addEventListener('mouseleave', hideTip);
+});
+
+/* ---------------- data ---------------- */
+const DRIVERS = {
+  D10:{n:46, name:'Communication breakdown', tip:'Missed calls, phone-tag approval delays, no documented contact chain. Present at 46 of 58 shops (79%) — the near-universal baseline pain.'},
+  D8:{n:41, name:'Authorization documentation gap', tip:'No written, timestamped record of what the customer approved. 41 of 58 shops (71%). The core uMODA wedge — TX law requires written auth >$100 above estimate.'},
+  D1:{n:20, name:'Price escalation', tip:'Final bill exceeds the quote. 20 shops (34%) — concentrated in high-ARO Euro/exotic shops (structural exposure) and shops with documented dispute history.'},
+  D13:{n:19, name:'Verbal estimate substitution', tip:'Handshake quotes that never become paper. 19 shops (33%) — concentrated in Tier C, long-tenure, relationship-based general repair shops.'},
+  D9:{n:14, name:'Teardown scope revision', tip:'Disassembly reveals hidden work mid-job. 14 shops (24%) — collision and Euro/exotic specialists, where teardown is structural to the work.'},
+  D7:{n:4, name:'Labor hour dispute', tip:'Customer contests billed hours. Only 4 shops — appears only where disputes are documented in reviews.'},
+  D12:{n:2, name:'Ticket building', tip:'Alleged padding of the repair order with unneeded work. 2 shops — always travels with D7 in this corpus.'},
+  D11:{n:3, name:'Hidden fees', tip:'Undisclosed shop supplies / surcharge fees. 3 shops — NAPA-affiliate and multi-service shops.'},
+  D6:{n:3, name:'Parts substitution', tip:'Used/junkyard parts billed as new (alleged at flagged shops). 3 shops — a near-pure integrity-flag fingerprint.'},
+  D5:{n:2, name:'Diagnostic-to-repair confusion', tip:'The waived-diagnostic-fee consent boundary. Only 2 shops (Mr Balljoint, Cruz-N-Carz) — rare but the cleanest single-driver story in the corpus.'},
+  D2:{n:1, name:'Phantom pricing', tip:'Charges for work that cannot be verified. 1 shop — only at a ⚠️ integrity-flag shop (Solgie’s).'},
+  D3:{n:1, name:'Unauthorized repair', tip:'Work performed with no authorization at all. 1 shop — only at the ⚠️ Allstate/Vemex cluster.'}
+};
+
+/* ---------------- dendrogram tree ----------------
+   leaf order top→bottom; dist = 1 − Jaccard (approx, average linkage) */
+const TREE = {
+  dist: 1.00, color:'var(--ink-dim)',
+  tip:'ROOT — all 12 drivers. The integrity-flag cluster only connects to the mainstream drivers here, at maximum distance: dishonest-shop fingerprints barely co-occur with everyday documentation pain.',
+  head:'Root · full corpus',
+  children:[
+    { dist:0.94, color:'var(--core)', head:'+ D11 joins core', tip:'Hidden fees attaches weakly — only 3 shops, all already carrying D10.',
+      children:[
+        { dist:0.92, color:'var(--core)', head:'+ D5 joins core', tip:'Diagnostic-fee confusion attaches weakly — both D5 shops also carry D10+D8, but D5 itself is rare (2 shops).',
+          children:[
+            { dist:0.88, color:'var(--core)', head:'Core + Disputed-History', tip:'The disputed-history pair (D7+D12) connects to the core through D1 — labor disputes and ticket-building allegations always ride alongside price escalation.',
+              children:[
+                { dist:0.80, color:'var(--core)', head:'+ D13 joins core', tip:'Verbal estimates join the core via D10 (18 of 19 D13 shops carry D10) — but note D13 NEVER co-occurs with D9. Verbal-habit shops and teardown shops are disjoint populations.',
+                  children:[
+                    { dist:0.73, color:'var(--core)', head:'+ D9 joins core', tip:'Teardown joins via D8: 13 of 14 teardown shops also carry the authorization gap. If a shop does teardown work, it almost certainly has an auth gap.',
+                      children:[
+                        { dist:0.70, color:'var(--core)', head:'+ D1 joins core', tip:'Price escalation joins the D10+D8 core — 15 of 20 D1 shops also carry D8. Escalation is mostly a documentation failure wearing a pricing costume.',
+                          children:[
+                            { dist:0.42, color:'var(--core)', head:'D10 + D8 · 32 shops', tip:'THE STRONGEST PAIR. Communication breakdown and the authorization gap co-occur at 32 of 58 shops (55%) — two faces of the same failure: nothing was written down, and nobody could be reached when scope changed.',
+                              children:[ {leaf:'D10'}, {leaf:'D8'} ] },
+                            {leaf:'D1'}
+                          ]},
+                        {leaf:'D9'}
+                      ]},
+                    {leaf:'D13'}
+                  ]},
+                { dist:0.50, color:'var(--dispute)', head:'D7 + D12 · Disputed-History pair', tip:'Labor-hour disputes and ticket-building allegations merge early — both D12 shops also carry D7. This pair only exists where customers have publicly documented disputes (Ed’s Car Care, Solo’s/William’s).',
+                  children:[ {leaf:'D7'}, {leaf:'D12'} ] }
+              ]},
+            {leaf:'D5'}
+          ]},
+        {leaf:'D11'}
+      ]},
+    { dist:0.90, color:'var(--integrity)', head:'Integrity-Flag cluster + D3', tip:'Unauthorized repair (D3) joins the parts-substitution/phantom-pricing pair. All three drivers appear ONLY at ⚠️ observe-first shops — a fraud-signal fingerprint, not everyday pain.',
+      children:[
+        { dist:0.67, color:'var(--integrity)', head:'D6 + D2 · Integrity pair', tip:'Parts substitution and phantom pricing merge — they co-occur at Solgie’s Alignment (⚠️). When a shop carries drivers nobody else carries, that’s the observe-before-engaging signal.',
+          children:[ {leaf:'D6'}, {leaf:'D2'} ] },
+        {leaf:'D3'}
+      ]}
+  ]
+};
+
+const LEAF_COLOR = {
+  D10:'var(--core)', D8:'var(--core)', D1:'var(--core)', D9:'var(--core)', D13:'var(--core)',
+  D7:'var(--dispute)', D12:'var(--dispute)',
+  D5:'var(--rare)', D11:'var(--rare)',
+  D6:'var(--integrity)', D2:'var(--integrity)', D3:'var(--integrity)'
+};
+
+/* ---------------- render dendrogram ---------------- */
+const svg = document.getElementById('dendro');
+const NS = 'http://www.w3.org/2000/svg';
+const X0 = 215, XMAX = 950, TOP = 30, ROW = 46;
+const xOf = d => X0 + d * (XMAX - X0);
+
+let leafIdx = 0;
+function layout(node){
+  if (node.leaf){
+    node.y = TOP + leafIdx * ROW + 10;
+    node.x = X0;
+    leafIdx++;
+    return node;
+  }
+  node.children.forEach(layout);
+  node.y = node.children.reduce((s,c)=>s+c.y,0) / node.children.length;
+  node.x = xOf(node.dist);
+  return node;
+}
+layout(TREE);
+
+function el(tag, attrs, parent){
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e);
+  return e;
+}
+
+/* distance axis */
+[0, .25, .5, .75, 1].forEach(d=>{
+  const x = xOf(d);
+  el('line',{x1:x,y1:TOP-12,x2:x,y2:TOP+12*ROW, class:'axis-line'});
+  el('text',{x:x,y:TOP+12*ROW+18,'text-anchor':'middle',class:'axis-text'}).textContent = d.toFixed(2);
+});
+const axisCap = el('text',{x:(X0+XMAX)/2, y:TOP+12*ROW+36,'text-anchor':'middle',class:'axis-text'});
+axisCap.textContent = 'merge distance (1 − Jaccard similarity) — further right = weaker covariance';
+
+/* branches + nodes */
+function draw(node){
+  if (node.leaf){
+    const d = DRIVERS[node.leaf];
+    const label = el('text',{x:10,y:node.y+4,class:'leaf-label'});
+    label.innerHTML = '<tspan style="fill:'+LEAF_COLOR[node.leaf]+';font-weight:700">'+node.leaf+'</tspan>  <tspan class="leaf-sub">'+d.name+' · '+d.n+'</tspan>';
+    label.addEventListener('mousemove', e=>showTip(e, node.leaf+' — '+d.name+' ('+d.n+' shops)', d.tip));
+    label.addEventListener('mouseleave', hideTip);
+    return;
+  }
+  node.children.forEach(c=>{
+    el('path',{d:`M ${c.x} ${c.y} H ${node.x} V ${node.y}`, class:'branch', stroke:node.color});
+    draw(c);
+  });
+  const dot = el('circle',{cx:node.x, cy:node.y, r:6.5, fill:node.color, class:'merge-dot'});
+  dot.addEventListener('mousemove', e=>showTip(e, node.head, node.tip));
+  dot.addEventListener('mouseleave', hideTip);
+}
+draw(TREE);
+
+/* cluster tags */
+[
+  {x:X0+8, y:TOP-8,            txt:'CORE DOCUMENTATION CLUSTER', col:'var(--core)',
+   tip:'D10, D8, D1, D9, D13 — the everyday documentation-pain family. One core uMODA pitch covers this entire branch.'},
+  {x:X0+8, y:TOP+5*ROW+2,      txt:'DISPUTED-HISTORY PAIR', col:'var(--dispute)',
+   tip:'D7 + D12 — appears only at shops with publicly documented customer disputes. Split-review shops where the honest side needs evidence.'},
+  {x:X0+8, y:TOP+7*ROW+2,      txt:'RARE SPECIALTY SINGLETONS', col:'var(--rare)',
+   tip:'D5 + D11 — narrow, surgical pains tied to specific business models (waived diagnostic fees, supply surcharges).'},
+  {x:X0+8, y:TOP+9*ROW+2,      txt:'INTEGRITY-FLAG CLUSTER ⚠️', col:'var(--integrity)',
+   tip:'D6, D2, D3 — these drivers appear ONLY at observe-first ⚠️ shops. Rare-driver profile = fraud-signal fingerprint.'}
+].forEach(t=>{
+  const e = el('text',{x:t.x, y:t.y, class:'cluster-tag', fill:t.col});
+  e.textContent = t.txt;
+  e.addEventListener('mousemove', ev=>showTip(ev, t.txt, t.tip));
+  e.addEventListener('mouseleave', hideTip);
+});
+
+/* ---------------- co-occurrence matrix ---------------- */
+const TOP5 = ['D10','D8','D1','D13','D9'];
+const CO = { // shop counts carrying both
+  'D10|D10':46,'D8|D8':41,'D1|D1':20,'D13|D13':19,'D9|D9':14,
+  'D10|D8':32,'D10|D1':14,'D10|D13':18,'D10|D9':12,
+  'D8|D1':15,'D8|D13':6,'D8|D9':13,
+  'D1|D13':4,'D1|D9':7,
+  'D13|D9':0
+};
+const CO_TIP = {
+  'D10|D8':'32 shops — the universal pair (55% of corpus). Communication breakdown and the auth gap are two faces of the same failure. This pair IS the core uMODA pitch.',
+  'D10|D13':'18 shops — 18 of 19 verbal-estimate shops also have communication breakdown. Verbal habits and unreachable approval chains travel together.',
+  'D8|D9':'13 shops — 13 of 14 teardown shops carry the auth gap. Near-deterministic: teardown work ⇒ authorization exposure.',
+  'D8|D1':'15 shops — most price-escalation shops lack documented authorization. Escalation disputes are usually documentation failures.',
+  'D10|D1':'14 shops — escalation plus unreachable communication: the recipe for the disputed final bill.',
+  'D10|D9':'12 shops — teardown discoveries that can’t be communicated in time become unauthorized work.',
+  'D8|D13':'6 shops — modest overlap; verbal-estimate shops often weren’t assigned D8 separately because D13 subsumes it.',
+  'D1|D9':'7 shops — teardown discovery driving the bill above quote, mostly at Euro/exotic price points.',
+  'D1|D13':'4 shops — verbal quotes that escalated. Low overlap because D13 shops are small-ticket general repair.',
+  'D13|D9':'ZERO — the most useful cell in the matrix. Verbal-estimate shops (Tier C, long-tenure, relational) and teardown shops (collision, Euro/exotic) are completely disjoint populations. They need different field scripts.'
+};
+function co(a,b){ return CO[a+'|'+b] ?? CO[b+'|'+a] ?? 0; }
+
+const M = document.getElementById('matrix');
+let html = '<tr><th></th>' + TOP5.map(d=>'<th>'+d+'</th>').join('') + '</tr>';
+TOP5.forEach((r,i)=>{
+  html += '<tr><th>'+r+'</th>';
+  TOP5.forEach((c,j)=>{
+    if (j < i) { html += '<td class="blank"></td>'; return; }
+    const v = co(r,c);
+    if (r === c){ html += '<td class="diag" data-r="'+r+'" data-c="'+c+'">'+v+'</td>'; return; }
+    const t = Math.min(v/32, 1);
+    const bg = v === 0 ? 'rgba(255,107,107,.22)' : 'rgba(79,179,255,'+(0.12 + t*0.75)+')';
+    const fg = t > .55 ? '#06121d' : 'var(--ink)';
+    html += '<td style="background:'+bg+';color:'+fg+'" data-r="'+r+'" data-c="'+c+'">'+v+'</td>';
+  });
+  html += '</tr>';
+});
+M.innerHTML = html;
+M.querySelectorAll('td[data-r]').forEach(td=>{
+  const r = td.dataset.r, c = td.dataset.c;
+  td.addEventListener('mousemove', e=>{
+    if (r === c){
+      const d = DRIVERS[r];
+      showTip(e, r+' total', d.n+' of 58 shops carry '+r+' ('+d.name+').');
+    } else {
+      const key = CO_TIP[r+'|'+c] ? r+'|'+c : c+'|'+r;
+      showTip(e, r+' ∩ '+c+' = '+co(r,c)+' shops', CO_TIP[key] || co(r,c)+' shops carry both drivers.');
+    }
+  });
+  td.addEventListener('mouseleave', hideTip);
+});
+
+/* ---------------- frequency bars ---------------- */
+const F = document.getElementById('freq');
+Object.keys(DRIVERS).forEach(k=>{
+  const d = DRIVERS[k];
+  const row = document.createElement('div');
+  row.className = 'freq-row';
+  row.innerHTML =
+    '<div class="freq-name"><b style="color:'+(LEAF_COLOR[k]||'var(--ink)')+'">'+k+'</b> '+d.name+'</div>' +
+    '<div class="freq-bar-track"><div class="freq-bar" style="width:'+(d.n/58*100).toFixed(1)+'%"></div></div>' +
+    '<div class="freq-count">'+d.n+' · '+Math.round(d.n/58*100)+'%</div>';
+  row.addEventListener('mousemove', e=>showTip(e, k+' — '+d.name, d.tip));
+  row.addEventListener('mouseleave', hideTip);
+  F.appendChild(row);
+});
+</script>
+</body>
+</html>
