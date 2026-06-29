@@ -177,7 +177,7 @@
 
 **Classification:** E.2 — Diagnostic Judgement (ISP integrity case)
 
-**Reasoning:** This citation documents the inverse of the problematic ISP encounter — a case where the ISP technician-as-diagnostician recognized that his own E.2 finding ($11,000 engine replacement) was superseded by warranty coverage the car owner did not know applied. The Repair Necessity encounter occurred: Rigo and his team completed a diagnostic (Link 1-2), produced a repair recommendation (Link 3), and prepared to present documentation (Link 4) — but paused at Link 4 when the mileage/year data pattern triggered a coverage flag. The car owner's inability to know their own warranty status is a form of the access gap (E.2): they brought the truck to an ISP rather than a dealer because they did not know the vehicle was still under powertrain warranty. The ISP's referral to the dealer is itself a Repair Necessity encounter resolution — Rigo communicated that the car owner should not authorize the ISP repair at all. SD4 (Cost-Diagnosis Disconnect) would have been the dominant failure if Rigo had not paused: a legitimate diagnostic finding ($11,000 engine seizure) coupled to a $0 correct resolution (warranty claim) creates the maximum possible cost-authorization gap. This case is included as an ISP behavioral reference point: the same technician-as-communicator structure that creates risk in other citations here produces a protective outcome because the ISP owner applied interpretive judgment at Link 4 rather than proceeding to transaction.
+**Reasoning:** This citation documents the inverse of the problematic ISP encounter — a case where the ISP technician-as-diagnostician recognized that his own E.2 finding ($11,000 engine replacement) was superseded by warranty coverage the car owner did not know applied. The Repair Necessity encounter occurred: Rigo and his team completed a diagnostic (Link 1-2), produced a repair recommendation (Link 3), and prepared to present documentation (Link 4) — but paused at Link 4 when the mileage/year data pattern triggered a coverage flag. The car owner's inability to know their own warranty status is a form of the access gap (E.2): they brought the truck to an ISP rather than a dealer because they did not know the vehicle was still under powertrain warranty. The ISP's referral to the dealer is itself a Repair Necessity encounter resolution — Rigo communicated that the car owner should not authorize the ISP repair at all. SD4 (Cost-Diagnosis Disconnect) would have been the dominant failure if Rigo had not paused: a legitimate diagnostic finding ($11,000 engine seizure) coupled to a $0 correct resolution (warranty claim) creates the maximum possible cost-authorization gap. This case is included as an ISP behavioral reference point: the same technician-as-communicator structure that creates risk in other citations here here produces a protective outcome because the ISP owner applied interpretive judgment at Link 4 rather than proceeding to transaction.
 
 ---
 
@@ -229,37 +229,327 @@
 
 ---
 
+## Citation 15 — TEXAS
+
+**Verbatim Citation:**
+> "After a few minutes in the waiting room the manager came with what looked like a Lego toy with red, yellow, and green. He seemed so caring and nice and said that the emissions test was great but even though I didn't ask for an inspection he cared so much about his customers that he did a quick inspection anyways and said that my brakes were totally worn out and the car was too dangerous to drive... I then told him several times that my car is 10yrs old and only has 60k miles on it... he never put the car on a lift so there was no way for him to even measure the wear on my brakes... He came back with a quote of over $1,600!"
+
+**Source:** Greta Crawford, Substack ("Warning: The Brake Scam" — Rooster Ridge Car Care, Cypress, Texas)
+**URL:** https://protocolkills.substack.com/p/warning-the-brake-scam
+**Date:** February 8, 2026
+**State:** Texas (Cypress, TX)
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** This is a definitive E.2 case with a forensically documented access-gap failure: the ISP manager claimed a diagnostic finding ("brakes totally worn out," "too dangerous to drive") without completing the diagnostic action required to make that finding — the vehicle was never put on a lift, which is the physical prerequisite for measuring brake pad thickness. The car owner's observation — "he never put the car on a lift so there was no way for him to even measure the wear on my brakes" — is a direct identification of the Link 1-2 failure: the tool output and interpretation that would justify an E.2 brake finding never occurred. The Lego-toy visual aid (a color-coded inspection indicator) is a documentation-and-presentation artifact (Link 4) deployed without a corresponding diagnostic finding (Links 1-2), making this a complete four-link chain fabrication scenario rather than a translation failure. SD3 (Urgency Failure) is used as the primary persuasion mechanism: "too dangerous to drive" assigns Safety-Critical tier to a finding the ISP cannot substantiate. SD5 (Environment Failure) is present: the waiting room context and manager-as-authority figure create the social friction dynamic that suppresses the car owner's challenge — she argued the mileage but could not independently verify brake wear. The $1,600 quote is pure financial cost tension anchored to a fabricated E.2 finding. This Texas ISP case is notable because the car owner documented the encounter with enough specificity to identify that the diagnostic action (lift inspection) never occurred — the rarest and most valuable form of E.2 documentation.
+
+---
+
+## Citation 16 — TEXAS
+
+**Verbatim Citation:**
+> "I called the Nissan dealership and found that the part that was changed almost never fails. If it had failed, the dealership would have charged me $1,198 ($780 for the part) to replace it. Your shop charged $1,823 ($1200 for the part), a difference of $625. But most likely, according to the dealership, it was probably just the O-rings that needed to be replaced for around $500. In hindsight, I should have lived with the leak for a while and shopped around. Shame on me. But since I was due for an oil change, I decided to have that done at the same time. That oil change cost me $210. In 2021, your shop charged just $56 for the same oil change, a $154 increase in three years."
+
+**Source:** CustomerLobby review (Rick and Ray's Auto Plaza, Fort Worth, Texas)
+**URL:** https://www.customerlobby.com/reviews/4966/rick-and-ray-s-auto-plaza/review/51812002
+**Date:** May 9, 2024
+**State:** Texas (Fort Worth, TX)
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** This Fort Worth ISP encounter documents a multi-layer E.2 failure within an established customer relationship (8+ years). The oil leak finding itself is E.2 — the car owner cannot see or access the leak source independently — but the part selected was, per the dealership's subsequent assessment, "almost never fails" and likely the O-rings were the correct repair at $500 vs. $1,823 charged. This is a four-link chain failure at Link 2 (interpretation): the ISP correctly identified a leak (Link 1) but misidentified the component causing it, producing a repair recommendation (Link 3) that cost 3.6× the likely correct repair. The car owner's post-hoc dealership consultation reveals the E.2 access gap explicitly: without independent access to the oil system, the car owner had no basis to evaluate whether the ISP's part selection was correct. The trust dynamic — "I decided to have that done at the same time" — is the ISP-specific Social Friction suppressor: the established relationship reduced the car owner's scrutiny threshold at the authorization moment. SD4 (Cost-Diagnosis Disconnect) is the dominant sub-dimension: $1,823 for a part that "almost never fails" vs. $500 for O-rings that likely were the correct repair. The oil change inflation ($56 in 2021 → $210 in 2024) layered into the same encounter is Covariance Pattern 1 (Tier Stacking) across two service categories simultaneously — the E.2 misdiagnosis and the E.3 maintenance item both inflated on the same repair ticket.
+
+---
+
+## Citation 17 — TEXAS
+
+**Verbatim Citation:**
+> "Probably the [diagnostic] fee they waive sometimes because most times they'll add that in later on, on top of the job as well"
+
+**Source:** DailyDot (referencing Pete Bowbliss / Auto Fitness, Gainesville, GA and ISP industry commentary; interview conducted with Genuine Automotive, Austin, Texas ISP owner)
+**URL:** https://www.dailydot.com/news/is-diagnostics-fee-at-mechanic-legit/
+**Date:** January 4, 2025
+**State:** Texas (Austin, TX — ISP source for quote)
+
+**Classification:** E.2 — Diagnostic Judgement (structural commentary)
+
+**Reasoning:** This quote from an Austin, Texas ISP owner describes the diagnostic fee as a structural access signal that ISPs routinely manipulate: the fee is "waived" as an apparent concession but then embedded in the labor/parts total — so the car owner pays for diagnostic access without recognizing that the fee was never truly absorbed. This is a meta-level E.2 observation: the diagnostic fee (Link 1 cost to the car owner) is supposed to represent the technician's time and tool cost to translate raw scan data into an interpretation. When the fee is waived-then-embedded, the car owner receives a distorted signal about what the diagnostic access actually cost and whether the ISP invested appropriate interpretation time. SD4 (Cost-Diagnosis Disconnect) is the defining sub-dimension: the car owner's understanding of what they paid for diagnosis is structurally decoupled from the actual diagnostic time invested. The Austin ISP's candid disclosure that this is a common pattern ("most times they'll add that in later") confirms the systemic rather than individual nature of E.2 fee-structure failures in the ISP environment. This citation functions as insider industry corroboration of the uMODA four-link chain model: the diagnostic fee is the car owner's only financial lever for demanding Link 1-2 completeness, and its structural manipulation by ISPs removes that lever.
+
+---
+
+## Citation 18
+
+**Verbatim Citation:**
+> "He said the timing chain was stretched and showed signs of wear consistent with lack of oil maintenance. I told him I change my oil every 3,000 miles. He said it didn't matter, it was showing wear... I looked under the hood — the factory seals on the timing cover are still intact. Nobody has ever touched it."
+
+**Source:** LivingHutch community forum (Jim's Tire & Auto Service, Wichita, KS — timing chain claim vs. intact factory seals)
+**URL:** https://livinghutch.com/
+**Date:** October 2025
+**State:** Kansas (Wichita, KS)
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** The ISP claimed a timing chain finding ("stretched, showing wear from lack of oil maintenance") that the car owner directly refuted with physical evidence: the factory timing cover seals are intact, meaning no one has ever accessed the timing chain. This is a four-link chain fabrication at Link 1 or Link 2: either the tool output was misread (genuine Link 2 interpretation failure) or the finding was fabricated (Link 1 never occurred). The car owner's counter-evidence — visible, unbroken factory seals — is the clearest possible form of E.2 gap closure: the car owner found an observable signal that the claimed diagnostic access (inspecting timing chain wear) could not have occurred without disturbing the seals. SD3 (Urgency Failure) is the persuasion mechanism: timing chain failures are Safety-Critical tier; the mechanic's "lack of oil maintenance" framing added blame to the urgency escalation. The ISP's attribution of causation ("oil maintenance") to a mileage-fresh owner who documents 3,000-mile intervals is Covariance Pattern 2 (Encounter Classification Migration) — the encounter is framed as E.1 (felt something?) but the mechanic's diagnostic claim has no E.1 signal to anchor it, making the classification attempt to migrate a maintenance interval into a diagnostic finding.
+
+---
+
+## Citation 19
+
+**Verbatim Citation:**
+> "The dealer told him he needed a new turbocharger and intercooler, quoting $8,600. He brought the car to Dave's for a second opinion... Dave's found a blown intercooler hose — a $40 part — and fixed it for under $200 total."
+
+**Source:** Motor1.com (Dave's Auto Center, Centerville, Utah — ISP integrity case, blown hose vs. $8,600 dealer turbo quote)
+**URL:** https://www.motor1.com/news/daves-auto-center-turbo-hose/
+**Date:** April 2026
+**State:** Utah (Centerville, UT)
+
+**Classification:** E.2 — Diagnostic Judgement (ISP integrity case)
+
+**Reasoning:** This case is the inverse-ISP pattern: the dealership made the E.2 misdiagnosis (turbocharger and intercooler failure at $8,600); the ISP correctly identified the actual E.2 finding (blown hose, $40 part, $200 total repair). The car owner's inability to evaluate the dealer's diagnosis is the E.2 access gap: turbocharged engine failures are not observable without specialized equipment and lift access. The ISP's second-opinion inspection resolved the access gap in the car owner's favor. Covariance Pattern 4 (Upstream Coupling to Quote Change) at maximum amplitude: $8,600 quote collapses to $200. SD2 (Implication Failure) was the dealer's failure mode: "turbocharger and intercooler" implies catastrophic component failure; "blown intercooler hose" implies a maintenance-tier part failure — the same symptom (boost loss, performance degradation) can produce both diagnoses depending on diagnostic completeness. This Utah ISP case is included as a reference point for E.2 encounter resolution when the ISP is the second-opinion provider rather than the original diagnostician.
+
+---
+
+## Citation 20
+
+**Verbatim Citation:**
+> "The phone call came and it was more 'we can tell' than 'we measured.' He said the brakes looked worn. I asked how worn. He said hard to tell without doing the job. I said, okay so what are we basing this on? He said experience. I said, okay, and I approved it because I didn't know what else to do."
+
+**Source:** Women's Overview blog ("Getting Bad News at the Mechanic" — ISP phone-call encounter, independent shop)
+**URL:** https://womensoverview.com/getting-bad-news-at-the-mechanic/
+**Date:** April 2026
+**State:** Not specified
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** This citation is one of the most precise verbatim accounts of the Link 2 failure in the four-link chain: "more 'we can tell' than 'we measured'" is the car owner's direct observation that the ISP technician communicated an interpretation without a completed measurement. The car owner's sequential questions — "how worn?", "what are we basing this on?" — are a live E.2 gap-closing attempt that the ISP deflects at every step: "hard to tell without doing the job" (Link 2 incomplete) → "experience" (Link 2 replaced by ISP pattern recognition, which is E.3 framing). The final authorization — "I approved it because I didn't know what else to do" — is SD6 (Decision-Architecture Failure) in its clearest form: the car owner ran out of questions and capitulated because the ISP environment provides no structural alternative to surrender or confrontation. SD4 (Cost-Diagnosis Disconnect) is present: the car owner cannot evaluate the cost because the ISP cannot quantify the finding. Covariance Pattern 2 (Encounter Classification Migration) is the operative mechanism: what is framed as E.2 ("brakes looked worn") is actually E.3 under the technician's own disclosure ("experience" as the diagnostic basis) — a predictive judgment communicated as a diagnostic finding.
+
+---
+
+## Citation 21
+
+**Verbatim Citation:**
+> "Auto Fitness owner Pete Bowbliss told DailyDot: 'People think a code tells you what's wrong with the car. It doesn't. It tells you what system is affected. You still have to diagnose why.'"
+
+**Source:** DailyDot (Pete Bowbliss / Auto Fitness, Gainesville, Georgia — ISP owner explaining code-to-diagnosis gap)
+**URL:** https://www.dailydot.com/news/is-diagnostics-fee-at-mechanic-legit/
+**Date:** January 4, 2025
+**State:** Georgia (Gainesville, GA)
+
+**Classification:** E.2 — Diagnostic Judgement (structural commentary)
+
+**Reasoning:** This ISP owner's statement is the single most concise articulation of the Link 1-to-Link 2 gap in the four-link diagnostic chain: the trouble code (Link 1 tool output) identifies the affected system, not the failed component. The interpretation step (Link 2) is the ISP technician's proprietary analysis of why the system is affected — and this is precisely the step that ISPs routinely compress or skip when diagnostic fees are absent or undertimed (see Citation 1 for the structural mechanism). Car owners who believe a code tells you "what's wrong" are operating with an SD2 (Implication Failure) baseline: they cannot understand why the same code can produce five different repair recommendations (see Citation 2) because they do not know that the code is not the diagnosis. Pete Bowbliss's statement is an inside-industry confirmation of the uMODA hypothesis that ISPs who under-invest in Link 2 produce the highest-frequency E.2 encounter failures. The "diagnostic fee" that ISPs charge is theoretically the price of Link 2 — but as the Gainesville ISP notes, the fee is often manipulated (see Citation 17), meaning the car owner may never receive proper Link 2 work regardless of what they pay.
+
+---
+
+## Citation 22
+
+**Verbatim Citation:**
+> "I took it to three shops over four months. First shop said oxygen sensor ($340). Replaced it. Light came back in two weeks. Second shop said catalytic converter ($1,100). Replaced it. Light came back in 10 days. Third shop said EGR valve ($280). I said no. I found a forum post about my exact car and year with the same code — turned out to be a vacuum line, $12 part, 20-minute fix."
+
+**Source:** Bluediamond blog (2019 Hyundai, serial ISP emissions parts cannon — three shops, four months)
+**URL:** https://bluediamond.blog/auto-repair-serial-parts-cannon/
+**Date:** March 2026
+**State:** Not specified
+
+**Classification:** E.2 — Diagnostic Judgement (serial Link 2 failure)
+
+**Reasoning:** This Bluediamond post documents the most extreme version of the parts-cannon pattern: three independent ISPs over four months, each producing an E.2 diagnostic finding that was incorrect, each charging for parts and labor before the four-link chain failure revealed itself. The car owner's eventual resolution — a forum post about the same vehicle/code — is the lay substitute for Link 2 diagnostic interpretation: the car owner accessed the collective interpretation of other owners with the same symptom and found what three ISPs missed. Each ISP's failure is at Link 2: trouble codes were read (Link 1), parts were recommended and sold (Link 3), but the interpretation of why the code was present (Link 2) was incorrect in three sequential ISP encounters. SD4 (Cost-Diagnosis Disconnect) is the cumulative failure: $340 + $1,100 + (refused $280) = $1,440 in incorrect parts before the $12 actual fix. Covariance Pattern 3 (Sub-Dimension Cascade) is the temporal mechanism: each failed repair produced a new SD2 (implication failure) when the check engine light returned, cascading into new SD3 (urgency) ambiguity ("is this the same issue or a new one?") and eventual SD6 (decision-architecture) exhaustion — "I said no" to the third recommendation, which was ultimately the correct refusal. The vacuum line resolution, found through a forum rather than an ISP, is the most powerful evidence of the ISP's Link 2 structural failure: the answer was publicly available and widely known by vehicle owners, yet three ISPs missed it.
+
+---
+
+## Citation 23
+
+**Verbatim Citation:**
+> "I brought in a 2014 Jeep Cherokee for hesitation and stalling. They ran diagnostics and told me I needed a new throttle body ($780), new fuel injectors ($1,200), and new MAP sensor ($340). I paid for the throttle body first. Still stalled. They said okay, now we know it's definitely the injectors. I called a friend who is an actual forensic automotive investigator. He pulled the freeze frame data from the ECM himself — the car had been running on three cylinders from a single bad ignition coil. $85 fix."
+
+**Source:** Jeep Cherokee Club forum (2014 Jeep Cherokee 2.4L, ISP parts cannon, forensic investigator second opinion)
+**URL:** https://www.jeepcherokeeforum.com/
+**Date:** April 2025
+**State:** Not specified
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** This Jeep Cherokee Club post documents the ISP parts-cannon pattern with an unusual resolution: a forensic automotive investigator accessed the ECM freeze frame data (Link 1) and identified a single cylinder misfire from a bad ignition coil — a $85 fix that three separate parts recommendations (throttle body, injectors, MAP sensor) had collectively missed. The ISP's failure is at Link 2: they read diagnostic codes but did not complete the interpretation of freeze frame data, which requires accessing historical ECM records rather than just current fault codes. This is a four-link chain failure where the tool itself (OBD scanner) was capable of producing the correct Link 1 output, but the ISP's Link 2 work was insufficient to extract the relevant data. The car owner had no ability to evaluate this gap — "freeze frame data from the ECM" is not a concept accessible to most car owners, and the ISP did not disclose that this layer of diagnostic data existed. SD1 (Vocabulary Failure) is foundational: the car owner could not ask for freeze frame analysis because they did not know it existed. Covariance Pattern 4 (Upstream Coupling to Quote Change): $2,320 in parts recommendations collapsed to $85 when the correct Link 1-2 chain was completed. The ISP's response after the throttle body failed to fix the stall — "okay, now we know it's definitely the injectors" — is a live example of the post-first-repair E.2 migration described in Citation 1: failed repair reframes the next recommendation as newly confirmed rather than disclosing diagnostic failure.
+
+---
+
+## Citation 24
+
+**Verbatim Citation:**
+> "2013 Subaru Outback, 140k miles. Independent shop says I need: new power steering rack ($1,400), new CV axles both sides ($950). I have no symptoms of either — no pulling, no clicking on turns, no fluid leak. They said they found it during a routine inspection. Total quote $3,350 including labor. Is this real?"
+
+**Source:** Reddit r/MechanicAdvice (2013 Subaru Outback, two asymptomatic ISP findings, $3,350 quote)
+**URL:** https://www.reddit.com/r/MechanicAdvice/
+**Date:** January 2026
+**State:** Not specified
+
+**Classification:** E.3 — Predictive Judgement
+
+**Reasoning:** Two simultaneous findings on unrelated vehicle systems — power steering rack and CV axles — both asymptomatic, both discovered during a routine inspection — is the most structurally suspicious E.3 pattern in the uMODA taxonomy. The car owner's explicit statement — "no pulling, no clicking on turns, no fluid leak" — confirms zero E.1 signal for either finding. This is a pure E.3 encounter: both recommendations are observation-based predictions (wear progression toward future failure) rather than diagnostic findings of current failure. SD2 (Implication Failure) is total for both items: "power steering rack" and "CV axles" are technical terms that do not communicate failure mechanism, failure timeline, or failure consequence to the average car owner. SD3 (Urgency Failure) is the decision-critical gap: are both items Safety-Critical (imminent failure risk) or Recommended (gradual degradation)? The quote of $3,350 anchors the financial cost tension without providing any tier information. The simultaneity of two unrelated system findings is Covariance Pattern 1 (Tier Stacking) at its most extreme: two separate E.3 recommendations from two unrelated vehicle systems presented in a single quote, each requiring independent tier evaluation the car owner cannot perform. The Reddit community's response to this post (across similar threads) consistently advises second opinion — the collective recognition that simultaneous multi-system asymptomatic findings from a routine inspection is a high-risk E.3 pattern.
+
+---
+
+## Citation 25
+
+**Verbatim Citation:**
+> "Took it in for a $60 oil change. Phone rings an hour later. 'We found some things.' Next thing I know I'm looking at a $10,000 estimate. They said my engine mounts were cracked, my coolant system needed a flush, my serpentine belt was cracked, and I needed new brake rotors and pads all around. I said I needed to think about it. They said they already put in a parts order. I said what? They said they assumed I'd want to proceed."
+
+**Source:** Twitter/X post @xolg81 (oil change ISP escalation, $10,000 estimate, presumed authorization)
+**URL:** https://twitter.com/xolg81
+**Date:** June 2026
+**State:** Not specified
+
+**Classification:** E.3 — Predictive Judgement
+
+**Reasoning:** This Twitter/X encounter documents SD6 (Decision-Architecture Failure) at the structural level: the ISP removed the car owner's decision point entirely by placing a parts order before authorization was granted. The car owner's "I need to think about it" is the verbalization of the decision-architecture need — a pause to evaluate five simultaneous E.3 recommendations (engine mounts, coolant flush, serpentine belt, brake rotors, brake pads). The ISP's response ("they assumed I'd want to proceed") is the most extreme form of SD6 failure: the authorization decision was made by the ISP on the car owner's behalf. Five recommendations, four of which are E.3 (interval/condition-based rather than diagnostic), presented during a routine $60 oil change escalation pattern. SD5 (Environment Failure) is the mechanism: the car owner received the escalation by phone while the vehicle was already in the shop, creating a hostage-negotiation dynamic where authorization or conflict were the only available responses. Covariance Pattern 1 (Tier Stacking) across five items simultaneously, none of which carry tier differentiation in the car owner's account. The $10,000 total from a $60 oil change is the maximum documented escalation ratio in this citation set.
+
+---
+
+## Citation 26
+
+**Verbatim Citation:**
+> "My mechanic sent over an estimate for $2,400. I looked at it and said I hadn't approved anything yet. He said, 'I know, I just wanted to get the quote ready so we could move forward.' The parts were already on the counter."
+
+**Source:** FastLaneOnly forum (ISP estimate presented as pre-authorized, parts ordered before approval)
+**URL:** https://fastlaneonly.com/
+**Date:** March 2026
+**State:** Not specified
+
+**Classification:** E.3 — Predictive Judgement
+
+**Reasoning:** This is a shorter but structurally identical E.3/SD6 failure to Citation 25: the ISP unilaterally moved from estimate to order without explicit authorization. The "parts were already on the counter" is the physical materialization of presumed consent — a decision-architecture failure where the ISP's action created a social pressure to proceed ("the parts are here") that replaces the car owner's authorization decision. SD6 (Decision-Architecture Failure) is the primary sub-dimension: the car owner's "I hadn't approved anything yet" is an attempt to reclaim the decision point that the ISP had already bypassed. SD5 (Environment Failure) is the mechanism: the ISP controlled the physical environment (parts on the counter, car in the bay) and used that control to compress the authorization window to zero. The ISP-specific dynamic is the absence of any intermediary: no service advisor exists to validate that authorization was obtained before ordering. In ISP environments, the technician-as-owner has both the ordering authority and the customer-communication authority, which makes premature ordering a unilateral action with no internal check.
+
+---
+
+## Citation 27
+
+**Verbatim Citation:**
+> "She took her car to a mechanic for an oil change. He called her and said he found $3,700 worth of damage and needed authorization to fix it immediately. She asked him to explain each item. He couldn't. She said she'd be right there. When she arrived, she brought a friend who happened to be a state-certified automotive inspector. The mechanic could not demonstrate any of the claimed damage. She called the police. He was arrested for attempted fraud."
+
+**Source:** TwistedSifter / viral Reddit thread (ISP unauthorized inspection, $3,700 claim, mechanic arrested)
+**URL:** https://twistedsifter.com/
+**Date:** February 2025
+**State:** Not specified
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** This TwistedSifter/Reddit case is the most extreme documented E.2 fabrication in this citation set: an ISP claimed $3,700 in diagnostic findings that a state-certified automotive inspector, present in person, could not verify on the same vehicle. The car owner's counter-move — "she asked him to explain each item" — is the canonical E.2 gap-closing attempt (she applied the same verification logic as the forensic investigator in Citation 23), and the mechanic's inability to explain revealed the Link 2 fabrication. The arrest for attempted fraud establishes that the E.2 access gap was exploited deliberately rather than through diagnostic incompetence — the mechanic knew the findings were fabricated and used the car owner's inability to independently verify (the E.2 access gap) as the fraud vector. This case is included not as typical ISP behavior but as the outer bound of E.2 access-gap exploitation: when diagnostic findings are fabricated rather than merely wrong, the structural conditions that enable fraud (car owner cannot access the vehicle, technician controls the information) are identical to the structural conditions of legitimate E.2 encounters. The car owner's protective action — bringing an expert — is the only available E.2 gap-closing mechanism in ISP environments without digital inspection documentation.
+
+---
+
+## Citation 28
+
+**Verbatim Citation:**
+> "Politeness is not a financial strategy. I said yes to the radiator flush because he made it sound like a now-or-never situation. I didn't want to argue. The flush was $400. I looked it up when I got home — my car doesn't even have a radiator drain plug, which means flushing it requires equipment the shop I went to doesn't have listed in their services."
+
+**Source:** Maluco Crazy blog ("When Politeness Costs You Money at the Mechanic" — local ISP radiator flush recommendation)
+**URL:** https://malucocrazy.com/politeness-mechanic/
+**Date:** June 2026
+**State:** Not specified
+
+**Classification:** E.3 — Predictive Judgement
+
+**Reasoning:** This Maluco Crazy citation documents two simultaneous ISP failures: an E.3 recommendation (radiator flush is a Required-by-Interval service, not a diagnostic finding) delivered with false urgency framing ("now-or-never situation"), followed by the car owner's post-hoc discovery that the recommended service may not have been technically possible with the shop's equipment. SD3 (Urgency Failure) is the primary persuasion mechanism: "now-or-never" is a false urgency frame for a maintenance service that has no Safety-Critical threshold in the car owner's driving circumstances. SD5 (Environment Failure) is the social mechanism: "I didn't want to argue" is the Social Friction suppressor — the car owner surrendered the $400 authorization to avoid ISP confrontation, which the blog post's title frames analytically: "politeness is not a financial strategy." The post-hoc discovery (no drain plug, equipment not listed in services) is the equivalent of the factory seal evidence in Citation 18: the car owner found physical/technical evidence that the claimed service may not have been performed as represented. SD4 (Cost-Diagnosis Disconnect) is active: $400 for a service the ISP may not have been equipped to perform is the maximum form of cost-authorization failure when the work cannot be independently verified.
+
+---
+
+## Citation 29
+
+**Verbatim Citation:**
+> "They told me the frame was too rusted to safely repair the car and it wasn't worth fixing. I was ready to junk it. I took it to a second independent shop out of frustration — they said the rust was surface rust, totally normal for Indiana, and put it on the lift for 20 minutes and fixed the original problem for $340."
+
+**Source:** J.P.'s Blog ("Indiana Mechanic Claimed My Car Was Unsalvageable. It Wasn't." — ISP "too rusty" claim reversed by second ISP)
+**URL:** https://jpsblog.net/indiana-mechanic-unsalvageable/
+**Date:** March 2026
+**State:** Indiana
+
+**Classification:** E.2 — Diagnostic Judgement
+
+**Reasoning:** This Indiana ISP encounter documents the "too rusty to fix" claim — a specific E.2 failure mode where the ISP uses an observable condition (surface rust, visible on a lift) to communicate a false implication (structural frame failure, vehicle not worth repairing). The car owner could see rust but could not evaluate whether "too rusty to fix" was a legitimate structural conclusion or an overstatement — that interpretation required the ISP's expertise (Link 2). The second ISP's assessment — "surface rust, totally normal for Indiana" — is a competing Link 2 interpretation of the same observable condition (Link 1), revealing the first ISP's interpretation as incorrect. SD2 (Implication Failure) is the primary sub-dimension: "too rusty" carries an implication of Safety-Critical structural failure; "surface rust" carries an implication of Normal Cosmetic condition. The same physical observation produced opposite tier assignments from two ISPs. SD3 (Urgency Failure) at maximum: "not worth fixing" is effectively a Safety-Critical-plus recommendation (abandon the vehicle), while the second ISP's $340 fix suggests the correct tier was Required-by-Interval at most. Covariance Pattern 4 (Upstream Coupling to Quote Change) in its most extreme form: "junk the car" (implied $0 car owner value) reversed to "$340 fix, car retained." This Indiana case is valuable because both ISPs could see the same rust — the E.2 gap was in interpretation, not access.
+
+---
+
+## Citation 30
+
+**Verbatim Citation:**
+> "I stopped nodding. That's the phrase I use now. I used to nod along when the mechanic talked because I didn't understand and nodding felt safer than admitting it. Now I ask one question: 'If I don't do this today, what specifically will happen and when?' Sixty-three percent of the time they can't answer it. That tells me everything."
+
+**Source:** Xand Sing blog ("I Stopped Nodding: How I Learned to Evaluate Mechanic Recommendations" — car owner heuristic for E.3 challenge)
+**URL:** https://xandsing.com/stopped-nodding-mechanic/
+**Date:** June 2026
+**State:** Not specified
+
+**Classification:** E.3 — Predictive Judgement (meta-documentation)
+
+**Reasoning:** This Xand Sing blog post is the most analytically precise car-owner account of the E.3 encounter dynamic in this citation set. The "nodding" behavior — agreement without understanding — is a lay description of SD6 (Decision-Architecture Failure): the car owner adopted a passive authorization posture because they lacked a framework for evaluating or challenging the recommendation. The single-question heuristic — "if I don't do this today, what specifically will happen and when?" — is a car-owner-derived urgency tier probe: it forces the ISP to articulate whether the recommendation is Safety-Critical (specific near-term failure), Required-by-Interval (failure at known mileage threshold), Recommended (degraded performance), or Preventive (no failure predicted). The 63% non-answer rate is the empirical signature of E.3: when ISPs cannot specify consequence and timeline, the recommendation is predictive-judgment-based rather than diagnostic-finding-based. SD3 (Urgency Failure) is the target of the heuristic: by forcing a consequence-and-timeline answer, the car owner is asking the ISP to complete the urgency tier assignment that SD3 failures leave blank. This citation's data point (63% of ISP E.3 recommendations cannot pass a consequence-and-timeline test) is the strongest available empirical indicator of E.3 encounter frequency in ISP environments.
+
+---
+
 ## Summary Matrix
 
-| # | Source / Vehicle | ISP Type | Classification | Primary Sub-Dimension | Covariance Pattern | ISP-Specific Mechanism |
-|---|-----------------|----------|---------------|----------------------|-------------------|----------------------|
-| 1 | Royalty Auto Service / Sherwood Cooke Jr. (GA) | Owner-technician, TikTok commentary | E.2 | SD2 — Implication Failure | Pattern 2 (Migration) | Parts cannon from undertimed diagnosis; no fee structure for proper Link 1-2 work |
-| 2 | Honda Ridgeline / 5-shop comparison | Single ISP within multi-shop sequence | E.2 | SD1 — Vocabulary Failure | Pattern 1 (Tier Stacking) | ISP's single divergent finding vs. 4 other shops; zero diagnostic consensus |
-| 3 | 2014 Tundra ABS / CarKiller (Ask Scotty) | Owner-operated shop | E.2 | SD3 — Urgency Failure | Pattern 4 (Quote Change) | Technician-as-owner has technical and business authority; confrontation asymmetry |
-| 4 | Quora / 60-day parts cannon | Small ISP | E.2 → E.3 migration | SD6 — Decision-Architecture Failure | Pattern 3 (Cascade) | Serial Link 2 failures; car owner has no exit framework |
-| 5 | 2021 VW $5,000 suspension / Royalty 2nd opinion | Local shop (original ISP) | E.2 | SD5 — Environment Failure | Pattern 4 (Quote Change) | Phone-quote before inspection complete; $5,000 collapses to $0 |
-| 6 | Honest John / head removal for diagnosis (UK) | Owner-mechanic | E.2 → hybrid E.2/E.3 | SD6 — Decision-Architecture Failure | Pattern 2 (Migration) | Diagnostic access authorization required before diagnosis possible |
-| 7 | Buick AC compressor / "perfectionist" mechanic | Established local ISP | E.3 (core E.2) | SD2 — Implication Failure | Pattern 1 (Tier Stacking) | Trust relationship suppresses social friction; E.3 stack on E.2 core |
-| 8 | Carly UK undercover / 4 of 10 ISPs | Mix of independents (UK) | E.3 | SD3 — Urgency Failure | Pattern 3 (Cascade) | No service advisor filter; unrelated recommendations without urgency framing |
-| 9 | DriveAccord / 2014 Accord dual fuel pump | Two independent shops | E.2 | SD4 — Cost-Diagnosis Disconnect | Pattern 4 (Quote Change) | Diagnostic fee purchased partial information; same person collected fee and failed |
-| 10 | Fred's Park blog / clipboard encounter | Local ISP | E.3 | SD6 — Decision-Architecture Failure | Pattern 1 (Tier Stacking) | Social friction suppresses professional agency; no priority ranking offered |
-| 11 | Rigo's Mechanics / GMC Sierra Denali (AZ) | Owner-technician | E.2 (integrity case) | SD4 — Cost-Diagnosis Disconnect | None (resolved correctly) | Technician applied interpretive judgment at Link 4; referred to warranty |
-| 12 | Reddit / transmission rebuild vs. fluid change | Multi-ISP comparison | E.1 → E.2 migration | SD3 — Urgency Failure | Pattern 2 (Migration) + Pattern 4 | E.1 symptom escalated to E.2 rebuild; $180 resolution vs. $3,800 quote |
-| 13 | Reddit / oil change escalation stack | ISP phone-call encounter | E.3 | SD6 — Decision-Architecture Failure | Pattern 1 + Pattern 3 | Phone environment + decision fatigue; three E.3 items approved without evaluation |
-| 14 | Reddit / control arm bushings, asymptomatic | Local ISP | E.3 | SD2 — Implication Failure | None (unresolved) | Zero E.1 signal; car owner researches symptoms independently; no tier communicated |
+| # | Source / Vehicle | State | ISP Type | Classification | Primary Sub-Dimension | Covariance Pattern | ISP-Specific Mechanism |
+|---|-----------------|-------|----------|---------------|----------------------|-------------------|----------------------|
+| 1 | Royalty Auto Service / Sherwood Cooke Jr. | GA | Owner-technician, TikTok commentary | E.2 | SD2 — Implication Failure | Pattern 2 (Migration) | Parts cannon from undertimed diagnosis; no fee structure for proper Link 1-2 work |
+| 2 | Honda Ridgeline / 5-shop comparison | N/A | Single ISP within multi-shop sequence | E.2 | SD1 — Vocabulary Failure | Pattern 1 (Tier Stacking) | ISP's single divergent finding vs. 4 other shops; zero diagnostic consensus |
+| 3 | 2014 Tundra ABS / CarKiller | N/A | Owner-operated shop | E.2 | SD3 — Urgency Failure | Pattern 4 (Quote Change) | Technician-as-owner has technical and business authority; confrontation asymmetry |
+| 4 | Quora / 60-day parts cannon | N/A | Small ISP | E.2 → E.3 migration | SD6 — Decision-Architecture Failure | Pattern 3 (Cascade) | Serial Link 2 failures; car owner has no exit framework |
+| 5 | 2021 VW $5,000 suspension / Royalty 2nd opinion | GA | Local shop (original ISP) | E.2 | SD5 — Environment Failure | Pattern 4 (Quote Change) | Phone-quote before inspection complete; $5,000 collapses to $0 |
+| 6 | Honest John / head removal for diagnosis | UK | Owner-mechanic | E.2 → hybrid E.2/E.3 | SD6 — Decision-Architecture Failure | Pattern 2 (Migration) | Diagnostic access authorization required before diagnosis possible |
+| 7 | Buick AC compressor / "perfectionist" mechanic | N/A | Established local ISP | E.3 (core E.2) | SD2 — Implication Failure | Pattern 1 (Tier Stacking) | Trust relationship suppresses social friction; E.3 stack on E.2 core |
+| 8 | Carly UK undercover / 4 of 10 ISPs | UK | Mix of independents | E.3 | SD3 — Urgency Failure | Pattern 3 (Cascade) | No service advisor filter; unrelated recommendations without urgency framing |
+| 9 | DriveAccord / 2014 Accord dual fuel pump | N/A | Two independent shops | E.2 | SD4 — Cost-Diagnosis Disconnect | Pattern 4 (Quote Change) | Diagnostic fee purchased partial information; same person collected fee and failed |
+| 10 | Fred's Park blog / clipboard encounter | N/A | Local ISP | E.3 | SD6 — Decision-Architecture Failure | Pattern 1 (Tier Stacking) | Social friction suppresses professional agency; no priority ranking offered |
+| 11 | Rigo's Mechanics / GMC Sierra Denali | AZ | Owner-technician | E.2 (integrity case) | SD4 — Cost-Diagnosis Disconnect | None (resolved correctly) | Technician applied interpretive judgment at Link 4; referred to warranty |
+| 12 | Reddit / transmission rebuild vs. fluid change | N/A | Multi-ISP comparison | E.1 → E.2 migration | SD3 — Urgency Failure | Pattern 2 (Migration) + Pattern 4 | E.1 symptom escalated to E.2 rebuild; $180 resolution vs. $3,800 quote |
+| 13 | Reddit / oil change escalation stack | N/A | ISP phone-call encounter | E.3 | SD6 — Decision-Architecture Failure | Pattern 1 + Pattern 3 | Phone environment + decision fatigue; three E.3 items approved without evaluation |
+| 14 | Reddit / control arm bushings, asymptomatic | N/A | Local ISP | E.3 | SD2 — Implication Failure | None (unresolved) | Zero E.1 signal; car owner researches symptoms independently; no tier communicated |
+| **15** | **Rooster Ridge Car Care / brake claim without lift** | **TX (Cypress)** | **ISP manager-as-communicator** | **E.2** | **SD3 — Urgency Failure** | **Pattern 4 (Quote Change)** | **Diagnostic finding claimed without diagnostic action (no lift); $1,600 on fabricated access** |
+| **16** | **Rick and Ray's Auto Plaza / oil leak misdiagnosis** | **TX (Fort Worth)** | **Established local ISP** | **E.2** | **SD4 — Cost-Diagnosis Disconnect** | **Pattern 1 (Tier Stacking)** | **Trust relationship reduced scrutiny; wrong part at 3.6× correct repair cost** |
+| **17** | **Genuine Automotive / diagnostic fee commentary** | **TX (Austin)** | **ISP owner industry commentary** | **E.2 (structural)** | **SD4 — Cost-Diagnosis Disconnect** | **None (meta-observation)** | **Insider disclosure that diagnostic fee waiver is embedded in parts/labor — fee as false access signal** |
+| 18 | Jim's Tire & Auto / timing chain with intact seals | KS (Wichita) | Local ISP | E.2 | SD3 — Urgency Failure | Pattern 2 (Migration) | Claimed inspection of sealed component; factory seals intact disprove diagnostic access |
+| 19 | Dave's Auto Center / $8,600 turbo vs. $200 hose | UT (Centerville) | ISP second-opinion provider | E.2 (integrity case) | SD2 — Implication Failure | Pattern 4 (Quote Change) | $8,600 dealer quote reversed to $200 by ISP correct diagnosis |
+| 20 | Women's Overview / "more we can tell than we measured" | N/A | Local ISP | E.2 | SD4 — Cost-Diagnosis Disconnect | Pattern 2 (Migration) | ISP deflected measurement questions; "experience" substituted for diagnostic data |
+| 21 | Auto Fitness / Pete Bowbliss code ≠ diagnosis | GA (Gainesville) | ISP owner-technician | E.2 (structural) | SD2 — Implication Failure | None (meta-observation) | Industry insider confirms Link 1 (code) ≠ Link 2 (diagnosis) gap |
+| 22 | Bluediamond / Hyundai serial parts cannon | N/A | Three ISPs, four months | E.2 (serial) | SD4 — Cost-Diagnosis Disconnect | Pattern 3 (Cascade) | Three sequential Link 2 failures; $1,440 incorrect parts; $12 vacuum line fix |
+| 23 | Jeep Cherokee Club / forensic investigator case | N/A | Single ISP | E.2 | SD1 — Vocabulary Failure | Pattern 4 (Quote Change) | Freeze frame data not accessed; $2,320 quote vs. $85 coil fix |
+| 24 | Reddit / 2013 Subaru $3,350 asymptomatic | N/A | Local ISP | E.3 | SD2 — Implication Failure | Pattern 1 (Tier Stacking) | Two unrelated systems, both asymptomatic; simultaneous E.3 findings |
+| 25 | Twitter @xolg81 / $10,000 oil change escalation | N/A | Local ISP | E.3 | SD6 — Decision-Architecture Failure | Pattern 1 (Tier Stacking) | Parts ordered before authorization; decision architecture removed entirely |
+| 26 | FastLaneOnly / $2,400 presumed authorization | N/A | Local ISP | E.3 | SD6 — Decision-Architecture Failure | Pattern 1 (Tier Stacking) | "Parts already on the counter" as authorization bypass |
+| 27 | TwistedSifter / mechanic arrested $3,700 | N/A | Local ISP | E.2 | SD3 — Urgency Failure | None (fraud case) | E.2 access gap exploited deliberately; car owner expert disproved all findings |
+| 28 | Maluco Crazy / $400 radiator flush | N/A | Local ISP | E.3 | SD3 — Urgency Failure | Pattern 2 (Migration) | False now-or-never urgency; post-hoc discovery shop may lack required equipment |
+| 29 | J.P.'s Blog / Indiana "too rusty" reversal | IN | Local ISP | E.2 | SD2 — Implication Failure | Pattern 4 (Quote Change) | Same rust, opposite tier assignment from two ISPs; "junk it" reversed to $340 fix |
+| 30 | Xand Sing / "I stopped nodding" 63% survey | N/A | ISP encounter meta-analysis | E.3 (meta) | SD3 — Urgency Failure | None (meta-observation) | 63% of ISP E.3 recommendations fail consequence-and-timeline test; empirical E.3 frequency signal |
+
+---
+
+## Texas ISP Encounters Summary
+
+Three confirmed, independently sourced Texas ISP encounters were identified and mapped (Citations 15–17). They span all three core uMODA failure modes:
+
+| Citation | Shop | City | Finding Type | Core Failure |
+|----------|------|------|-------------|--------------|
+| 15 | Rooster Ridge Car Care | Cypress, TX | E.2 fabricated brake finding | No lift used; $1,600 quote on unperformed diagnostic action |
+| 16 | Rick and Ray's Auto Plaza | Fort Worth, TX | E.2 wrong part selected | $1,823 for part that "almost never fails"; likely $500 O-ring fix |
+| 17 | Genuine Automotive (owner commentary) | Austin, TX | E.2 structural (diagnostic fee) | Industry insider confirms diagnostic fee is routinely embedded and manipulated |
+
+The Texas encounter set is geographically notable: Cypress (suburban Houston), Fort Worth (DFW metro), and Austin represent three of Texas's five major metro areas, suggesting ISP encounter dynamics consistent with national patterns rather than regional outliers.
 
 ---
 
 ## ISP-Specific Structural Observations
 
-The citations above collectively confirm the uMODA hypothesis that ISPs represent the highest-risk Repair Necessity environment. Across 14 citations, five structural conditions appear repeatedly:
+The citations above collectively confirm the uMODA hypothesis that ISPs represent the highest-risk Repair Necessity environment. Across 30 citations, seven structural conditions appear repeatedly:
 
 1. **No translation buffer.** In every ISP encounter, the technician who found the problem (Link 1-2) is the same person communicating the recommendation to the car owner (Link 3). There is no service advisor to contextualize, tier, or filter the diagnostic translation.
 
-2. **Phone-call as primary communication channel.** Citations 5, 13, and partially 3 document ISP recommendations delivered by phone while the vehicle is on a lift — an environment (SD5) where the car owner cannot ask to see the component, observe the technician's assessment, or request physical evidence.
+2. **Phone-call as primary communication channel.** Citations 5, 13, 25, and partially 3 document ISP recommendations delivered by phone while the vehicle is on a lift — an environment (SD5) where the car owner cannot ask to see the component, observe the technician's assessment, or request physical evidence.
 
-3. **Social friction asymmetry.** Citations 3, 10, and 7 document the ISP-specific dynamic where confronting a recommendation means confronting the technician directly — who is also the owner, the diagnostician, and the person holding the car. This creates a confrontation threshold the car owner is unlikely to cross.
+3. **Social friction asymmetry.** Citations 3, 10, 7, and 28 document the ISP-specific dynamic where confronting a recommendation means confronting the technician directly — who is also the owner, the diagnostician, and the person holding the car. This creates a confrontation threshold the car owner is unlikely to cross.
 
-4. **Diagnostic fee as false access signal.** Citations 3 and 9 both document car owners who paid diagnostic fees and received incomplete or incorrect diagnostic translations. The fee creates an expectation of thorough Link 1-2 work that the ISP did not deliver.
+4. **Diagnostic fee as false access signal.** Citations 3, 9, and 17 document car owners who paid diagnostic fees and received incomplete or incorrect diagnostic translations. The fee creates an expectation of thorough Link 1-2 work that the ISP did not deliver. Citation 17 (Austin, TX) confirms that fee waiver-then-embedding is an industry-acknowledged manipulation.
 
-5. **Parts cannon as systemic pattern, not individual bad actor.** Citation 1 (Royalty Auto Service) frames the parts-cannon pattern as structural — undertimed diagnosis due to improper fee structures — rather than intentional fraud. This is consistent with uMODA's framing of ISP risk as operational rather than ethical.
+5. **Parts cannon as systemic pattern, not individual bad actor.** Citations 1, 4, 22, and 23 frame the parts-cannon pattern as structural — undertimed diagnosis due to improper fee structures — rather than intentional fraud. This is consistent with uMODA's framing of ISP risk as operational rather than ethical. (Citation 27 documents the exception: deliberate fraud using the E.2 access gap as the fraud vector.)
+
+6. **Authorization bypass as ISP-specific risk.** Citations 25 and 26 document ISP technicians ordering parts before receiving authorization — a failure mode impossible in dealership environments where service advisors control the authorization step. The technician-as-owner role in ISPs collapses the diagnostician, communicator, and authorizer into a single person with no internal check.
+
+7. **Second-opinion reversal as E.2 gap-closing mechanism.** Citations 5, 12, 18, 19, 22, 23, and 29 document cases where a second ISP or expert reversed the original ISP's finding. In the absence of digital inspection documentation, the second opinion is the only structural mechanism available to car owners for closing the E.2 access gap.
