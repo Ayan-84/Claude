@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Complete Investment Landscape</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#09090f;
+  --surface:#111118;
+  --card:#15151e;
+  --card-hover:#1c1c2a;
+  --border:#21212e;
+  --border-hover:#32324a;
+  --text:#e2e2ed;
+  --muted:#66668a;
+  --accent:#4f6ef7;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(9,9,15,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 2rem;gap:.25rem;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-weight:700;font-size:.88rem;color:var(--text);white-space:nowrap;margin-right:1.5rem;flex-shrink:0;letter-spacing:-.01em}
+.nav-inner a{text-decoration:none;color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:20px;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.nav-inner a:hover{color:var(--text);background:var(--surface)}
+
+/* FILTER BAR */
+.filter-bar{position:sticky;top:52px;z-index:99;background:rgba(9,9,15,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.filter-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;height:44px;padding:0 2rem;gap:.4rem;overflow-x:auto;scrollbar-width:none}
+.filter-inner::-webkit-scrollbar{display:none}
+.filter-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-right:.5rem;white-space:nowrap;flex-shrink:0}
+.filter-btn{font-size:.73rem;font-weight:600;padding:.3rem .8rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.filter-btn:hover{color:var(--text);border-color:var(--border-hover)}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+#stage-tooltip{position:fixed;z-index:9999;background:#1e1e2e;color:#c9c9e0;font-size:.68rem;font-weight:400;line-height:1.5;width:220px;padding:.6rem .8rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 28px rgba(0,0,0,.6);pointer-events:none;opacity:0;transition:opacity .18s ease;text-align:left}
+#stage-tooltip.visible{opacity:1}
+
+/* HERO */
+.hero{max-width:1440px;margin:0 auto;padding:5.5rem 2rem 4rem}
+.eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:1.25rem;font-weight:600}
+.hero h1{font-size:clamp(2.5rem,4.5vw,4.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:1.5rem;background:linear-gradient(135deg,#e2e2ed 20%,#555570 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:720px;margin-bottom:3rem;line-height:1.75}
+.stats-row{display:flex;flex-wrap:wrap;gap:3.5rem}
+.stat-num{font-size:3rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.stat-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-top:.3rem}
+
+/* CRITERIA REF */
+.criteria-ref{max-width:1440px;margin:0 auto;padding:0 2rem 2.5rem}
+.criteria-ref-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.9rem}
+.criteria-grid{display:flex;flex-wrap:wrap;gap:.45rem}
+.c-chip{font-size:.67rem;font-weight:600;padding:.22rem .6rem;border-radius:20px;display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
+.c-num{font-weight:800}
+.c-lbl{opacity:.75}
+
+/* TAG LEGEND */
+.tag-legend{max-width:1440px;margin:0 auto;padding:0 2rem 3.5rem}
+.legend-grid{display:flex;flex-wrap:wrap;gap:.55rem}
+.legend-item{display:flex;align-items:center;gap:.45rem;font-size:.73rem;color:var(--muted)}
+.legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* CONTAINER */
+.container{max-width:1440px;margin:0 auto;padding:0 2rem 8rem}
+
+/* SECTION */
+.section{margin-bottom:6rem}
+.section.hidden{display:none}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+.section-tag{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .85rem;border-radius:20px;flex-shrink:0;white-space:nowrap}
+.section-title{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+.section-desc{font-size:.8rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+.section-count{margin-left:auto;font-size:.76rem;color:var(--muted);white-space:nowrap}
+
+/* FIRM GRID */
+.firm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:1.2rem}
+
+/* FIRM CARD */
+.firm-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.65rem;display:flex;flex-direction:column;gap:.9rem;transition:border-color .2s,transform .2s}
+.firm-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.firm-card.hidden{display:none}
+.firm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.firm-name{font-size:1.08rem;font-weight:700;line-height:1.25}
+.firm-name a{color:var(--text);text-decoration:none}
+.firm-name a:hover{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--muted)}
+.firm-sub{font-size:.76rem;color:var(--muted);margin-top:.18rem;font-style:italic}
+.firm-stage-pill{font-size:.68rem;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.28rem .65rem;border-radius:20px;white-space:normal;flex-shrink:0;line-height:1.45;text-align:right;max-width:200px}
+.firm-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;padding:.45rem .75rem;background:rgba(79,110,247,.08);border-radius:8px;border-left:3px solid var(--accent)}
+.meta-pair{display:flex;align-items:center;gap:.38rem}
+.meta-k{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.meta-v{font-size:.76rem;color:var(--text);font-weight:500}
+.firm-thesis{font-size:.83rem;color:var(--muted);line-height:1.65}
+.firm-why{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.firm-why li{font-size:.8rem;color:var(--text);line-height:1.5;padding-left:1.1rem;position:relative}
+.firm-why li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:.74rem;top:.05rem}
+.firm-why li strong{font-weight:600}
+.firm-badges{display:flex;flex-wrap:wrap;gap:.28rem;padding-top:.7rem;border-top:1px solid var(--border);margin-top:auto}
+.badge{font-size:.63rem;font-weight:700;letter-spacing:.04em;padding:.18rem .52rem;border-radius:20px;text-transform:uppercase}
+.badge-off{background:var(--surface);color:#2a2a3a;border:1px solid var(--border)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.76rem;color:var(--muted)}
+
+@media(max-width:820px){
+  .hero{padding:3rem 1.5rem 2.5rem}
+  .container{padding:0 1.5rem 4rem}
+  .firm-grid{grid-template-columns:1fr}
+  .stats-row{gap:2rem}
+  .section-count{display:none}
+  .firm-stage-pill{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">The Complete Investment Landscape</span>
+    <a href="#tier1">VC Tier 1</a>
+    <a href="#ai-infra">AI Infrastructure</a>
+    <a href="#genai">GenAI/Agentic</a>
+    <a href="#impact">Social Impact AI</a>
+    <a href="#diverse">Diverse Builders</a>
+    <a href="#tier2">Partial Alignment</a>
+    <a href="#founderfirst">Founder-First</a>
+    <a href="#infra">Institutional Infra</a>
+    <a href="#established">Established VC</a>
+    <a href="#houston">Houston</a>
+    <a href="#corporate">Corporate</a>
+    <a href="#named3">Named Three</a>
+    <a href="#athletes">Athletes</a>
+    <a href="#entertainment">Entertainment</a>
+    <a href="#aiwave">AI Angel Wave</a>
+    <a href="#superangels">Tech Angels</a>
+    <a href="#networks">Networks</a>
+    <a href="#regional">Geographic</a>
+    <a href="#institutional">Institutional</a>
+  </div>
+</nav>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Stage:</span>
+    <button class="filter-btn active" data-filter="all" data-tooltip="View all 100 firms across every investment stage — from angel checks to growth equity.">All</button>
+    <button class="filter-btn" data-filter="angel" data-tooltip="Pre-institutional capital. Individual investors writing $25K–$250K checks on founder vision before a product exists. Relationship and conviction-driven.">Angel</button>
+    <button class="filter-btn" data-filter="pre-seed" data-tooltip="First institutional money in. Typically $250K–$2M to validate a concept, hire founding engineers, and prove the core thesis before product-market fit.">Pre-Seed</button>
+    <button class="filter-btn" data-filter="seed" data-tooltip="Building the machine. Typically $500K–$5M to grow the team, ship a product, and find initial traction. The most active stage for these firms.">Seed</button>
+    <button class="filter-btn" data-filter="series-a" data-tooltip="Scaling what works. Typically $5M–$25M once unit economics are proven and product-market fit is clear. Investors bet on the go-to-market engine.">Series A</button>
+    <button class="filter-btn" data-filter="series-b" data-tooltip="Growth acceleration. $25M+ to expand into new markets, scale revenue, and build the infrastructure for a potential exit or IPO.">Series B+</button>
+    <button class="filter-btn" data-filter="impact" data-tooltip="Non-dilutive or mission-first capital. Grants, program funding, and impact-aligned checks where social or cultural return is part of the investment thesis.">Impact/Grants</button>
+  </div>
+</div>
+
+<div class="hero">
+  <p class="eyebrow">Complete Landscape Survey &nbsp;·&nbsp; June 2026</p>
+  <h1>The Complete Investment<br>Landscape</h1>
+  <p class="hero-sub">A unified survey of 100 investment vehicles across VC alignment tiers, founder-first funds, corporate vehicles, Houston's ecosystem, cultural capital, and institutional individuals — evaluated across 9 thesis dimensions with stage-level filtering.</p>
+  <div class="stats-row">
+    <div><div class="stat-num">100</div><div class="stat-label">Vehicles Profiled</div></div>
+    <div><div class="stat-num">19</div><div class="stat-label">Sections</div></div>
+    <div><div class="stat-num">9</div><div class="stat-label">Thesis Dimensions</div></div>
+  </div>
+</div>
+
+<div class="criteria-ref">
+  <div class="criteria-ref-title">VC Alignment Criteria Reference &nbsp;·&nbsp; C1–C9</div>
+  <div class="criteria-grid" id="criteria-render"></div>
+</div>
+
+<div class="tag-legend">
+  <div class="legend-grid" id="legend-render"></div>
+</div>
+
+<div class="container">
+
+<section class="section" id="tier1">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1e3a5f;color:#3b82f6">VC Alignment</span>
+    <div>
+      <div class="section-title">VC Alignment: Tier 1</div>
+      <div class="section-desc">High-alignment firms — 5+ criteria matched across infrastructure layer, founder expertise, inclusion, multi-stakeholder architecture, and AI capability.</div>
+    </div>
+    <span class="section-count">11 firms</span>
+  </div>
+  <div class="firm-grid" id="tier1-grid"></div>
+</section>
+
+<section class="section" id="ai-infra">
+  <div class="section-header">
+    <span class="section-tag" style="background:#0d3540;color:#06b6d4">AI Infra</span>
+    <div>
+      <div class="section-title">AI Infrastructure Specialists</div>
+      <div class="section-desc">Funds organized entirely around the AI evaluation, measurement, and production infrastructure layer — not applications, the foundation they depend on.</div>
+    </div>
+    <span class="section-count">5 firms</span>
+  </div>
+  <div class="firm-grid" id="ai-infra-grid"></div>
+</section>
+
+<section class="section" id="genai">
+  <div class="section-header">
+    <span class="section-tag" style="background:#2d1f5e;color:#8b5cf6">GenAI</span>
+    <div>
+      <div class="section-title">Generative AI &amp; Agentic</div>
+      <div class="section-desc">Funds with primary conviction in generative AI models, agentic systems, and the autonomous AI infrastructure layer.</div>
+    </div>
+    <span class="section-count">4 firms</span>
+  </div>
+  <div class="firm-grid" id="genai-grid"></div>
+</section>
+
+<section class="section" id="impact">
+  <div class="section-header">
+    <span class="section-tag" style="background:#451a00;color:#f59e0b">Impact AI</span>
+    <div>
+      <div class="section-title">Social Impact AI</div>
+      <div class="section-desc">Funds explicitly directing AI investment toward equity outcomes, social good, and underserved community applications — active conviction, not responsible AI marketing.</div>
+    </div>
+    <span class="section-count">3 firms</span>
+  </div>
+  <div class="firm-grid" id="impact-grid"></div>
+</section>
+
+<section class="section" id="diverse">
+  <div class="section-header">
+    <span class="section-tag" style="background:#052e16;color:#22c55e">Diverse</span>
+    <div>
+      <div class="section-title">Diverse Founding Teams</div>
+      <div class="section-desc">Funds with explicit mandate for underrepresented founders — quantified commitments, reserved capital, and proximity as the sourcing thesis.</div>
+    </div>
+    <span class="section-count">4 firms</span>
+  </div>
+  <div class="firm-grid" id="diverse-grid"></div>
+</section>
+
+<section class="section" id="tier2">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1e2530;color:#94a3b8">Partial</span>
+    <div>
+      <div class="section-title">Partial Alignment VC</div>
+      <div class="section-desc">2–4 criteria matched — strong on infrastructure or AI capability but without the full thesis intersection of inclusion, multi-stakeholder design, and social impact mandate.</div>
+    </div>
+    <span class="section-count">7 firms</span>
+  </div>
+  <div class="firm-grid" id="tier2-grid"></div>
+</section>
+
+<section class="section" id="founderfirst">
+  <div class="section-header">
+    <span class="section-tag" style="background:#0a2a2a;color:#14b8a6">Founder-First</span>
+    <div>
+      <div class="section-title">Non-Obvious Founder Funds</div>
+      <div class="section-desc">Funds whose entire thesis is the founder gap — backing non-obvious, underrepresented, and first-check founders before conventional VC will engage.</div>
+    </div>
+    <span class="section-count">12 funds</span>
+  </div>
+  <div class="firm-grid" id="founderfirst-grid"></div>
+</section>
+
+<section class="section" id="infra">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a1a30;color:#818cf8">Institutional</span>
+    <div>
+      <div class="section-title">Institutional Infrastructure</div>
+      <div class="section-desc">Formal vehicles that bridge institutional capital — Silicon Valley funds, corporate banks, and fund-of-funds — to culturally aligned and underrepresented founders.</div>
+    </div>
+    <span class="section-count">4 vehicles</span>
+  </div>
+  <div class="firm-grid" id="infra-grid"></div>
+</section>
+
+<section class="section" id="established">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a1228;color:#a78bfa">Established</span>
+    <div>
+      <div class="section-title">Established VC Landscape</div>
+      <div class="section-desc">Major institutional VC funds with broad mandates, multi-stage capacity, and established track records — the layer that co-invests alongside and follows the thesis categories above.</div>
+    </div>
+    <span class="section-count">7 firms</span>
+  </div>
+  <div class="firm-grid" id="established-grid"></div>
+</section>
+
+<section class="section" id="houston">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a2510;color:#84cc16">Houston</span>
+    <div>
+      <div class="section-title">Houston Ecosystem</div>
+      <div class="section-desc">Houston's venture ecosystem is anchored by the world's largest medical complex, NASA, and the global energy capital — producing a distinct cluster of funds backing AI, health, energy transition, and underrepresented founders.</div>
+    </div>
+    <span class="section-count">6 vehicles</span>
+  </div>
+  <div class="firm-grid" id="houston-grid"></div>
+</section>
+
+<section class="section" id="corporate">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a2510;color:#84cc16">Corporate</span>
+    <div>
+      <div class="section-title">Corporate Diversity Vehicles</div>
+      <div class="section-desc">Major institutions that created carve-out funds specifically for underrepresented founders. Scale is real; proportion of total AUM tells the fuller story.</div>
+    </div>
+    <span class="section-count">3 vehicles</span>
+  </div>
+  <div class="firm-grid" id="corporate-grid"></div>
+</section>
+
+<section class="section" id="named3">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1e3a5f;color:#3b82f6">Named</span>
+    <div>
+      <div class="section-title">The Named Three</div>
+      <div class="section-desc">Formal investment funds named after the communities their founders came from. The name is the thesis.</div>
+    </div>
+    <span class="section-count">3 funds</span>
+  </div>
+  <div class="firm-grid" id="named3-grid"></div>
+</section>
+
+<section class="section" id="athletes">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1e2a3f;color:#6366f1">Athletes</span>
+    <div>
+      <div class="section-title">Athlete Investment Vehicles</div>
+      <div class="section-desc">Athletes who converted cultural capital into structured investment operations — from formal funds to ownership platforms.</div>
+    </div>
+    <span class="section-count">6 vehicles</span>
+  </div>
+  <div class="firm-grid" id="athletes-grid"></div>
+</section>
+
+<section class="section" id="entertainment">
+  <div class="section-header">
+    <span class="section-tag" style="background:#2d1a3f;color:#ec4899">Entertainment</span>
+    <div>
+      <div class="section-title">Entertainment &amp; Cultural Ownership</div>
+      <div class="section-desc">Entertainers building owned infrastructure — studios, media platforms, brand equity — rather than deploying capital into others' companies.</div>
+    </div>
+    <span class="section-count">8 vehicles</span>
+  </div>
+  <div class="firm-grid" id="entertainment-grid"></div>
+</section>
+
+<section class="section" id="aiwave">
+  <div class="section-header">
+    <span class="section-tag" style="background:#0d2a40;color:#06b6d4">AI Wave</span>
+    <div>
+      <div class="section-title">The Celebrity AI Angel Wave</div>
+      <div class="section-desc">Cultural figures investing directly in AI infrastructure — specifically AI voice technology with direct implications for creator ownership and compensation.</div>
+    </div>
+    <span class="section-count">3 positions</span>
+  </div>
+  <div class="firm-grid" id="aiwave-grid"></div>
+</section>
+
+<section class="section" id="superangels">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a2820;color:#22c55e">Tech Angels</span>
+    <div>
+      <div class="section-title">Tech Super Angels</div>
+      <div class="section-desc">Individual angels whose conviction shaped the AI ecosystem — researchers, founders, and operators who backed AI infrastructure before market consensus.</div>
+    </div>
+    <span class="section-count">6 individuals</span>
+  </div>
+  <div class="firm-grid" id="superangels-grid"></div>
+</section>
+
+<section class="section" id="networks">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a1a28;color:#a855f7">Networks</span>
+    <div>
+      <div class="section-title">Angel Networks</div>
+      <div class="section-desc">Organized collectives that expand access to capital networks for founders and investors traditionally locked out of them.</div>
+    </div>
+    <span class="section-count">2 networks</span>
+  </div>
+  <div class="firm-grid" id="networks-grid"></div>
+</section>
+
+<section class="section" id="regional">
+  <div class="section-header">
+    <span class="section-tag" style="background:#1a2515;color:#a3e635">Geographic</span>
+    <div>
+      <div class="section-title">Geographic Outliers</div>
+      <div class="section-desc">Funds that explicitly built their thesis around the capital imbalance outside Silicon Valley and New York — and proved the thesis with institutional-quality returns.</div>
+    </div>
+    <span class="section-count">2 vehicles</span>
+  </div>
+  <div class="firm-grid" id="regional-grid"></div>
+</section>
+
+<section class="section" id="institutional">
+  <div class="section-header">
+    <span class="section-tag" style="background:#2a1a10;color:#f97316">Institutional</span>
+    <div>
+      <div class="section-title">Institutional Individuals</div>
+      <div class="section-desc">Major individual capital deployers operating at institutional scale with explicit community equity mandates.</div>
+    </div>
+    <span class="section-count">4 individuals</span>
+  </div>
+  <div class="firm-grid" id="institutional-grid"></div>
+</section>
+
+</div>
+
+<footer>The Complete Investment Landscape &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; 100 vehicles &nbsp;·&nbsp; 19 sections &nbsp;·&nbsp; 9 thesis dimensions</footer>
+
+<script>
+const CM={
+  C1:{label:'Infrastructure Layer',   color:'#3b82f6', rgba:'59,130,246'},
+  C2:{label:'Durable Problems',       color:'#10b981', rgba:'16,185,129'},
+  C3:{label:'Founder Domain Expertise',color:'#d97706',rgba:'217,119,6'},
+  C4:{label:'Essential Services',     color:'#ef4444', rgba:'239,68,68'},
+  C5:{label:'Inclusion as Thesis',    color:'#8b5cf6', rgba:'139,92,246'},
+  C6:{label:'Multi-Stakeholder Arch.', color:'#06b6d4',rgba:'6,182,212'},
+  C7:{label:'GenAI / Agentic',        color:'#a855f7', rgba:'168,85,247'},
+  C8:{label:'AI for Social Impact',   color:'#f97316', rgba:'249,115,22'},
+  C9:{label:'Diverse Builders',       color:'#22c55e', rgba:'34,197,94'},
+};
+const TAGS={
+  AI:  {label:'AI-Direct',    color:'#3b82f6'},
+  COMM:{label:'Community',    color:'#f59e0b'},
+  OWN: {label:'Ownership',    color:'#8b5cf6'},
+  CULT:{label:'Cultural',     color:'#ec4899'},
+  DIV: {label:'Diverse',      color:'#22c55e'},
+  SI:  {label:'Social Impact',color:'#f97316'},
+  MEDI:{label:'Media / IP',   color:'#06b6d4'},
+  REG: {label:'Regional',     color:'#84cc16'},
+  FF:  {label:'Founder-First',color:'#14b8a6'},
+};
+const ALL_T=['AI','COMM','OWN','CULT','DIV','SI','MEDI','REG','FF'];
+
+document.getElementById('criteria-render').innerHTML=Object.entries(CM).map(([k,v])=>
+  `<span class="c-chip" style="background:rgba(${v.rgba},.12);border:1px solid rgba(${v.rgba},.3)">
+    <span class="c-num" style="color:${v.color}">${k}</span>
+    <span class="c-lbl">${v.label}</span>
+  </span>`
+).join('');
+
+document.getElementById('legend-render').innerHTML=ALL_T.map(t=>
+  `<div class="legend-item">
+    <div class="legend-dot" style="background:${TAGS[t].color}"></div>
+    <span>${TAGS[t].label}</span>
+  </div>`
+).join('');
+
+
+const FIRMS={
+
+tier1:[
+  {name:'Sympatico Ventures',sub:'Eileen Donahoe, Founder · Former US Ambassador for Technology',url:'https://sympaticoventures.com',
+  stage:'Angel / Impact · Grants + investments',checkSize:'Angel / Impact Grants',stageNote:'Angel · Pre-Seed · Impact',stages:['angel','pre-seed','impact'],
+  thesis:'AI alignment and assurance technologies. Tools that enhance human agency, privacy, security, and trust — model interpretability, governance, control, and 3rd-party auditing of frontier AI systems. Founded by Eileen Donahoe, former US Ambassador-at-Large for Technology.',
+  why:['<strong>C1:</strong> The entire fund is organized around the assurance and evaluation layer — not AI applications, the accountability stack above them','<strong>C2:</strong> AI trust is a structural problem that predates this hype cycle','<strong>C3:</strong> Founded by a former US tech diplomat — domain expertise from the governance side, not a typical tech background','<strong>C4:</strong> Assurance infrastructure that makes AI deployment legally and ethically safe across essential services','<strong>C5:</strong> Human agency as investment criterion maps directly to the situated fairness principle','<strong>C6:</strong> 3rd-party auditing must serve all stakeholders simultaneously — that is the structural premise of the fund','<strong>C7:</strong> Frontier AI evaluation overlaps directly with GenAI deployment assurance'],
+  tags:['AI','SI','FF','DIV','COMM']},
+
+  {name:'Cortical Ventures',sub:'AI production gap specialists',url:'https://cortical.vc',
+  stage:'Pre-Seed / Seed',checkSize:'$500K – $3M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Invests in infrastructure and application companies bridging the gap between AI demo performance and production deployment — what the firm calls the "AI Production Gap." An AI for Good pillar adds impact dimension without making it the only lens.',
+  why:['<strong>C1:</strong> Explicitly backs infrastructure bridging demo-to-production — the Knowing-Doing Gap in precise VC language','<strong>C2:</strong> The validity gap between demo and production is a structural, durable problem','<strong>C3:</strong> Values founders with hands-on domain expertise in real deployment environments','<strong>C4:</strong> Production-ready AI in essential services environments','<strong>C5:</strong> AI for Good pillar','<strong>C7:</strong> The "Production Gap" framing maps directly to agentic and generative AI under real-world deployment conditions'],
+  tags:['AI','SI','FF','DIV']},
+
+  {name:'Mozilla Ventures',sub:'Trustworthy AI fund · Fund II deploying',url:'https://mozilla.vc',
+  stage:'Seed – Series A · Fund II deploying · 55+ portfolio companies',checkSize:'$500K – $3M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'"Trustworthy AI, Healthy Communities, Security and Privacy." Portfolio includes Credo AI (AI governance), Fiddler AI (observability and fairness monitoring), Holistic AI (AI risk management), Themis AI, TruePic, and Vera.',
+  why:['<strong>C1:</strong> The portfolio IS the AI evaluation and governance infrastructure category — already demonstrated at scale','<strong>C2:</strong> AI trust is structural — predates this hype cycle and will outlast it','<strong>C5:</strong> Privacy, inclusion, transparency, and human dignity are stated investment criteria','<strong>C6:</strong> Accountability to developer, deployer, end user, and regulator simultaneously — multi-stakeholder is the premise','<strong>C7:</strong> Credo AI, Fiddler AI, and Holistic AI all govern GenAI and agentic system deployments','<strong>C8:</strong> The "Healthy Communities" pillar explicitly names the person the AI acts on, not just the organization deploying it'],
+  tags:['AI','SI','DIV','COMM']},
+
+  {name:'Kalos Ventures',sub:'Human infrastructure at AI × demographic change',url:'https://kalosventures.com',
+  stage:'Seed · $78.8M Fund I (closed May 2026) · LPs: Pivotal Ventures, MassMutual, Sorenson Impact Advisory',checkSize:'$500K – $5M',stageNote:'Seed',stages:['seed'],
+  thesis:'Backs early-stage companies building "human infrastructure" at the intersection of AI and rapid demographic change. Three pillars: Workforce, Care, and Education — each defined by AI systems that must work for both sides of the relationship simultaneously.',
+  why:['<strong>C2:</strong> Demographic change and labor market transformation predate AI — structural conditions exist independent of the hype cycle','<strong>C4:</strong> Workforce, care, and education are foundational daily-life services','<strong>C5:</strong> Pivotal Ventures and Sorenson Impact Advisory as LPs signal equity as investment criteria, not marketing','<strong>C6:</strong> Each pillar requires AI to serve both sides simultaneously — workers and employers, caregivers and recipients','<strong>C8:</strong> LP base is explicitly oriented toward AI for social good at scale'],
+  tags:['SI','DIV','COMM']},
+
+  {name:'NFX',sub:'Network effects as primary defensibility mechanism',url:'https://nfx.com',
+  stage:'Seed · $325M Fund IV (October 2025) · ~50 startups at $4–5M each',checkSize:'$4M – $5M avg',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Network effects as the primary defensibility mechanism. Backs "visionary, anti-normal" founders with deep domain expertise. Focus: AI platforms with network effects, vertical SaaS with AI, marketplace AI, infrastructure.',
+  why:['<strong>C1:</strong> Data network effects = measurement infrastructure that compounds over time with each production deployment','<strong>C2:</strong> Information asymmetry in marketplaces is a decades-old structural problem — NFX has built 25 billion-dollar companies around it','<strong>C6:</strong> The entire NFX thesis is built on multi-party trust as the mechanism for network effect defensibility','<strong>C7:</strong> AI platforms with network effects are their current primary investment category'],
+  tags:['AI','SI','COMM']},
+
+  {name:'Swell VC',sub:'Infrastructure running underneath commercial systems',url:'https://swell.vc',
+  stage:'Pre-seed / Seed',checkSize:'$500K – $3M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Backs founders rebuilding systems that run the world — specifically commerce infrastructure, how goods move, price, and transact, especially where hidden complexity has quietly taxed the economy for decades.',
+  why:['<strong>C1:</strong> Explicitly backs infrastructure running underneath commercial systems — not the interface, the foundation','<strong>C2:</strong> Hidden complexity in essential services commerce is a decades-old structural tax','<strong>C3:</strong> Values founders who see what others miss in complex, opaque systems','<strong>C4:</strong> Commerce infrastructure defines how essential goods and services transact'],
+  tags:['AI','SI','FF']},
+
+  {name:'Inertia VC',sub:'AI-native infrastructure for legacy industries',url:'https://inertia.vc',
+  stage:'Seed',checkSize:'$500K – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'Invests in AI-native companies built to become core infrastructure of legacy industries. The fund is organized around one structural observation: "the gap between what a foundation model can do and what a customer can legally accept."',
+  why:['<strong>C1:</strong> Core infrastructure of legacy industries — not the application, the foundation it depends on','<strong>C2:</strong> Legacy industry structural problems are definitionally durable','<strong>C4:</strong> Legacy industries are essential services','<strong>C7:</strong> AI-native infrastructure navigating what foundation models can legally deploy in regulated environments'],
+  tags:['AI','SI']},
+
+  {name:'ex/ante',sub:'Reframe Venture / Project Liberty ecosystem',url:'https://ex-ante.co',
+  stage:'Seed · Reframe Venture / Project Liberty ecosystem',checkSize:'$500K – $2M',stageNote:'Seed',stages:['seed'],
+  thesis:'Turns AI risk into opportunity. Invests in tools that support human agency by increasing privacy, security, and information integrity — capitalizing on rising enterprise and consumer demand for ownership and control over AI. Emerged from the responsible AI investor ecosystem.',
+  why:['<strong>C1:</strong> Explicitly investing in the responsibility stack — the layer that makes AI adoption legally and ethically safe','<strong>C2:</strong> Information integrity and AI trust are structural, pre-hype problems','<strong>C5:</strong> Human agency as investment criterion maps directly to the situated fairness principle','<strong>C6:</strong> Privacy, security, and information integrity constitute a multi-stakeholder trust architecture','<strong>C7:</strong> Risk infrastructure for enterprise AI and agentic system deployments'],
+  tags:['AI','SI','DIV','COMM']},
+
+  {name:'Collab Capital',sub:'Jewel Burks Solomon & Barry Givens · LPs: Apple, Goldman Sachs',url:'https://collab.capital',
+  stage:'Seed / Series A · $500K–$2M · $75M Fund II (June 2025) · LPs: Apple, Goldman Sachs',checkSize:'$500K – $2M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Founded by Jewel Burks Solomon and Barry Givens. Building blocks of shared prosperity across three pillars: Economic Mobility (AI-powered workforce tools), Healthcare Access, and Community Infrastructure (transportation, broadband, housing, food).',
+  why:['<strong>C2:</strong> Economic mobility barriers in essential services — predatory pricing, information asymmetry — predate AI and will outlast it','<strong>C3:</strong> "Proximity is power — founders closest to the problem are best positioned to solve it" is the fund\'s explicit investment philosophy','<strong>C4:</strong> Community infrastructure maps auto care directly as critical services infrastructure','<strong>C5:</strong> Proximity as the basis of investment judgment is the same epistemological argument as the situated fairness principle','<strong>C6:</strong> AI for economic mobility must serve both workers and the systems they work within','<strong>C8:</strong> Economic Mobility pillar is explicitly AI for social impact at scale','<strong>C9:</strong> Backs founders from communities closest to structural problems — proximity as investment thesis'],
+  tags:['SI','FF','DIV','COMM']},
+
+  {name:'Autotech Ventures',sub:'The only major VC organized entirely around automotive',url:'https://autotechvc.com',
+  stage:'Seed – Series C · $1M–$8M initial · $500M+ AUM · Fund III $230M (2023)',checkSize:'$1M – $8M',stageNote:'Seed · Series A · Series B',stages:['seed','series-a','series-b'],
+  thesis:'The only major VC fund organized entirely around the automotive sector. Invests across connectivity, autonomy, shared-use, electrification, and enterprise digitization. Automotive retail and repair are explicitly named investment areas.',
+  why:['<strong>C1:</strong> Backs supply chain visibility, efficiency, and worker safety infrastructure within automotive','<strong>C2:</strong> Ground transport challenges are structural and decades-old','<strong>C4:</strong> Automotive repair and consumer trust in auto services IS the thesis — not adjacent to it','<strong>C7:</strong> Electrification and autonomy represent active GenAI and agentic system deployment environments'],
+  tags:['AI','SI']},
+
+  {name:'Work-Bench',sub:'Enterprise AI infrastructure · NYC-focused',url:'https://work-bench.com',
+  stage:'Seed · NYC-focused',checkSize:'$500K – $2M',stageNote:'Seed',stages:['seed'],
+  thesis:'Enterprise AI infrastructure in its operational phase. 2026 thesis: "AI is entering a phase where infrastructure decisions matter more than model announcements." Backs vertical enterprise software in regulated industries, supply chain, retail, and complex operational environments.',
+  why:['<strong>C1:</strong> Explicitly identifies governance and evaluation tooling as the gating factor for enterprise AI adoption','<strong>C2:</strong> Compliance and trust in regulated industries predate AI — AI makes them more acute, not new','<strong>C4:</strong> Retail, supply chain, and complex operational environments','<strong>C7:</strong> Enterprise AI governance and evaluation infrastructure for agentic deployments in regulated settings'],
+  tags:['AI','SI']},
+],
+
+aiinfra:[
+  {name:'Albatross AI Capital',sub:'AI application testing & evaluation as named category',url:'https://albatrossaicapital.com',
+  stage:'Seed · $95M fund · Austin-based',checkSize:'$500K – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'AI infrastructure, developer tools, and MLOps. Explicitly names "AI application testing and evaluation" as an investment category within the fund\'s scope.',
+  why:['<strong>AI testing named:</strong> AI application testing and evaluation is a named category — direct infrastructure focus','<strong>Purpose-built:</strong> purpose-built for GenAI and production AI deployment infrastructure'],
+  tags:['AI']},
+
+  {name:'AIX Ventures',sub:'Forbes AI 50 judges on investment team',url:'https://aixventures.com',
+  stage:'Seed · Forbes AI 50 judges on investment team',checkSize:'$250K – $2M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Broad AI portfolio with deep technical diligence capability. Network includes top AI researchers and practitioners across the industry.',
+  why:['<strong>Technical depth:</strong> deep AI infrastructure technical diligence lens from practitioners, not generalists','<strong>Credentialing:</strong> AI-native investment focus with Forbes AI 50-level practitioner network'],
+  tags:['AI']},
+
+  {name:'Banyan Ventures',sub:'AI-native infrastructure conviction · NYC-based',url:'https://banyanventures.co',
+  stage:'Seed · NYC-based',checkSize:'$500K – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'AI-native infrastructure and applications. Strong portfolio conviction across foundational AI infrastructure companies with deep technical merit.',
+  why:['<strong>Infrastructure first:</strong> AI-native infrastructure — the foundational layer, not the application','<strong>Technical conviction:</strong> deep conviction in AI-native systems built for scale from day one'],
+  tags:['AI']},
+
+  {name:'Tola Capital',sub:'Theresa Oliphant, Founder & GP · Seattle-based',url:'https://tolacapital.com/about',
+  stage:'Series A · Series B · $250M+ AUM · Enterprise AI/software',checkSize:'$5M – $25M',stageNote:'Series A · Series B',stages:['series-a','series-b'],
+  thesis:'Seattle-based growth-stage venture firm exclusively focused on AI and cloud software companies serving enterprises. Founded by Theresa Oliphant, formerly at NEA. Backs companies where AI is the core product architecture, not a feature — specifically where enterprise adoption is the primary distribution channel.',
+  why:['<strong>Enterprise AI exclusively:</strong> the AI infrastructure and software layer that large enterprises depend on — not consumer AI, not pure research, the deployment layer','<strong>Theresa Oliphant:</strong> one of the few women founders of an AI-focused growth-stage fund — brings technical depth (NEA background) and intentional diverse founder orientation','<strong>Seattle ecosystem:</strong> natural proximity to Microsoft, Amazon, and their enterprise customer networks — warm intro infrastructure that coastal-only funds lack','<strong>Growth stage specialization:</strong> Series A/B focus means Tola enters when production deployment is underway — aligned with companies solving the AI production gap thesis'],
+  tags:['AI']},
+
+  {name:'Sunflower Capital',sub:'Emerging market AI infrastructure deployment',url:'https://www.sunflowercapital.co/',
+  stage:'Seed · Series A · Emerging markets focus',checkSize:'$500K – $5M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Backs AI infrastructure companies with emerging market deployment mandates — focusing on the adaptation and localization infrastructure that enables AI systems to function appropriately across diverse cultural, linguistic, and geographic contexts. Thesis premise: the AI infrastructure stack for emerging markets is a distinct, underserved investment category.',
+  why:['<strong>Emerging market AI:</strong> AI systems trained on Western data perform badly in emerging market contexts — the infrastructure gap is both a technical and a financial opportunity','<strong>Geographic scope:</strong> Africa, Southeast Asia, and Latin America as primary deployment regions — where the largest user populations exist but AI infrastructure investment is most scarce','<strong>Infrastructure layer:</strong> invests in the localization, evaluation, and deployment infrastructure that makes AI functional across language, culture, and connectivity constraints','<strong>Situated fairness alignment:</strong> the fund\'s thesis directly matches the situated fairness principle — AI validity must be measured in the context where it actually operates'],
+  tags:['AI','COMM','REG']},
+],
+
+genai:[
+  {name:'Zetta Venture Partners',sub:'Machine intelligence as primary investment lens',url:'https://zetta.vc',
+  stage:'Seed · ~$200M AUM · SF-based',checkSize:'$1M – $5M',stageNote:'Seed',stages:['seed'],
+  thesis:'"Machine intelligence" as the primary investment lens. Backs companies where data and machine learning create defensible, compounding value. Evaluates AI startups across technical depth, data moat strength, and production readiness.',
+  why:['<strong>C1:</strong> Machine intelligence infrastructure — the foundational layer, not the application','<strong>C2:</strong> Data moats are structural and durable competitive advantages','<strong>C7:</strong> Deep conviction in ML infrastructure and production AI systems'],
+  tags:['AI','SI']},
+
+  {name:'Wing Venture Capital',sub:'Early investor: Snowflake, CrowdStrike',url:'https://wing.vc',
+  stage:'Seed / Series A · Enterprise-focused · Early investor in Snowflake, CrowdStrike',checkSize:'$2M – $15M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Enterprise infrastructure and AI. Backs companies that transform how businesses operate at scale. Strong technical conviction with a track record in foundational enterprise infrastructure.',
+  why:['<strong>C1:</strong> Enterprise infrastructure — the layer beneath the application','<strong>C4:</strong> Enterprise infrastructure for essential services and regulated industries','<strong>C7:</strong> Enterprise AI infrastructure and agentic deployment tooling in production'],
+  tags:['AI','SI']},
+
+  {name:'Theory Ventures',sub:'Tomasz Tunguz (former Redpoint partner)',url:'https://theory.vc',
+  stage:'Seed / Series A · SF-based · Led by Tomasz Tunguz (former Redpoint partner)',checkSize:'$1M – $10M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Conviction in "software infrastructure businesses with network effects and data moats." Deep focus on the AI data stack, ML infrastructure, and agentic system tooling. Known for rigorous quantitative analysis of infrastructure investment patterns.',
+  why:['<strong>C1:</strong> Software infrastructure with data moats — the stated investment thesis','<strong>C2:</strong> Infrastructure problems are structurally durable','<strong>C7:</strong> AI data stack and agentic system infrastructure are primary investment categories'],
+  tags:['AI','SI']},
+
+  {name:'Actions Capital',sub:'AI evaluation infrastructure for production agentic deployments',url:'https://actions.capital',
+  stage:'Pre-seed / Seed · SF-based',checkSize:'$500K – $3M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Early-stage AI and technology companies building foundational infrastructure. Focus on AI tooling, evaluation infrastructure, and foundational systems that make AI deployments reliable, measurable, and scalable in production environments.',
+  why:['<strong>C1:</strong> Foundational AI infrastructure — evaluation and measurement tooling in production','<strong>C2:</strong> AI reliability and measurement are structural, persistent infrastructure problems','<strong>C7:</strong> AI evaluation infrastructure for production agentic deployments'],
+  tags:['AI','SI']},
+],
+
+impact:[
+  {name:'Pivotal Ventures',sub:'Melinda French Gates organization · Active LP in Kalos Ventures',url:'https://pivotalventures.org',
+  stage:'Grants + investments · Melinda French Gates organization · Active LP in Kalos Ventures',checkSize:'Grants + equity investments',stageNote:'Impact · Grants',stages:['impact'],
+  thesis:'Ensures AI\'s benefits flow to underserved populations across four areas: economic mobility, health equity, early childhood development, and civic engagement. Partners with organizations using AI to close systemic gaps at scale.',
+  why:['<strong>C2:</strong> Economic mobility barriers and systemic health inequities are decades-old structural problems','<strong>C4:</strong> Health, economic mobility, and civic infrastructure as essential services','<strong>C5:</strong> Equity is the organizing principle — not a secondary criterion','<strong>C6:</strong> AI systems affecting marginalized communities must be accountable to those communities','<strong>C8:</strong> Core mandate — AI for social impact at institutional scale'],
+  tags:['SI','DIV','COMM']},
+
+  {name:'Reach Capital',sub:'Lifelong learning and economic mobility · $280M+ AUM',url:'https://reachcapital.com',
+  stage:'Seed / Series A · $280M+ AUM',checkSize:'$500K – $5M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Invests in companies improving lifelong learning and economic mobility. Education technology, workforce development, and human capital tools — with an explicit equity lens for underserved learners and workers.',
+  why:['<strong>C2:</strong> Educational inequity and economic mobility barriers are decades-old structural problems','<strong>C4:</strong> Education and workforce development are essential services','<strong>C5:</strong> Serving underserved learners and workers is the investment mandate','<strong>C7:</strong> AI-powered education and workforce tools','<strong>C8:</strong> Economic mobility through AI is the fund\'s explicit social impact thesis'],
+  tags:['SI','DIV','AI']},
+
+  {name:'Omidyar Network',sub:'Co-anchor HumanityAI with Kapor Capital, Ford Foundation, Mozilla Foundation',url:'https://omidyar.com',
+  stage:'Grants + investments · Typically Series A+ for direct investments · Co-anchor of HumanityAI',checkSize:'Grants + Series A+ direct',stageNote:'Series A · Impact',stages:['series-a','impact'],
+  thesis:'"Inclusive and responsible development of generative AI." Invests in private VC funds and directly in companies using AI in healthcare, analytics for SMBs, and essential services. Explicitly building AI infrastructure that centers social impacts of generative AI, elevates diverse voices in governance, and promotes innovation for underserved populations.',
+  why:['<strong>C1:</strong> AI infrastructure for social impact — the accountability layer','<strong>C4:</strong> Healthcare, analytics for SMBs, and essential services are named investment categories','<strong>C5:</strong> Diverse voices in AI governance = inclusion as the fund thesis','<strong>C6:</strong> Multi-stakeholder AI governance framing embedded in HumanityAI','<strong>C8:</strong> Centering social impacts of generative AI is the entire mandate'],
+  tags:['AI','SI','DIV','COMM']},
+],
+
+diverse:[
+  {name:'Harlem Capital',sub:'Mission: 1,000 diverse founders over 20 years',url:'https://harlemcapital.vc',
+  stage:'Seed (post-product) · $1M–$2.5M initial · $250M+ AUM',checkSize:'$1M – $2.5M',stageNote:'Seed',stages:['seed'],
+  thesis:'A quantified mission: invest in 1,000 diverse founders over 20 years. Reserves capital for minority and women founders at seed stage. Partner Gabby Cazeau focuses specifically on enterprise software and applied AI startups.',
+  why:['<strong>C3:</strong> Domain expertise and founder uniqueness are core to their diligence framework','<strong>C5:</strong> Minority and women founder investment is reserved capital, not aspiration — quantified, tracked, and published','<strong>C7:</strong> Active AI and enterprise software thesis with dedicated partner coverage','<strong>C9:</strong> The 1,000 diverse founders mission is explicit and documented — including dedicated generative AI founder research'],
+  tags:['FF','DIV','AI']},
+
+  {name:'MaC Venture Capital',sub:'Adrian Fenty & Marlon Nichols · Fund III $150M (October 2024)',url:'https://macventurecapital.com',
+  stage:'Seed · $500M+ AUM · Fund III $150M (October 2024) · 120+ portfolio companies',checkSize:'$500K – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'"Talent is everywhere, but opportunity isn\'t." Backs visionary founders who understand cultural shifts, technological advancements, and emerging market trends ahead of the mainstream. Deep tech, fintech, healthtech, enterprise software, and AI/ML are primary sectors.',
+  why:['<strong>C2:</strong> Founders who understand structural cultural shifts see durable problems others don\'t','<strong>C3:</strong> Cultural shift identification and unique market vantage are explicit investment criteria','<strong>C5:</strong> Diversity of founder background is foundational to the thesis — not a secondary filter','<strong>C7:</strong> Active AI/ML and enterprise software thesis with deep tech conviction','<strong>C9:</strong> "Talent is everywhere, opportunity isn\'t" — the access gap IS the investment thesis'],
+  tags:['SI','FF','DIV','AI']},
+
+  {name:'Visible Hands',sub:'Invests before a fully formed company or team exists',url:'https://visiblehands.vc',
+  stage:'Pre-seed · 14-week fellowship + $150K–$250K · Invests before a fully formed company or team exists',checkSize:'$150K – $250K',stageNote:'Pre-Seed · Fellowship',stages:['pre-seed'],
+  thesis:'Built specifically to close the access gap at the moment it matters most. Invests in women, people of color, and LGBTQ+ founders before the product exists, before the pitch is polished, before the network is established. Explicitly treats founders\' lived experience in underserved markets as an investable asset.',
+  why:['<strong>C3:</strong> Lived experience in underserved markets is explicitly called an investable asset — not background color','<strong>C5:</strong> Women, people of color, LGBTQ+ founders — the fund was designed from the ground up for this demographic','<strong>C9:</strong> Addresses the moment traditionally exploited communities are most locked out — pre-product, pre-team, pre-network'],
+  tags:['FF','DIV']},
+
+  {name:'Zeal Capital Partners',sub:'Nasir Qadree · LPs: Spelman College, MassMutual · Fund II $82M (May 2025)',url:'https://zealcapitalpartners.com',
+  stage:'Seed · $186M AUM · Fund II $82M (closed May 2025) · Founded by Nasir Qadree',checkSize:'$500K – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'Invests in diverse management teams reimagining the building blocks of wealth: education, employment, financial health, and health equity. Market-backed thesis targeting companies solving urgent, measurable structural problems.',
+  why:['<strong>C2:</strong> Education, employment, financial health, and health equity are decades-old structural problems — durable by definition','<strong>C4:</strong> Economic mobility infrastructure = essential services','<strong>C5:</strong> Diverse management teams reimagining wealth-building systems is the fund\'s entire scope','<strong>C8:</strong> Economic mobility through AI for underserved communities','<strong>C9:</strong> Fund is explicitly structured around diverse management teams with deep community proximity'],
+  tags:['SI','DIV','FF']},
+],
+
+
+tier2:[
+  {name:'Air Street Capital',sub:'Fund III $232M (March 2026)',url:'https://airstreet.com',
+  stage:'Pre-seed / Seed · $500K–$15M · Fund III $232M (March 2026)',checkSize:'$500K – $15M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'AI-first companies in North America and Europe. Investment categories include frontier AI models AND evaluation systems, AI infrastructure, developer tools, autonomous systems, AI agents, and TechBio. One of the few major AI infrastructure funds to name evaluation explicitly as a co-equal thesis area alongside frontier models.',
+  why:['<strong>C1:</strong> "Frontier AI models and evaluation systems" listed as a co-equal investment thesis category','<strong>C7:</strong> Autonomous systems and AI agents alongside evaluation infrastructure'],
+  tags:['AI']},
+
+  {name:'IA Ventures',sub:'"Data is the defensible moat" · 8 unicorns · 5 IPOs',url:'https://iaventures.com',
+  stage:'Seed · $250K–$750K · 8 unicorns · 5 IPOs',checkSize:'$250K – $750K',stageNote:'Seed',stages:['seed'],
+  thesis:'"Data is the defensible moat." Invests in data infrastructure, machine learning, and SaaS. Quantitative pattern recognition applied to venture. Portfolio anchors: Wise, Recorded Future, Datadog. The Datadog comparison is the strongest direct analogy available — Datadog built observability infrastructure for software performance; behavioral validity measurement builds the same category for AI behavioral performance.',
+  why:['<strong>C1:</strong> Data infrastructure and measurement as the defensible moat — recognized the Datadog pattern early'],
+  tags:['AI']},
+
+  {name:'Gradient Ventures',sub:'Google\'s AI-focused fund · $220M Fund V (March 2026)',url:'https://gradient.com',
+  stage:'$220M Fund V (March 2026) · $3M avg check · Operates independently from Google',checkSize:'$1M – $5M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'AI applications, agentic platforms, and real-world systems augmented with AI. "Agentic platforms" elevated to co-equal thesis category. Backs infrastructure making agentic systems deployable in production settings.',
+  why:['<strong>C1:</strong> Infrastructure making agentic systems deployable in real-world production settings','<strong>C7:</strong> "Agentic platforms" elevated to co-equal thesis category alongside applications and real-world systems'],
+  tags:['AI']},
+
+  {name:'Bloomberg Beta',sub:'Roy Bahat, GP · Machine intelligence + future of work',url:'https://bloombergbeta.com',
+  stage:'Seed · $1M–$7M · $450M AUM · Roy Bahat, GP · Capitalized solely by Bloomberg LP',checkSize:'$1M – $7M',stageNote:'Seed',stages:['seed'],
+  thesis:'Machine intelligence and the future of work. Publishes operating manual open-source on GitHub. Backs founders from underrepresented backgrounds as a core portfolio strategy. "Future of work" is inherently multi-stakeholder — the worker, employer, and AI system mediating between them all have distinct interests.',
+  why:['<strong>C1:</strong> Machine intelligence infrastructure as the primary investment lens','<strong>C3:</strong> Underrepresented founders backed as core portfolio strategy','<strong>C5:</strong> Explicit commitment to underrepresented founder backgrounds','<strong>C6:</strong> Future of work is a multi-stakeholder AI accountability space by definition'],
+  tags:['AI','FF','DIV','COMM']},
+
+  {name:'Obvious Ventures',sub:'World Positive Capitalism · B-Corp · Fund V $360M (January 2026)',url:'https://obvious.com',
+  stage:'Seed / Series A · $5M–$12M · Fund V $360M (January 2026) · B-Corp certified · 5 unicorns',checkSize:'$5M – $12M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'"World Positive Capitalism." Three pillars: Planetary Health, Human Health, Economic Health — an explicit 360-degree multi-stakeholder frame. 2026 AI focus: AI/ML infrastructure, workforce solutions, precision medicine.',
+  why:['<strong>C1:</strong> AI/ML infrastructure is a named 2026 focus area','<strong>C4:</strong> Human Health and Economic Health as essential services categories','<strong>C5:</strong> World Positive = inclusion as investment mandate, not marketing','<strong>C6:</strong> Three-pillar thesis requires value for planet, people, AND economy simultaneously','<strong>C8:</strong> World Positive Capitalism frames AI impact as social accountability'],
+  tags:['AI','SI','DIV','COMM']},
+
+  {name:'Fika Ventures',sub:'LA-based · "Infrastructure over interfaces"',url:'https://fika.vc',
+  stage:'Seed / Series A · LA-based · 4 funds · 90+ B2B software companies',checkSize:'$500K – $5M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Backs founders solving meaningful, systemic problems through data, AI, and automation. 2026 thesis: "Infrastructure over interfaces, outcomes over tools, where money, regulation, and operational risk collide."',
+  why:['<strong>C1:</strong> "Infrastructure over interfaces" — they back the measurement layer, not the application','<strong>C2:</strong> Systemic, durable problems as the investment criterion','<strong>C4:</strong> Regulated industries as primary focus','<strong>C6:</strong> "Where money, regulation, and operational risk collide" describes multi-stakeholder AI infrastructure precisely'],
+  tags:['AI','SI','COMM']},
+
+  {name:'Headline',sub:'$1.5B+ AUM · SF / Berlin / global (formerly e.ventures)',url:'https://headline.com',
+  stage:'Seed – Growth · $1.5B+ AUM · SF / Berlin / global (formerly e.ventures)',checkSize:'$1M – $15M',stageNote:'Seed · Series A · Growth',stages:['seed','series-a','series-b'],
+  thesis:'Backs transformational companies in consumer internet, enterprise software, and marketplaces across geographies. Broad mandate. Strongest alignment is the two-sided marketplace trust angle. Best approached through a warm introduction.',
+  why:['<strong>C2:</strong> Information asymmetry in marketplaces as a structural, durable problem','<strong>C4:</strong> Consumer marketplace infrastructure at scale','<strong>C7:</strong> Growing AI investment thesis across the portfolio'],
+  tags:['SI','AI']},
+],
+
+founderfirst:[
+  {name:'Leadout Capital',sub:'Alison Rosenthal, Founder & Managing Partner · Steve Brownlie, GP',url:'https://www.leadoutcapital.com',
+  stage:'Pre-Seed · Seed · $57.7M Fund II · 37 portfolio companies · Portola Valley, CA',checkSize:'$250K – $1.5M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Non-obvious founders with deep founder-market fit." Like a professional cycling leadout team — protect and position founders while leveraging operators from Apple, Stripe, and Nvidia. Over 85% of portfolio led by women or underrepresented minorities.',
+  why:['<strong>The "non-obvious" thesis:</strong> backs founders whose lived experience gives them differentiated insight into overlooked markets — not the founder who looks like the last ten unicorn founders, but the one closest to the problem.','<strong>Network access:</strong> curated operator network from Apple, Stripe, Nvidia, Google, Microsoft, Amazon, JPMorgan — unusual breadth for a sub-$100M fund. The network is the value-add, not just the check.','<strong>Portfolio:</strong> theCut, Expo (React Native), Axiom Cloud, Pavilion, AtoB, First Bite, Laws of Motion, Creatify AI — diverse sector coverage led by non-traditional founders.','<strong>Recent exits (2025–2026):</strong> Kraftful acquired by Amplitude (July 2025), Stellation Care acquired by Skylight Health (January 2026). The non-obvious thesis is producing real exits.'],
+  tags:['FF','DIV','AI','COMM']},
+
+  {name:'Base Ventures',sub:'Erik Moore, Founder & Managing Director · 136+ founders backed',url:'https://baseventures.com',
+  stage:'Pre-Seed · Seed · Fund IV active · 136+ founders backed · Oakland, CA',checkSize:'$250K – $3M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Turning access into opportunity for founders, investors, and disruptive ideas." Backs culturally resonant tech companies and founders who don\'t fit the traditional Silicon Valley mold. Erik Moore is one of the earliest and most prominent Black investors in venture capital.',
+  why:['<strong>Exits:</strong> Zappos (Amazon $1.2B), PlanGrid (Autodesk $875M), World View (Ondas Networks, Mar 2026), EarnUp (Feb 2026) — four funds of proof that non-traditional founders produce traditional-level returns.','<strong>Portfolio (100+):</strong> Mayvenn, StyleSeat, Blavity, Gecko Robotics, 6sense, Space Perspective, Mos, Pigeonly — first institutional investor in many of these before they were recognized.','<strong>Network:</strong> board member of Pharrell Williams\' Black Ambition Prize. Network includes Serena Williams, Tony Hsieh, and co-investor relationships with Sequoia, a16z, and GV.','<strong>Decision:</strong> solo GP model, ~2-week timeline, leads or co-leads. $1.6B in capital raised by portfolio companies across four funds.'],
+  tags:['FF','DIV','COMM','CULT']},
+
+  {name:'Precursor Ventures',sub:'Charles Hudson, Founder & Solo GP · Forbes BLK Masters 2026',url:'https://precursorvc.com',
+  stage:'Pre-Seed (primary) · Seed · Fund V $66M (2025) · 323+ companies · San Francisco, CA',checkSize:'$50K – $500K',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Invest in people over product at the earliest stage." The first institutional check for the most promising software and hardware founders — before the product is obvious, before the traction is compelling, on founding team quality alone.',
+  why:['<strong>Volume model:</strong> 75-100 investments per fund at $50K–$500K, across 323+ companies total. Deliberately caps fund size to preserve speed — decision in days, not months.','<strong>Underrepresented founders:</strong> explicitly known for backing first-time and underrepresented founders before other institutional VCs engage. Pre-PMF is a feature, not a disqualifier.','<strong>Portfolio:</strong> Concourse (AI finance agents, $12M, Jan 2026), Teal Health (TIME100 Health 2026), Alinia (AI banking compliance, $7.5M). Recent exit: Limitless acquired by Meta (Dec 2025).','<strong>Solo GP as structural advantage:</strong> no investment committee, no LP consensus required. Speed and conviction are the product — exactly what first-check founders need before anyone else will move.'],
+  tags:['FF','DIV','COMM','AI']},
+
+  {name:'Chingona Ventures',sub:'Samara Hernandez, Founder & Solo GP · Chicago, IL',url:'https://chingona.ventures',
+  stage:'Pre-Seed · Seed · $52.9M Fund II (2022) · Actively deploying · Chicago, IL',checkSize:'$250K – $2M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Investing in the next generation of badass founders." Chicago-based, Latina-led — one of the very few institutionally-backed pre-seed funds led by a sole Latina GP. LPs include Melinda French Gates\' Pivotal Ventures, PayPal Ventures, Norwest, and the Kauffman Foundation.',
+  why:['<strong>Led or wrote largest check in 70%+ of rounds (2025):</strong> true lead investor conviction at pre-seed — not a follow-on check trying to access deals someone else validated.','<strong>$9M deployed in 2025:</strong> 7 new portfolio companies, 1,700+ deals reviewed. Fund II actively deploying into 2026 with dry powder remaining.','<strong>Recent portfolio:</strong> Agency (Menlo Ventures-led $20M Series A, Jan 2026 — 12 months post Chingona\'s seed), Ciphero (enterprise AI security), SafeHill (cybersecurity).','<strong>The Chingona Factor:</strong> backs founders whose backgrounds uniquely position them to solve overlooked problems in rapidly growing markets. Lived experience is the sourcing thesis.'],
+  tags:['FF','DIV','COMM','AI']},
+
+  {name:'Collide Capital',sub:'Aaron Samuels & Brian Hollins · Built AfroTech + BLCK VC',url:'https://f4.fund/firms/collide-capital',
+  stage:'Pre-Seed · Seed · $66M Fund I · 50+ companies · 9 investments in 2025 · Actively deploying',checkSize:'$250K – $3M',stageNote:'Pre-Seed · Seed · Series A',stages:['pre-seed','seed','series-a'],
+  thesis:'100% Black-owned. Built by the founders of AfroTech and BLCK VC — the two largest grassroots tech ecosystems connecting under-networked founders to institutional resources. 80%+ of portfolio led by Black, Latinx, or Female founders. Anchor LPs: Amazon, Alphabet, Twitter.',
+  why:['<strong>Ecosystem-first origin:</strong> Samuels and Hollins spent a decade at AfroTech and BLCK VC understanding the access gap at community level before building a fund to close it.','<strong>Fund I trajectory:</strong> $1.3M scout fund (Fund Zero) → $66M Fund I. Amazon, Alphabet, and Twitter as anchor LPs validate the thesis at institutional scale.','<strong>9 new investments in 2025:</strong> steady deployment with explicit 80%+ diverse founder mandate. Portfolio company Flux Marine (Nov 2025) signals continued active deployment.','<strong>TEDCO Partnership (July 2025):</strong> selected as VCLP to support Maryland\'s SSBCI funding — expanding Collide\'s reach through government-aligned capital channels.'],
+  tags:['FF','DIV','COMM','AI']},
+
+  {name:'New Age Capital',sub:'Ivan Alo & LaDante McMillon · Black & Latino founders exclusively',url:'https://f4.fund/firms/new-age-capital',
+  stage:'Seed · $25M Fund I (2022) · Black & Latino founders exclusively · US-only',checkSize:'$500K – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'Invests exclusively in tech startups founded and led by Black and Latino entrepreneurs. Core values: Authenticity, Empathy, Transparency. Requires product in market with early customer traction — not idea stage. Leads seed rounds up to $3M.',
+  why:['<strong>Explicit exclusivity:</strong> the only founders they fund are Black and Latino. This is not a diversity overlay on a broader thesis — the access gap for this founder cohort IS the alpha thesis.','<strong>Traction requirement:</strong> unlike pre-seed funds, New Age requires early paying customers. Lower risk profile, higher signal quality — conviction-based, not hope-based.','<strong>Geographic scope:</strong> looks for non-coastal companies AND under-the-radar coastal companies. Geographic + demographic access gap as compounded alpha source.','<strong>Sectors:</strong> healthcare, fintech-adjacent, edtech, e-commerce for underserved markets, construction tech, beauty, civictech — deliberately broad to follow founder excellence.'],
+  tags:['FF','DIV','COMM','SI']},
+
+  {name:'Kapor Capital',sub:'Freada Kapor Klein & Mitch Kapor · Co-anchors HumanityAI initiative',url:'https://kaporcapital.com',
+  stage:'Pre-Seed · Seed · $126M Fund III (2022) · 170+ portfolio companies · Actively deploying',checkSize:'$100K – $1M',stageNote:'Pre-Seed · Seed · Series A',stages:['pre-seed','seed','series-a'],
+  thesis:'"Venture capital can achieve both financial returns and positive social impact." Gap-closing investing: every portfolio company must directly reduce a gap of access for low-income communities or communities of color. 62% of Fund III founders identify as underrepresented POC and/or women.',
+  why:['<strong>Gap-closing mandate:</strong> every investment must have direct impact embedded in core product for low-income and communities of color — not ESG overlay. The gap-closing IS the business model.','<strong>Fund III ($126M, 2022):</strong> LPs include Cambridge Associates, Ford Foundation, Bank of America, PayPal. Institutional validation of impact-first thesis at scale.','<strong>Portfolio diversity:</strong> 62% underrepresented POC and/or women founders. 53% of Fund III: Black-identifying founder. 46%: woman-identifying founder. 170+ active companies.','<strong>Sector breadth:</strong> EdTech, FinTech, Healthcare, Workforce Development, Climate, Justice/Legal — widest sector scope of any impact-first fund at this stage and check range.'],
+  tags:['FF','DIV','COMM','SI','AI']},
+
+  {name:'Ganas Ventures',sub:'Lolita Taub, Founder & Solo GP · 86K+ community members',url:'https://ganas.vc',
+  stage:'Pre-Seed · Seed · Fund I active · US + Latin America · 86K+ community members',checkSize:'$100K (flat)',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Invest in community-driven founders with bold ideas, diverse perspectives, and relentless determination." First traditional Latina-led VC using a public fundraising structure. No warm intro required. 90% BIPOC-led, 55% women-led, 50% Latine-led portfolio.',
+  why:['<strong>Community-first model:</strong> 86K+ community members, 70+ LPs, 100+ deal partners sourcing 15% of portfolio companies. The community IS the fund\'s competitive edge.','<strong>Pre-seed focused:</strong> 40% pre-seed, 60% seed. Flat $100K check at ≤$10M post-money valuation with 24-month minimum runway requirement. Disciplined, consistent stage filter.','<strong>Geographic expansion:</strong> 55% US, 45% Latin America portfolio. Fund II planned for global deployment.','<strong>No warm intro required:</strong> open application at ganas.vc/apply — access democratization built into operational structure.'],
+  tags:['FF','DIV','COMM','SI']},
+
+  {name:'Equal Opportunity (EO) Ventures',sub:'Evan Burfield & Tanaya Devi · $100M Fund II',url:'https://f4.fund/firms/equal-opportunity-eo-ventures',
+  stage:'Pre-Seed · Seed · $100M Fund II · 19+ portfolio companies · Actively deploying',checkSize:'$500K – $5M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Back founders building commercially successful businesses that expand economic mobility in America." Invests where capitalism\'s incentives align with social benefit — economic mobility must be embedded in the core product, not bolted on.',
+  why:['<strong>The structural distinction:</strong> EO does not pursue "mission + financial returns." They pursue full financial returns in companies where economic mobility is the business model — not philanthropy, not compromise.','<strong>Portfolio:</strong> Forage (SNAP EBT payment infrastructure), KaiPod Learning (microschooling), Stepful (healthcare workforce training), Intus Care (care coordination), JobGet (hourly worker marketplace), Haven Connect (affordable housing software).','<strong>$100M Fund II (active):</strong> ~15 investments to date — disciplined, high-conviction deployment at $500K–$5M per deal.','<strong>Thesis resonance:</strong> "embed economic mobility in core product, not as an afterthought" is structurally identical to the situated fairness principle — validity built into infrastructure from day one.'],
+  tags:['FF','SI','COMM','DIV']},
+
+  {name:'535West',sub:'NYC-based · Non-obvious founder thesis',url:'https://www.535west.com/',
+  stage:'Pre-Seed · Seed · Founder-first mandate',checkSize:'$250K – $1.5M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'NYC-based early-stage fund backing non-obvious founders at pre-seed and seed. Named after the firm\'s address in Manhattan — deliberate geographic signaling that top founders are built in New York, not just Silicon Valley. Focus on underrepresented founders with domain expertise in overlooked markets.',
+  why:['<strong>NYC founder ecosystem:</strong> sources from New York\'s deep pool of founders with backgrounds in finance, media, law, and healthcare — non-Silicon Valley domain expertise as the sourcing edge.','<strong>Pre-seed conviction:</strong> writes checks before the product is fully formed — investing in founder quality and market understanding, not demonstrated traction.','<strong>Non-obvious mandate:</strong> backs founders who don\'t fit the archetypal Silicon Valley mold — diverse backgrounds, non-coastal networks, domain expertise over technical pedigree.','<strong>Check size accessibility:</strong> $250K–$1.5M at pre-seed means access is genuinely available to first-time founders without warm intro to mega-fund partners.'],
+  tags:['FF','DIV','COMM']},
+
+  {name:'Ulu Ventures',sub:'Miriam Rivera & Clint Korver · Decision science approach · $130M+ AUM',url:'https://uluventures.com/',
+  stage:'Pre-Seed · Seed · $130M+ AUM · Data-driven decision science',checkSize:'$500K – $2M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Founded by Miriam Rivera (former VP and Associate General Counsel at Google) and Clint Korver. Uses decision science and data-driven evaluation to identify exceptional founders — building a systematic framework that reduces the pattern-matching bias that disadvantages underrepresented founders.',
+  why:['<strong>Decision science approach:</strong> invests through a structured decision process designed to reduce bias in founder evaluation — making the "non-obvious founder" thesis systematic, not aspirational.','<strong>Miriam Rivera:</strong> one of the few Latina GPs at an institutionally-backed seed fund — brings direct personal proximity to the access gap the fund was designed to close.','<strong>Portfolio:</strong> Mayvenn, Granular (acquired by Corteva), and others — consistent pattern of backing founders with deep domain expertise in underserved markets.','<strong>Stanford connection:</strong> academic pipeline for technical founders with research depth and non-traditional backgrounds — sourcing advantage outside the startup-to-startup pipeline.'],
+  tags:['FF','DIV','AI','COMM']},
+
+  {name:'Cleo Capital',sub:'Sarah Kunst, Founder & Managing Director',url:'https://www.cleocap.com/',
+  stage:'Pre-Seed · Seed · Women & underrepresented founders',checkSize:'$50K – $500K',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Founded by Sarah Kunst — writer, investor, and advocate. Backs women and underrepresented founders at pre-seed and seed before institutional capital arrives. Built from the explicit observation that diverse founders receive pattern-matched passes from traditional VC because they don\'t look like previous founders who got funded.',
+  why:['<strong>Sarah Kunst thesis:</strong> one of the most articulate voices in venture on the structural mechanisms that disadvantage underrepresented founders — the fund is the direct implementation of the diagnosis.','<strong>First-check conviction:</strong> invests at the moment most institutional VCs won\'t — before the team is complete, before the product is polished, on founder quality and problem proximity.','<strong>Network:</strong> Kunst\'s media presence and public advocacy give Cleo Capital access to founder communities not using LinkedIn warm-intro channels to find capital.','<strong>Sector breadth:</strong> health tech, consumer, fintech, and creator economy — markets where underrepresented founders have deep lived-experience advantages.'],
+  tags:['FF','DIV','SI']},
+],
+
+infra:[
+  {name:'Cultural Leadership Fund (CLF)',sub:'Andreessen Horowitz (a16z) · All fees & carry donated to nonprofits',url:'https://a16z.com/clf/',
+  stage:'$60M+ across 3 funds · Co-invests in a16z portfolio · All mgmt fees + carry donated to nonprofits',checkSize:'$500K – $5M (co-invests in a16z portfolio rounds)',stageNote:'Seed · Series A · Growth',stages:['seed','series-a','series-b'],
+  thesis:'Silicon Valley\'s first VC fund composed exclusively of Black cultural leaders as LPs. CLF co-invests in a16z portfolio companies across consumer, crypto, enterprise, fintech, and biotech. All management fees AND carried interest are donated to nonprofits advancing Black talent in tech.',
+  why:['<strong>LPs:</strong> Jay-Z, Nas, Diddy, Pharrell Williams, The Weeknd, Shonda Rhimes, Lionel Richie, Kevin Durant, and dozens more — the largest coordinated deployment of Black cultural capital into institutional tech VC.','<strong>Dual mission:</strong> more Black dollars on cap tables AND Black talent embedded in tech companies at earliest stages — capital and pipeline, not just capital.','<strong>Structural encoding:</strong> all fees AND carry donated to nonprofits advancing Black talent. The more CLF returns, the more capital flows to the community.','<strong>The bridge:</strong> Ben Horowitz built the cultural relationship between hip-hop capital networks and Silicon Valley deal flow. CLF is the institutional result — 300+ portfolio companies.'],
+  tags:['AI','COMM','CULT','DIV','SI']},
+
+  {name:'Inclusive & Sustainable Ventures',sub:'Morgan Stanley (formerly Multicultural Innovation Lab)',url:'https://morganstanley.com/about-us/inclusive-sustainable-ventures',
+  stage:'$250K equity per startup · $250K grant per nonprofit · 2025 cohort: 33 companies · Global',checkSize:'$250K equity per startup',stageNote:'Pre-Seed · Seed (accelerator cohort)',stages:['pre-seed','seed'],
+  thesis:'Corporate accelerator and investment program investing $250K equity in early-stage startups across four impact categories: Environment, Health & Wellbeing, Economic Empowerment, and Education & Human Capital. 2025 cohort featured AI-driven solutions in healthcare, transportation, manufacturing, and accounting.',
+  why:['<strong>2025 cohort:</strong> 33 startups + 4 nonprofits. Founders from the Americas and EMEA. All companies providing AI-driven solutions in essential industry categories.','<strong>Beyond the check:</strong> Morgan Stanley\'s institutional client network, global distribution infrastructure, and brand open doors the $250K alone cannot.','<strong>Transparent process:</strong> applications open annually — not a closed network. Accessible to founders who lack warm intro infrastructure.','<strong>Institutional bridge:</strong> Morgan Stanley deploying one of the most powerful financial brands specifically into underrepresented founders working on AI for essential industries.'],
+  tags:['AI','DIV','SI','COMM']},
+
+  {name:'Plexo Capital',sub:'Lo Toney · GV / Google Ventures spinout · 900+ underlying companies',url:'https://plexocap.com',
+  stage:'$42.5M fund · GV spinout · Fund-of-funds + direct co-investment · 900+ underlying companies',checkSize:'$500K – $2M (direct co-investment)',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Spun out of GV (Google Ventures) by Lo Toney in 2017. Fund-of-funds model: ~60-65% deployed as LP into diverse seed-stage VC funds; remainder co-invested directly. Diverse fund managers have differentiated networks and a different lens for evaluating deals — especially at seed stage.',
+  why:['<strong>LP backers:</strong> Alphabet, Intel Capital, Cisco Investments, Ford Foundation — the institutions that want diverse founders funded are backing Plexo to make it happen.','<strong>Multiplier model:</strong> 60-65% into diverse-led seed funds, 35-40% direct co-investment — strengthens the entire ecosystem of diverse fund managers, not just individual companies.','<strong>Portfolio:</strong> Blavity, PlayVS, Wrapbook — pattern of backing Black-founded media, sports, and creator economy infrastructure. 900+ underlying portfolio companies.','<strong>The Plexo thesis:</strong> invest in fund managers first, because fund managers choose who gets access to capital. Changing who manages funds changes who gets funded.'],
+  tags:['DIV','COMM','AI','SI']},
+
+  {name:'January Ventures',sub:'Jennifer Neundorfer & Maren Bannon · Pre-seed AI for legacy industries',url:'https://www.january.ventures/',
+  stage:'Pre-seed · AI focus · Healthcare, manufacturing, supply chain · Underrepresented founders',checkSize:'$250K – $750K',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Pre-seed investment in underrepresented founders transforming healthcare, manufacturing, and supply chain with AI. The most defensible AI companies are being built by founders with deep domain expertise in legacy industries — and they\'re not getting funded because the market is chasing infrastructure in San Francisco.',
+  why:['<strong>Explicit focus:</strong> underrepresented founders using AI to solve real problems in traditional industries — not competing in the crowded AI infrastructure market, but where AI creates genuinely new workflows.','<strong>Legacy industries thesis:</strong> healthcare, manufacturing, supply chain are the essential services markets where AI validity and behavioral measurement matter most — and where domain expertise is the moat.','<strong>Pre-seed access:</strong> investing before the product is formed, before the team is complete, before the network gives founders credibility. This is where the access gap is widest.','<strong>TechCrunch Disrupt:</strong> Jennifer Neundorfer identifying defensible AI as "using AI to create a whole new experience or workflow or behavior, not a 10x improvement to an existing tool."'],
+  tags:['AI','DIV','COMM','SI']},
+],
+
+established:[
+  {name:'CRV',sub:'Charles River Ventures · Founded 1970 · 55+ years of venture',url:'https://www.crv.com/',
+  stage:'Seed – Series B · $600M Fund XVIII (2022) · SF & NYC',checkSize:'$1M – $15M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'One of the oldest continuously-operating venture firms in Silicon Valley — 55+ years of backing technology companies from earliest stages. Known for pre-IPO investments in HubSpot, Zendesk, and DoorDash. Current thesis emphasizes developer infrastructure, enterprise software, and AI-native applications.',
+  why:['<strong>Track record:</strong> HubSpot, Zendesk, DoorDash, Vercel, Patreon, Twitter — consistent pattern of backing infrastructure companies before their categories became consensus.','<strong>AI infrastructure thesis:</strong> current CRV thesis centers on AI-native developer tools and enterprise software — companies where AI is built into the architecture, not bolted on.','<strong>Stage conviction:</strong> backs from seed through Series B with capital and expertise to lead or follow depending on founder relationship.','<strong>Geographic reach:</strong> SF and NYC anchored with global co-investment partnerships — access to deal flow outside typical coastal concentration.'],
+  tags:['AI','COMM']},
+
+  {name:'Uncork Capital',sub:'Jeff Clavier, Andy McLoughlin · Pioneer of institutional seed (2004)',url:'https://uncorkcapital.com/',
+  stage:'Pre-Seed · Seed · $200M+ AUM · 250+ investments',checkSize:'$1M – $4M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'One of the original seed-stage funds — Jeff Clavier began backing seed-stage companies in 2004 before "seed" was a recognized VC category. Backs technical founders building B2B software, developer tools, and AI-native applications. Known for leading first rounds and deep operational support.',
+  why:['<strong>Pioneer of seed stage:</strong> Uncork (then SoftTech VC) began writing $25K checks in 2004 when institutional seed didn\'t exist. The fund helped define what seed-stage venture looks like.','<strong>Portfolio exits:</strong> Fitbit (IPO/Google $2.1B), Eventbrite (IPO), SendGrid (Twilio $3B) — infrastructure companies that became category leaders.','<strong>AI conviction:</strong> current portfolio includes AI-native B2B software and developer infrastructure — backing the same thesis at seed that larger funds are now chasing.','<strong>Founder-first approach:</strong> known for fast decisions, genuine operator support, and backing technical founders before product-market fit is fully apparent.'],
+  tags:['FF','AI']},
+
+  {name:'NEA (New Enterprise Associates)',sub:'Founded 1977 · $25B+ committed capital · 19 funds',url:'https://www.nea.com/portfolio',
+  stage:'Seed – Growth · $3.6B Fund XVIII · Healthcare & Technology · Global',checkSize:'$1M – $100M+',stageNote:'Seed · Series A · Series B · Growth',stages:['seed','series-a','series-b'],
+  thesis:'One of the largest and most active venture firms globally — $25B+ in committed capital across 19 funds since 1977. Deep conviction in healthcare technology, enterprise software, and AI infrastructure across all stages. Portfolio spans 1,000+ companies with significant AI infrastructure and healthcare essential services exposure.',
+  why:['<strong>Scale:</strong> $25B+ committed capital, 19 funds, 1,000+ companies. The institutional weight gives NEA access to follow-on investments that smaller funds cannot sustain.','<strong>Healthcare + AI thesis:</strong> NEA combines deep healthcare vertical expertise with AI infrastructure conviction — exactly the essential services + AI intersection.','<strong>Stage agnostic:</strong> seed through growth means NEA can build long-term founder relationships and sustain positions across multiple rounds.','<strong>Portfolio:</strong> Salesforce, Workday, Uber, Robinhood, OpenDoor — pattern of infrastructure companies serving essential service markets at scale.'],
+  tags:['AI','SI']},
+
+  {name:'RRE Ventures',sub:'Founded 1994 · NYC-based · 30+ years of building East Coast tech',url:'https://rre.com/',
+  stage:'Seed – Series A · $1B+ AUM · Enterprise & Consumer Tech · NYC',checkSize:'$500K – $7M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'New York-based early-stage venture firm backing transformative technology companies in enterprise software, fintech, and consumer technology. Built on 30+ years of NYC tech ecosystem participation — one of the first institutional voices for the East Coast technology scene.',
+  why:['<strong>NYC anchor:</strong> 30+ years of building the NY tech ecosystem — warm intro network spans every major NYC institutional investor, media company, and enterprise client.','<strong>Portfolio:</strong> Venmo (early), Medium, Stash, Cleared, Circle — pattern of infrastructure companies enabling new financial and media behaviors.','<strong>Enterprise + consumer intersection:</strong> thesis covers the full stack of technology transformation — infrastructure for enterprise adoption and consumer behavior change simultaneously.','<strong>Co-investment network:</strong> long-term relationships with Sequoia, a16z, and major cross-coastal funds — strong bridge between NYC ecosystem and Silicon Valley capital.'],
+  tags:['AI','COMM']},
+
+  {name:'Lightspeed Venture Partners',sub:'Founded 2000 · Global multi-stage · $7B+ AUM',url:'https://lsvp.com/',
+  stage:'Seed – Growth · $7B+ AUM · Global offices (US, India, Israel, Europe)',checkSize:'$1M – $50M+ (varies by stage)',stageNote:'Seed · Series A · Series B · Growth',stages:['seed','series-a','series-b'],
+  thesis:'Global multi-stage venture firm with $7B+ AUM backing technology companies in enterprise software, consumer, and healthcare. Known for early investments in Snap, Affirm, and Mulesoft. Current AI thesis spans infrastructure, enterprise AI applications, and agentic systems.',
+  why:['<strong>Global platform:</strong> offices across US, India, China, Israel, and Europe provide sourcing advantages and portfolio support that domestic-only funds cannot match.','<strong>Portfolio:</strong> Snap, Affirm, Mulesoft (Salesforce $6.5B), Epic Games, Carta — consistent pattern of infrastructure becoming category standard.','<strong>AI conviction:</strong> current portfolio includes significant AI infrastructure and enterprise AI application positions — conviction backed by long-term stage flexibility.','<strong>Multi-stage advantage:</strong> seed through growth means Lightspeed can stay with founders through multiple inflection points — a structural advantage for infrastructure companies with long build timelines.'],
+  tags:['AI','COMM']},
+
+  {name:'Upfront Ventures',sub:'Mark Suster, Kara Nortman · Founded 1996 · LA-based',url:'https://upfront.com/',
+  stage:'Seed – Series B · $1.8B+ AUM · LA ecosystem anchor',checkSize:'$1M – $8M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'LA-based multi-stage VC with deep conviction in consumer technology, enterprise software, and marketplace businesses. Kara Nortman as Co-Managing Partner has built one of the most explicit diverse-founder mandates of any major fund — backing women and underrepresented founders as core portfolio strategy.',
+  why:['<strong>Kara Nortman:</strong> Co-Managing Partner with explicit diverse founder mandate — one of the few major VC partners who has made backing underrepresented founders a quantified portfolio commitment.','<strong>LA ecosystem builder:</strong> one of the oldest and most active LA-based funds — created deal flow density that didn\'t exist when they started, now a core part of the LA tech ecosystem.','<strong>Portfolio:</strong> Ring (Amazon $1.2B), Maker Studios (Disney $675M+), ServiceTitan, Splash — pattern of consumer/enterprise infrastructure with LA cultural roots.','<strong>Founder support model:</strong> deep operational involvement at seed and Series A — known for genuine engagement, not just capital deployment.'],
+  tags:['FF','AI','DIV']},
+
+  {name:'Benchmark',sub:'Founded 1995 · Equal partnership · Concentrated strategy',url:'https://benchmark.com/',
+  stage:'Seed – Series A · Small fund · Equal partnership · No junior partners',checkSize:'$5M – $25M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'The iconically egalitarian Silicon Valley VC partnership — five equal partners, no hierarchy, no junior partners, no growth stage sidecars. Concentrated strategy: back 15-20 companies per fund, be the most important institutional investor in each. Built for founders who want a true partner, not a syndication vehicle.',
+  why:['<strong>Equal partnership model:</strong> all partners receive equal economics regardless of deal — structurally eliminates the incentive to hoard deal access. The anti-hierarchy thesis.','<strong>Portfolio:</strong> eBay, Twitter, Uber, Snap, Zillow, Instagram (early) — among the highest total return records in venture history.','<strong>Concentrated conviction:</strong> 15-20 investments per fund at meaningful check sizes — each investment gets a Benchmark GP as genuine board partner, not a passive observer.','<strong>Founder-first operationally:</strong> the equal partner structure means the decision to invest is also the decision of who leads the relationship. No handoffs, no junior partners managing the account.'],
+  tags:['AI']},
+],
+
+houston:[
+  {name:'Mercury Fund',sub:'Blair Garrou, Aziz Gilani & Dan Watkins · Founded 2005 · Central US focus',url:'https://mercuryfund.com',
+  stage:'Seed / Series A · 99 portfolio companies · 2 unicorns · 31 acquisitions · Central US focus',checkSize:'$500K – $3M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Early-stage VC investing in disruptive AI and Blockchain startups outside Silicon Valley, anchored in Texas and the broader Central US. Founded in 2005, Mercury identified the capital imbalance in "Middle America" two decades before the trend became obvious.',
+  why:['<strong>Portfolio exits:</strong> Vistar Media (acquired by T-Mobile 2025), Cart.com, Ambiq, Brassica (acquired by BitGo 2024) — infrastructure companies backing massive markets from Central US geography.','<strong>Performance:</strong> 99 portfolio companies, 2 unicorns, 31 acquisitions. The Middle America thesis isn\'t charity — it\'s alpha sourced before coastal VCs showed up.','<strong>Dual-use AI lens:</strong> focus on AI and defense technologies serving 16 critical infrastructure sectors — NASA, energy, and medical center proximity creates inherent Houston sourcing advantage.','<strong>Academic pipeline:</strong> Blair Garrou\'s Rice University adjunct role creates a Houston-specific deal flow that coastal VCs cannot access.'],
+  tags:['AI','REG','COMM']},
+
+  {name:'The Artemis Fund',sub:'Stephanie Campbell, Diana Murakhovskaya & Leslie Goldman Tepper · Houston',url:'https://theartemisfund.com',
+  stage:'Seed · Fund II $36M (closed March 2024) · 18 portfolio companies · 1 unicorn (BRIJ, 2025)',checkSize:'$1.5M – $3M',stageNote:'Seed',stages:['seed'],
+  thesis:'Houston-based. Invests in founders building technology for resilient families and businesses — tech-enabled companies that help people build wealth, care for families, and create long-term economic resilience. Explicit focus on women founders and founders from underserved communities.',
+  why:['<strong>Founding team:</strong> three non-Silicon Valley women founded this fund in 2019 — the founding team IS the thesis embodied before the first investment was made.','<strong>Performance:</strong> Fund II $36M (March 2024), 18 portfolio companies, 1 unicorn (BRIJ became unicorn 2025). Published 2025 impact report: portfolio drove $558M to small businesses, served 426K families, created 45K jobs.','<strong>Focus sectors:</strong> fintech, caretech, commerce enablement — "resilient families and businesses" infrastructure addressing daily economic survival, not luxury products.','<strong>NVCA recognition:</strong> member spotlight in the institutional VC community despite being Houston-based, women-led, and community-focused — the combination supposed to be "unfundable."'],
+  tags:['DIV','COMM','SI','REG']},
+
+  {name:'GOOSE Capital',sub:'Former Fortune 500 executives · GOOSE Society of Texas',url:'https://goose.capital',
+  stage:'$55M+ invested · ~$10M annually · Early-stage · AI, biotech, defense, energy tech',checkSize:'$500K – $3M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Early-stage investment firm composed of former Fortune 500 executives, industry leaders, and serial entrepreneurs. Focuses on breakthrough, proprietary, and disruptive technologies — with sourcing advantage from deep corporate network connections in Houston\'s industrial base.',
+  why:['<strong>Leadership:</strong> Jeff Smisek (fmr CEO United Continental Holdings), Jay Collins (fmr CEO Oceaneering International), Jim Compton (fmr Vice Chairman United Airlines) — executives who understand what disruption means to legacy industries.','<strong>Scale:</strong> $55M+ invested in early-stage ventures; $10M annually. Not chasing trends — backing what can withstand technical scrutiny from people who ran billion-dollar industrial operations.','<strong>Portfolio:</strong> Nanotech Materials, Immix Biopharma, Persona AI — spans deep tech, pharma, and AI.','<strong>The GOOSE model:</strong> former operators investing in companies building the next generation of technology that will disrupt the industries they ran. Operational expertise as sourcing advantage.'],
+  tags:['AI','REG']},
+
+  {name:'HX Venture Fund',sub:'Sandy Guitar, Managing Director · Houston corporate LP base · Fund of funds',url:'https://hxventurefund.com',
+  stage:'Fund of funds · Houston corporate LPs · Life sciences / B2B SaaS / Energy transition',checkSize:'$1M – $5M (LP positions in portfolio funds)',stageNote:'Seed · Series A (fund-of-funds)',stages:['seed','series-a'],
+  thesis:'A venture capital fund of funds creating a multiplier effect by linking Houston\'s major corporations with high-growth venture funds and startups. Portfolio: ~1/3 life sciences, ~1/3 B2B SaaS, ~1/3 energy transition — reflecting Houston\'s competitive advantage in medical center, tech, and energy.',
+  why:['<strong>Portfolio funds:</strong> .406 Ventures, Next Coast Ventures, OpenView, Updata Partners, LiveOak Venture Partners — building a structured bridge between Houston corporate capital and the broader venture ecosystem.','<strong>Three-pillar thesis:</strong> Texas Medical Center (largest medical complex in the world), NASA/aerospace, and energy capital of the world — a unique industrial trifecta no other city can match.','<strong>Fund-of-funds multiplier:</strong> each dollar deployed into a venture fund accesses that fund\'s entire portfolio and deal flow — capital efficiency plus ecosystem building across Houston.','<strong>Houston 2025:</strong> Houston-area startups raised $1B+ in VC in H1 2025 alone — almost double H1 2024. HX is the connective tissue pulling that activity into a coherent ecosystem.'],
+  tags:['AI','REG','COMM']},
+
+  {name:'Houston Angel Network (HAN)',sub:'Founded 2001 · Oldest angel network in Texas · Nonprofit',url:'https://houstonangelnetwork.org',
+  stage:'Nonprofit · Seed · $250K–$3M · $100M+ in 400+ deals since 2001 · 11 exits',checkSize:'$250K – $3M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Nonprofit dedicated to developing Houston\'s innovation ecosystem by connecting founders with financial resources and mentorship. The oldest angel network in Texas and one of the most active in the US — 25 years of building the capital infrastructure that supports Houston\'s entrepreneurial community.',
+  why:['<strong>Track record:</strong> $100M+ deployed in 400+ deals over 25 years. 11 portfolio exits. The institutional memory and deal-sourcing infrastructure of Houston\'s startup ecosystem.','<strong>Texas-focused mandate:</strong> companies must be based in Texas or commit to relocating — a deliberate geographic density strategy.','<strong>Stage gap filler:</strong> $250K–$3M at seed fills the gap national venture funds skip — the capital-starved stage between friends-and-family and institutional VC.','<strong>Latest investment:</strong> Materna Medical (June 2025) — therapeutic devices for women\'s health, consistent with Houston medical center ecosystem strengths.'],
+  tags:['COMM','REG','SI']},
+
+  {name:'South Loop Ventures',sub:'Zach Ellis Jr., GP · Rice Management Co + Chevron as lead LPs',url:'https://southloop.vc',
+  stage:'$21M Fund I (May 2025) · Rice Management Co + Chevron Technology Ventures as lead LPs',checkSize:'$250K – $1M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Houston-based VC specifically backing underrepresented founders of color in energy, health, space, sports, and fintech sectors. Thesis: less than 3% of venture capital reaches underrepresented founders of color — this represents a clear market inefficiency and an exceptional opportunity.',
+  why:['<strong>Fund I close (May 2025):</strong> lead investors Rice Management Company and Chevron Technology Ventures — the most strategically aligned LP combination for a Houston-based diversity fund.','<strong>LP coalition:</strong> Episcopal Diocese of Texas, Texas CapitalBank as additional investors — community anchor institutions creating a genuine capital coalition.','<strong>Portfolio:</strong> 13 companies since August 2023 (pre-Fund I) — Milkify (breast milk freeze-drying), Lokum App (healthcare CRNA staffing platform) — essential services with underrepresented founders.','<strong>Zach Ellis thesis:</strong> "Inequitable distribution of venture capital represents a clear market inefficiency — and market inefficiencies translate into exceptional opportunities." Framing the access gap as alpha, not charity.'],
+  tags:['DIV','COMM','SI','REG']},
+],
+
+corporate:[
+  {name:'SoftBank Opportunity Fund',sub:'SoftBank · Launched 2020 · Within $100B+ SoftBank portfolio',url:'https://softbank.com',
+  stage:'$100M carve-out fund · Black, Latinx, Native American founders · Within $100B+ SoftBank portfolio',checkSize:'$1M – $25M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'A $100M fund within a $100B+ portfolio for Black, Latinx, and Native American founders — representing 0.1% of SoftBank\'s AUM. Portfolio includes Clearco (revenue-based financing) and Cityblock Health (healthcare for underserved urban communities).',
+  why:['<strong>Cityblock Health:</strong> AI-powered care model for underserved urban populations — direct essential services + AI + community alignment in a single portfolio company.','<strong>Clearco:</strong> revenue-based financing for founders — expands capital access beyond traditional equity models that favor founders with pre-existing assets.','<strong>The ratio:</strong> $100M inside a $100B+ portfolio = 0.1% of AUM. The structural critique writes itself. The capital is real and deploying; the proportion tells the fuller story.','<strong>Corporate diversity vehicle model:</strong> major institution creating a carve-out is better than nothing while being less than what the thesis deserves at scale.'],
+  tags:['DIV','SI','COMM']},
+
+  {name:'One Million Black Women',sub:'Goldman Sachs · Launched 2021 · $10B commitment',url:'https://goldmansachs.com',
+  stage:'$10B commitment ($5B direct investment + $5B philanthropic) · Black women entrepreneurs',checkSize:'$1M – $20M+',stageNote:'Seed · Series A · Growth',stages:['seed','series-a','series-b'],
+  thesis:'$10B total commitment for Black women entrepreneurs and economic development — the largest explicit corporate commitment to Black women\'s economic power in history. Split between direct investment capital and philanthropic activity.',
+  why:['<strong>$5B + $5B:</strong> the largest explicit corporate commitment to Black women\'s economic development ever made. Financial scale that no other corporate diversity vehicle matches.','<strong>Focus:</strong> economic access and financial inclusion — the capital infrastructure for Black women entrepreneurs systematically excluded from traditional VC and banking channels.','<strong>Market argument:</strong> the Black women-founded company market is systematically underserved, making it a financial opportunity, not just a social mandate. Goldman is a financial institution.','<strong>Limitation:</strong> corporate philanthropy-meets-investment, not traditional VC. Structural dependency on continued institutional will. But the commitment is contractual at $10B.'],
+  tags:['DIV','SI','COMM']},
+
+  {name:'Advancing Black Pathways',sub:'JPMorgan Chase · $30B Racial Equity Commitment',url:'https://jpmorganchase.com',
+  stage:'$30B racial equity commitment · CDFIs · HBCUs · Small business financing · Affordable housing',checkSize:'$50K – $5M (loans / grants / CDFI channels)',stageNote:'All stages (community finance)',stages:['impact'],
+  thesis:'$30B racial equity commitment across community development finance, HBCU investment, affordable housing, and small business financing in underserved markets. Not VC — but the capital infrastructure that enables CDFIs and community-scale businesses to function.',
+  why:['<strong>Scope:</strong> Community Development Finance to Black-owned businesses, HBCU partnership investment, affordable housing in Black communities, small business lending in underserved markets.','<strong>HBCU investment:</strong> JPMorgan partners with HBCUs on financial literacy, career development, and institutional investment — credibility infrastructure for the next generation of Black investors.','<strong>Foundational layer:</strong> $30B is the unglamorous but essential capital infrastructure without which community-scale economic development cannot happen at scale.','<strong>Mellody Hobson connection:</strong> her JPMorgan board seat creates a governance bridge between Black-owned investment infrastructure (Ariel) and JPMorgan\'s $30B racial equity commitment.'],
+  tags:['COMM','SI','DIV']},
+],
+
+
+named3:[
+  {name:'QueensBridge Venture Partners',sub:'Nas (Nasir Jones) & Anthony Saleh',url:'https://queensbridgeventures.com',
+  stage:'Seed – Series A · $250K–$2M checks · Active',checkSize:'$250K – $2M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Named after the Queensbridge Houses in Long Island City, NY — the largest public housing project in the United States, where Nas grew up. Backs companies where urban populations are the primary users and where cultural credibility opens doors traditional VC cannot.',
+  why:['<strong>Portfolio:</strong> Coinbase (seed — one of the most valuable celebrity VC positions in history), Ring (Amazon $1B+), Lyft, Robinhood, Dropbox, Casper, Warby Parker, Genius, JUMP Bikes','<strong>The Ring thesis:</strong> home security for neighborhoods where security mattered most and was least accessible. Cultural proximity as sourcing advantage — not a side benefit.','<strong>Returns:</strong> estimated portfolio returns in excess of $400M. The Coinbase seed position alone became historic at Coinbase\'s IPO.','<strong>Structure:</strong> Anthony Saleh manages operational diligence; Nas provides cultural network and validation. A genuine GP-level division of labor, not a celebrity rubber stamp.'],
+  tags:['AI','COMM','CULT']},
+
+  {name:'Marcy Venture Partners (MVP)',sub:'Jay-Z (Shawn Carter), Jay Brown & Larry Marcus',url:'https://marcyventureink.com',
+  stage:'Series A+ · ~$85M Fund I · ~$85M Fund II (2023)',checkSize:'$1M – $5M+',stageNote:'Series A · Growth',stages:['series-a','series-b'],
+  thesis:'Named after Marcy Houses in Bed-Stuy, Brooklyn. Culture-first consumer thesis: backs brands with authentic cultural roots and the potential to scale into mainstream adoption. Filters on cultural authenticity and community resonance — not on founder identity.',
+  why:['<strong>Portfolio:</strong> Oatly (Nasdaq IPO 2021), D\'USSE Cognac (Bacardi acquisition), Armand de Brignac (LVMH $600M+), TIDAL (Square/Block $297M), Super Coffee, BookClub, Camp, Flowspace','<strong>Buried Oatly thesis:</strong> communities of color have higher rates of lactose intolerance — making them Oatly\'s core market, not a diversity overlay. The investment thesis and the community thesis are the same.','<strong>Operations:</strong> Jay Brown and Larry Marcus run GP-level decisions; Jay-Z is the cultural architect — structurally distinct from passive LP celebrity involvement.','<strong>Show don\'t tell:</strong> MVP does not present as a diversity fund. Inclusion operates through cultural authenticity, not identity filtering.'],
+  tags:['CULT','OWN','SI']},
+
+  {name:'i.am+ / i.am ANGEL Foundation',sub:'will.i.am (William Adams)',url:'https://iamplus.com',
+  stage:'Angel / Advisor · ANGEL Foundation active in Boyle Heights, LA',checkSize:'$25K – $500K (angel)',stageNote:'Angel · Pre-Seed',stages:['angel','pre-seed'],
+  thesis:'The most AI-focused of all celebrity investors. Explicitly advocates that Black and marginalized communities created the cultural content AI is trained on — without compensation or ownership — and deserve equity stakes in the AI systems built on that foundation.',
+  why:['<strong>Portfolio:</strong> Beats Electronics (early investor, Apple $3B acquisition, ~10x return), Twitter (early), Ekso Bionics. Intel brand partner and AI technology advisor.','<strong>ANGEL Foundation:</strong> STEM programming for Latino and underrepresented youth in Boyle Heights, LA — a foundation-to-pipeline model funding the talent who will enter the AI economy.','<strong>The explicit argument (2025–2026):</strong> communities of color are owed equity in AI systems trained on their cultural output. This is the "cultural value without ownership" thesis stated as public advocacy.','<strong>Direct thesis match:</strong> the most explicit celebrity parallel to the situated fairness principle — not just alignment, but active advocacy for the identical structural argument.'],
+  tags:['AI','COMM','SI']},
+],
+
+athletes:[
+  {name:'Thirty Five Ventures (35V)',sub:'Kevin Durant & Rich Kleiman · 100+ portfolio companies',url:'https://35v.com',
+  stage:'Series A+ · 100+ portfolio companies · Rich Kleiman as operating partner',checkSize:'$250K – $5M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Invests where Durant\'s cultural network creates an unfair sourcing advantage. Rich Kleiman provides institutional-quality operations that most celebrity vehicles lack. Heavy fintech exposure directly serves communities historically excluded from traditional banking.',
+  why:['<strong>Portfolio (100+):</strong> Coinbase, Acorns, Robinhood, Postmates, Therabody, Whoop — pattern of infrastructure with mass-market, underserved-community relevance.','<strong>Fintech concentration:</strong> Acorns and Robinhood specifically democratize investment access for communities traditional financial institutions have excluded.','<strong>Structural differentiator:</strong> Kleiman\'s operational rigor distinguishes this from informal celebrity check-writing — investment committee discipline, portfolio management, follow-on strategy.','<strong>Network reach:</strong> Durant\'s connections span tech, media, consumer, and sports globally — sourcing advantage that institutional VCs cannot replicate.'],
+  tags:['AI','COMM']},
+
+  {name:'SpringHill Company / LRMR',sub:'LeBron James & Maverick Carter · $725M valuation',url:'https://sc.holdings',
+  stage:'$725M valuation · Investors: Nike, Epic Games, RedBird Capital Partners, Fenway Sports Group',checkSize:'Strategic equity (not traditional VC checks)',stageNote:'Growth · Ownership',stages:['series-b'],
+  thesis:'Build owned media infrastructure that amplifies Black athletic and creative culture — not passive investing in others\' companies but ownership of the distribution layer itself. LRMR is the family office; SpringHill is the media and entertainment company.',
+  why:['<strong>SpringHill portfolio:</strong> UNINTERRUPTED (athlete media platform), StatusPro (athlete performance AI), The Robot Company (commercial production) — IP owned, not licensed.','<strong>Community infrastructure:</strong> I Promise School in Akron — building the human capital pipeline for children from LeBron\'s own neighborhood. Education as direct community investment.','<strong>Epic Games partnership:</strong> direct metaverse and gaming infrastructure play — ownership of the next content distribution layer, not licensing to it.','<strong>Model:</strong> SpringHill is building Black-owned media infrastructure equivalent to what white-owned studios have held for a century. Ownership, not access.'],
+  tags:['OWN','CULT','MEDI','SI']},
+
+  {name:'SC30 Inc.',sub:'Stephen Curry · Co-founder model · Eat. Learn. Play. Foundation',url:'https://sc30inc.com',
+  stage:'Angel / Co-founder model · Under Armour equity holder · Eat. Learn. Play. Foundation',checkSize:'$100K – $2M (angel / co-founder)',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Financial access and wellness — particularly for demographics excluded from wealth-building infrastructure. Curry co-founds companies rather than writing passive checks. The situated fairness principle applied to fintech and consumer wellness.',
+  why:['<strong>Penny Finance (co-founded):</strong> fintech platform specifically targeting women excluded from financial institutions — the financial inclusion thesis applied to gender.','<strong>Guild Education:</strong> workforce upskilling for adults locked out of traditional education pipelines — democratizing access to credentials and income mobility.','<strong>Under Armour:</strong> equity holder through brand partnership — ownership model, not endorsement model. Financial structure matters as much as the association.','<strong>Eat. Learn. Play. Foundation:</strong> Oakland youth community investment — direct infrastructure in his hometown, not charity from a distance.'],
+  tags:['COMM','SI','DIV']},
+
+  {name:'Serena Ventures',sub:'Serena Williams · True GP structure · Active portfolio',url:'https://serenaventures.com',
+  stage:'Pre-seed / Seed · Formal GP structure · Active portfolio',checkSize:'$100K – $2M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Backs founders historically passed over — women, people of color, non-traditional backgrounds. One of the only celebrity-to-GP conversion stories where the cultural figure is the actual investment decision-maker, not an LP in someone else\'s fund.',
+  why:['<strong>True GP:</strong> Serena operates as the actual general partner making investment decisions — not a passive LP or brand ambassador for another fund manager.','<strong>Mandate:</strong> women and founders of color at pre-seed and seed, before institutional capital arrives. The bet is on the founder, before the product is obvious.','<strong>Portfolio span:</strong> health tech, consumer, fintech, and direct-to-consumer — consistent diversity-of-founder focus across sectors.','<strong>Structural significance:</strong> a Black woman athlete operating as a GP in formal venture is itself a signal that changes what founders believe is possible.'],
+  tags:['DIV','SI','CULT']},
+
+  {name:'Chris Paul Collective / CP3 Investments',sub:'Chris Paul · Sports infrastructure & consumer brands',url:'https://chrispaul3.com',
+  stage:'Angel · CP3 Investments · Multiple active verticals',checkSize:'$100K – $2M (angel)',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'The Chris Paul Collective unites business and philanthropic ventures: CP3 Investments, Good Eat\'n snack brand, Ohh Dip!!! Entertainment, and the Chris Paul Family Foundation. Sports infrastructure and consumer brands with community roots.',
+  why:['<strong>Portfolio:</strong> Hyperice (recovery tech, $850M+ valuation), PlayersTV (athlete-owned media), WatchBox (luxury watch marketplace), MaxOne (sports tech, $3.5M raise)','<strong>Scout (seed, Jan 2025):</strong> sports technology infrastructure — signals continued active tech angel investment into 2025.','<strong>Angel City FC (2025):</strong> women\'s soccer franchise ownership — athlete capital moving into women\'s sports ownership at scale.','<strong>Pattern:</strong> sports infrastructure, athlete wellness technology, and consumer brands with community roots — not prestige placements but operational investments.'],
+  tags:['COMM','SI']},
+
+  {name:'Sound Ventures',sub:'Ashton Kutcher & Guy Oseary · $265M AI Fund · $1B+ total AUM',url:'https://soundventures.com',
+  stage:'$265M AI Fund · 60 LPs · $1B+ total AUM · Series A+',checkSize:'$1M – $10M',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'AI applications and infrastructure — specifically consumer experience transformation and creator economy applications. One of the earliest celebrity-affiliated funds to formally structure entirely around generative AI.',
+  why:['<strong>AI Fund core holdings:</strong> OpenAI, Anthropic, StabilityAI, Hugging Face — the four most consequential generative AI infrastructure bets made available to outside investors.','<strong>Landbase (June 2025):</strong> led $30M Series A for AI sales platform — operational AI investing, not just prestige positions in headline companies.','<strong>Scale:</strong> $265M AI Fund from 60 investors, $1B+ total AUM — institutional scale that earns institutional co-investor relationships.','<strong>Track record:</strong> Kutcher backed Uber, Skype, and Airbnb before they were obvious. The AI Fund was raised on that credibility, not on celebrity status.'],
+  tags:['AI','MEDI']},
+],
+
+entertainment:[
+  {name:'Fenty Beauty / Gather Ventures / Clara Lionel Foundation',sub:'Rihanna · Three-layer ownership model',url:'https://fenty.com',
+  stage:'Direct ownership · Gather Ventures active · CLF $52M assets (2023)',checkSize:'$1M – $10M+ (Gather Ventures)',stageNote:'Seed · Growth · Impact',stages:['seed','impact'],
+  thesis:'Three-layer ownership model: product equity (Fenty Beauty, 50% ownership), diaspora impact investing (Gather Ventures — women-led climate startups across Africa), and community philanthropy (Clara Lionel Foundation — climate resilience, gender equity, health access).',
+  why:['<strong>Fenty Beauty:</strong> LVMH provided capital infrastructure; Rihanna retained 50% equity. Peak valuation $2.8B. 40 shades at launch — the inclusion thesis was the product thesis. The same thing.','<strong>Gather Ventures (launched 2022):</strong> grants, debt, equity, and convertible notes for women entrepreneurs across Africa. Target: 25 African-led climate startups by 2026.','<strong>Clara Lionel Foundation:</strong> climate resilience, women\'s entrepreneurship, health equity — the Caribbean, East Africa, and US South as primary geographies. $52M assets.','<strong>Negotiation model:</strong> she retained 50% of a $2.8B company using LVMH\'s capital. The template for how cultural figures should structure every major deal.'],
+  tags:['OWN','CULT','DIV','SI']},
+
+  {name:'Parkwood Entertainment',sub:'Beyoncé Knowles-Carter · Strategic equity over royalties',url:'https://parkwoodentertainment.com',
+  stage:'Fully owned · Strategic equity in brand partnerships · IVY PARK (Adidas, terminated 2023)',checkSize:'Strategic equity (not traditional VC checks)',stageNote:'Growth · IP Ownership',stages:['series-b'],
+  thesis:'Strategic equity over royalties. Beyoncé takes ownership positions in brands aligned with her cultural vision rather than licensing fees or endorsement deals. Parkwood owns her content infrastructure end-to-end — masters, production, distribution.',
+  why:['<strong>Parkwood:</strong> owns her master recordings, content production, and brand vehicles. Full vertical integration of one of the most valuable cultural IP catalogs in the world.','<strong>IVY PARK (Adidas partnership):</strong> equity structure rather than an endorsement deal — she controlled the brand direction. Partnership terminated 2023 on her terms.','<strong>Strategy pattern:</strong> every partnership is structured as an ownership stake. The opposite of how most artists, and most Black artists especially, have historically operated.','<strong>Cultural thesis:</strong> Black women\'s aesthetic and cultural output has been systematically undervalued and appropriated. Ownership is the only durable correction.'],
+  tags:['OWN','CULT','MEDI']},
+
+  {name:'Hoorae Media / Raedio',sub:'Issa Rae · Founder-owned media · Sync licensing capture',url:'https://hooraemedia.com',
+  stage:'Founder-owned media company · Raedio music + sync licensing · Angel investments',checkSize:'$25K – $250K (angel)',stageNote:'Pre-Seed · Seed',stages:['angel','pre-seed'],
+  thesis:'Own the platform that amplifies Black storytelling rather than licensing content to platforms owned by others. Raedio specifically captures the sync licensing revenue layer that has historically been extracted from Black creators and routed to white-owned intermediaries.',
+  why:['<strong>Hoorae Media:</strong> production company, brand partnerships, and media distribution — all owned infrastructure, not licensed access to someone else\'s.','<strong>Raedio:</strong> music company focused on Black artists and sync licensing. Sync licensing is where the money is; Raedio captures it for the creators rather than the labels.','<strong>Owned IP:</strong> A Black Lady Sketch Show and Insecure are produced through Hoorae — IP she owns and controls, not IP licensed to a network that owns the asset.','<strong>Angel activity:</strong> investments in Black-founded startups and public advocacy for Black ownership in media infrastructure.'],
+  tags:['OWN','CULT','MEDI','DIV']},
+
+  {name:'Vector90 / The Marathon Continuing Foundation',sub:'Nipsey Hussle (Ermias Asghedom) · Community infrastructure, Crenshaw, LA',url:'https://marathoncontinuing.org',
+  stage:'Community infrastructure · Crenshaw, LA · Active through Foundation post-2019',checkSize:'Community infrastructure (not VC checks)',stageNote:'Community Stage',stages:['impact'],
+  thesis:'Own the block. Own the buildings. Own the business. Not investing in someone else\'s company — owning the physical and economic infrastructure of your own community. The most community-embedded investment model of any cultural figure.',
+  why:['<strong>Vector90:</strong> STEM incubator and co-working space built directly in the Crenshaw neighborhood of Los Angeles — in the community itself, not a downtown office with community programming.','<strong>Marathon Clothing smart retail:</strong> app unlocking exclusive digital content when held near clothing tags — owned technology infrastructure embedded directly in retail. Not a partnership. Ownership.','<strong>Thesis statement:</strong> "The Marathon Continues." Economic ownership in the community is the model — not philanthropy from outside it.','<strong>Legacy:</strong> after his murder in 2019, The Marathon Continuing Foundation sustains the community investment thesis. The work is bigger than one person.'],
+  tags:['OWN','COMM','SI','CULT']},
+
+  {name:'Tyler Perry Studios',sub:'Tyler Perry · 100% self-owned · 330 acres · No outside capital',url:'https://tylerperry.com',
+  stage:'100% self-owned · 330 acres · $250M+ self-financed · No outside capital',checkSize:'Self-funded (no outside checks)',stageNote:'Ownership',stages:['series-b'],
+  thesis:'The "build your own infrastructure" model taken to its extreme. Tyler Perry Studios was built on the former Fort McPherson — a Confederate Army base in Atlanta — as a deliberate act of reclamation. No LPs, no VCs, no co-investors. Full ownership.',
+  why:['<strong>330 acres:</strong> built on a former Confederate Army base in Atlanta. The choice of location is not incidental — reclamation of the physical infrastructure of oppression.','<strong>Financing:</strong> self-financed at $250M+, zero outside capital. 100% equity retained. No institutional partners, no dilution, no governance concessions.','<strong>Community anchor:</strong> provides employment and production infrastructure for Black-led projects that previously had to access white-owned studios.','<strong>Model:</strong> build what you need rather than renting it from someone who profits from your output. The clearest large-scale implementation of Nipsey\'s thesis.'],
+  tags:['OWN','COMM','CULT']},
+
+  {name:'Magic Johnson Enterprises',sub:'Earvin "Magic" Johnson · Proved underserved markets are profitable — not charitable',url:'https://magicjohnson.com',
+  stage:'Pioneer · Community-focused franchise ownership · Decades of active operation',checkSize:'$500K – $25M (franchise / JV)',stageNote:'Growth · Franchise',stages:['series-b'],
+  thesis:'One of the first major athletes to prove that underserved Black urban markets are profitable — not charitable. Decades before the venture community internalized the thesis, Magic demonstrated it at scale through franchise ownership in the communities themselves.',
+  why:['<strong>Portfolio:</strong> Starbucks franchises in communities that had no Starbucks. Movie theaters in neighborhoods without cinemas. SodexoMagic: food services to underserved institutional settings.','<strong>The proof:</strong> underserved markets are underserved because of assumption failure, not market failure. Magic demonstrated this is a profitability thesis, not a philanthropy thesis.','<strong>Historical significance:</strong> his model predates current "community-focused investing" language by decades. He didn\'t have the vocabulary — he had the track record.','<strong>Lasting relevance:</strong> what VC has been "discovering" about underserved markets in the 2020s, Magic proved in the 1990s. The lesson has been available the entire time.'],
+  tags:['COMM','OWN','SI']},
+
+  {name:'i am OTHER / Yellow / CLF LP',sub:'Pharrell Williams · LP in a16z Cultural Leadership Fund · Norfolk VA anchor',url:'https://pharrell.com',
+  stage:'Angel · LP in a16z Cultural Leadership Fund · Community anchor, Norfolk VA',checkSize:'LP in a16z CLF (not direct checks)',stageNote:'Seed · Growth (via CLF)',stages:['seed','series-b'],
+  thesis:'Cultural investment through multiple channels: LP in a16z Cultural Leadership Fund (institutional AI venture exposure), brand and music ventures through i am OTHER, and active community economic development in his hometown of Norfolk, Virginia.',
+  why:['<strong>a16z CLF LP:</strong> direct institutional AI venture exposure alongside Jay-Z, Nas, Kevin Durant, and others — the same fund structure backing the infrastructure companies of the AI economy.','<strong>SOMETHING IN THE WATER:</strong> annual festival in Hampton Roads, VA — an economic development engine for a historically underinvested Black community. Culture as economic infrastructure.','<strong>Norfolk advocacy:</strong> pushing for economic development and city planning investment in Black neighborhoods of Hampton Roads — governance-level community investment, not just events.','<strong>Yellow (NIGO collaboration):</strong> cultural IP ownership vehicle representing the production and brand layer of his creative output.'],
+  tags:['AI','COMM','CULT','SI']},
+
+  {name:'Angel Investments',sub:'Usher (Usher Raymond IV) · Consumer and wellness focus',url:'https://usher.com',
+  stage:'Individual angel · Most recent documented investment: FightCamp Series B (2021)',checkSize:'$100K – $500K (angel)',stageNote:'Seed',stages:['seed'],
+  thesis:'Opportunistic consumer and wellness investments. FightCamp (connected fitness) and Liquid I.V. (exit 2020). No formal investment vehicle identified. Represents the early-stage celebrity angel pattern before formal fund structures.',
+  why:['<strong>FightCamp (2021):</strong> connected fitness platform — AI-powered home workout technology positioned before the category was crowded.','<strong>Liquid I.V. (exit 2020):</strong> wellness consumer brand acquired by Unilever — a clean exit representing early conviction in a consumer health category.','<strong>Current status:</strong> no formal investment vehicle identified; investment activity has been informal and infrequent relative to peers.','<strong>Notable gap:</strong> no documented AI-specific investment activity as of June 2026, unlike peers who have taken explicit positions in the category (Foxx, Longoria, McConaughey).'],
+  tags:['CULT']},
+],
+
+aiwave:[
+  {name:'ElevenLabs Series D Investor',sub:'Jamie Foxx · $500M round · $11B valuation · May 2026',url:'https://elevenlabs.io',
+  stage:'Series D · $500M round · $11B valuation · May 2026 · Co-investors: BlackRock, NVIDIA',checkSize:'Est. $1M – $10M (Series D participant)',stageNote:'Growth (Series D)',stages:['series-b'],
+  thesis:'Invested in ElevenLabs, the leading AI voice platform that crossed $500M ARR in May 2026. As an actor and musician, Foxx\'s bet is specifically on AI voice infrastructure — the technology that extends, licenses, and replicates creative voices across languages and experiences.',
+  why:['<strong>ElevenLabs at Series D:</strong> $500M round at $11B valuation. BlackRock and NVIDIA as co-investors. $500M ARR in first four months of 2026 — not a speculative bet.','<strong>Why this bet matters for Black creators:</strong> their voices are being used to train AI models without compensation or consent. Ownership in the infrastructure is the correction.','<strong>Cultural signal:</strong> Black and Latino entertainers investing together in AI voice infrastructure is the "cultural value without ownership" thesis becoming an actual investment position.','<strong>AfroTech coverage:</strong> Foxx\'s investment was specifically covered as a signal of Black cultural figures claiming stakes in AI infrastructure built on their cultural output.'],
+  tags:['AI','CULT','COMM']},
+
+  {name:'ElevenLabs Series D Investor',sub:'Eva Longoria · Latino creator community signal',url:'https://elevenlabs.io',
+  stage:'Series D · $500M round · $11B valuation · May 2026',checkSize:'Est. $1M – $10M (Series D participant)',stageNote:'Growth (Series D)',stages:['series-b'],
+  thesis:'ElevenLabs Series D investor alongside Jamie Foxx. Longoria brings the Latino creator community signal to the AI voice infrastructure bet — in a round that specifically attracted cultural figures with direct stakes in who owns the AI systems being built on their voices.',
+  why:['<strong>ElevenLabs:</strong> $500M Series D, $11B valuation, May 2026. AI voice platform enabling creators to extend voices into new languages and fan experiences.','<strong>Spanish-language economic stakes:</strong> for Latino creators, voice extension across Spanish-language markets has direct, calculable economic value — a market AI voice companies cannot afford to ignore.','<strong>Cultural ownership coalition:</strong> Foxx + Longoria co-investing signals an emerging cohort of cultural investors explicitly making the "own the AI infrastructure" bet.','<strong>Broader portfolio:</strong> Longoria\'s investment activity spans entertainment and social impact — this is her most direct AI infrastructure position.'],
+  tags:['AI','DIV','CULT']},
+
+  {name:'ElevenLabs Existing Investor',sub:'Matthew McConaughey · Earliest celebrity position · Largest unrealized return',url:'https://elevenlabs.io',
+  stage:'Existing investor · Position maintained through Series D · $11B valuation',checkSize:'Est. $1M – $10M+ (earlier entry, larger upside)',stageNote:'Growth (existing position)',stages:['series-b'],
+  thesis:'An existing ElevenLabs investor who maintained and extended his position through the $500M Series D — the earliest celebrity entrant in AI voice infrastructure with the longest holding period and largest unrealized return.',
+  why:['<strong>Earliest celebrity position:</strong> invested in ElevenLabs before Foxx and Longoria joined — maintained conviction through Series D at $11B valuation.','<strong>AI voice infrastructure thesis:</strong> for actors and musicians, the intersection of entertainment IP and AI licensing is the most immediate economic ownership question in the entire AI landscape.','<strong>Position economics:</strong> earlier entry point than fellow celebrity investors at Series D. Unrealized return signals conviction backed by company trajectory, not a prestige placement.','<strong>Pattern:</strong> McConaughey\'s investment activity has consistently favored brands at the intersection of lifestyle, performance, and technology.'],
+  tags:['AI','CULT']},
+],
+
+superangels:[
+  {name:'Reid Hoffman',sub:'Partner, Greylock · Co-founder, LinkedIn · 40+ AI startups since 2020',url:'https://greylock.com',
+  stage:'Personal angel + Greylock partner · $25K–$500K · 40+ AI startups since 2020',checkSize:'$25K – $500K (personal) · $1M+ (Greylock partner)',stageNote:'Pre-Seed · Seed · Series A',stages:['pre-seed','seed','series-a'],
+  thesis:'"AI that amplifies human potential." Backs AI that increases human capability rather than simply replacing it. Most philosophically and politically engaged of the super angels — active in AI governance and policy alongside capital deployment.',
+  why:['<strong>Portfolio:</strong> OpenAI (early), Inflection AI, DeepMind — the three most structurally important AI safety-aligned investments available before the current hype cycle.','<strong>2026 thesis:</strong> "We are moving from agentic coding to agents in everything else" — the same transition that makes AI validity measurement infrastructure essential at every deployment site.','<strong>Investment philosophy:</strong> network effects as the primary value creation mechanism — directly applicable to why multi-stakeholder AI validity measurement compounds over time.','<strong>Policy engagement:</strong> the most active of the super angels in AI governance and safety policy — not just capital deployment but framework-building.'],
+  tags:['AI','SI']},
+
+  {name:'AI Fund',sub:'Andrew Ng · GP and Co-founder · $190M Fund II',url:'https://aifund.ai',
+  stage:'$190M Fund II · Studio model · ~35 portfolio companies · Backed by Sequoia, NEA',checkSize:'$500K – $5M (studio / co-founder model)',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"AI is the new electricity." AI should reach every industry, not just technology. Co-founds companies alongside founders. Focus: healthcare, financial services, logistics, renewable energy, education, developer tools.',
+  why:['<strong>Fund II ($190M):</strong> backed by Sequoia Capital, NEA, AES, HP, Mitsui, Mitsubishi — corporate partners embedded in the essential services sectors he\'s building for.','<strong>Studio model:</strong> co-founds ~35 companies, actively codes and builds prototypes with founding teams. He is an operator, not just a capital allocator.','<strong>Essential services focus:</strong> healthcare, financial services, education, renewable energy — precisely the markets where AI validity and behavioral measurement matter most.','<strong>Recent portfolio:</strong> Gaia Dynamics (tariff compliance AI), SkyFire AI (drone first-responder systems), Profitmind (retail pricing automation).'],
+  tags:['AI','SI','COMM']},
+
+  {name:'Fei-Fei Li',sub:'Professor, Stanford · Co-director, Stanford HAI · Human-Centered AI',url:'https://hai.stanford.edu',
+  stage:'Angel · $25K–$300K · Pre-seed / Seed · Academic + investment dual role',checkSize:'$25K – $300K',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'"Human-Centered AI" — AI systems designed to enhance human capability, dignity, and flourishing. Pioneer of ImageNet (which catalyzed deep learning). Now focused on AI ethics, healthcare AI, and ensuring AI serves all of humanity, not only those with access to its design.',
+  why:['<strong>Stanford HAI:</strong> co-director of the Human-Centered AI Institute — the most academically credible voice on AI ethics who is also actively making angel investments.','<strong>Focus areas:</strong> computer vision, healthcare AI, AI ethics applications. $25K–$300K check sizes at pre-seed through seed — earliest stage possible.','<strong>"Human-centered AI" framing:</strong> AI must serve human values, including the values of communities historically excluded from its design. A direct match with the situated fairness principle.','<strong>Ai4 2026:</strong> speaking alongside Geoffrey Hinton and Andrew Ng — three of the most influential AI researchers alive, aligned on AI serving humanity broadly.'],
+  tags:['AI','SI','DIV','COMM']},
+
+  {name:'Elad Gil',sub:'Independent Super Angel · Serial Entrepreneur',url:'https://blog.eladgil.com',
+  stage:'Independent · $250K–$1M+ · ~$20M–$100M+ annual deployment',checkSize:'$250K – $1M+',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Technical conviction in AI infrastructure before market consensus. Backs founders at earliest stage on deep technical merit alone. No explicit social thesis — pure signal on technical quality and market timing.',
+  why:['<strong>Portfolio:</strong> Perplexity, Character.AI, Harvey, Figma, Stripe, Airbnb, Coinbase, Anduril — consistent pattern of early bets on infrastructure that becomes category-defining.','<strong>Check sizes:</strong> $250K–$1M+ with capacity to lead rounds without institutional overhead or committee process.','<strong>The Datadog analogy:</strong> Elad backed Datadog (observability infrastructure for software performance) early. He would immediately recognize behavioral validity measurement as the same infrastructure category for AI.','<strong>Speed advantage:</strong> no investment committee, no LP updates required. Can move to term sheet in days. Critical for founders who need a decision, not a process.'],
+  tags:['AI']},
+
+  {name:'Naval Ravikant',sub:'Co-founder, AngelList · 200+ investments · 16 unicorns',url:'https://nav.al',
+  stage:'AngelList ecosystem · $50K–$250K · 200+ investments · 37 exits · 16 unicorns',checkSize:'$50K – $250K',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Software and AI democratize access to leverage for individuals who previously had none — an equalizing force against incumbent economic concentration. Latest investment: Blackstar (April 2026).',
+  why:['<strong>Portfolio:</strong> Anthropic, Perplexity, Notion, Uber, Twitter, OpenSea, Anchorage Digital — pattern of backing infrastructure that extends individual leverage and reduces institutional dependency.','<strong>Philosophical frame:</strong> AI and software are equalizing forces. This supports the "cultural value without ownership" correction — communities that contributed cultural capital should access that leverage.','<strong>AngelList itself:</strong> democratized angel investing infrastructure — a meta-thesis about expanding access to investment vehicles, not just investment returns.','<strong>16 unicorns, 37 exits:</strong> the track record gives him access to any deal he wants. His presence on a cap table is a credibility signal to other investors.'],
+  tags:['AI','COMM']},
+
+  {name:'Mark Cuban Companies',sub:'Mark Cuban · Dallas, TX · 150+ investments · Cost Plus Drugs',url:'https://markcuban.com',
+  stage:'Prolific angel · 150+ investments · Shark Tank · AI, healthcare disruption · Dallas, TX',checkSize:'$25K – $500K (Shark Tank) · Up to $5M (direct)',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'Anti-establishment disruption of legacy industries that overcharge underserved consumers. Founded Cost Plus Drugs to dismantle pharmaceutical pricing — proving that consumer protection is a financial opportunity, not a social gesture.',
+  why:['<strong>Cost Plus Drugs (launched 2022):</strong> sells generics at cost + 15% markup, cutting out the PBM extraction layer. Disrupting a $500B+ industry by making pricing transparent — the same structural logic applied to healthcare that uMODA applies to auto services.','<strong>Shark Tank angel portfolio:</strong> 150+ investments across consumer, tech, healthcare, and AI startups — the most publicly documented angel investment track record in history.','<strong>AI democratization thesis:</strong> vocal advocate for AI making every person their own doctor, lawyer, and financial advisor — the consumer empowerment thesis applied to AI.','<strong>Texas anchor:</strong> one of the highest-profile tech investors based in Texas, providing ecosystem credibility and a natural warm-intro bridge to Mercury, HX, South Loop, and Houston\'s broader venture community.'],
+  tags:['AI','COMM','SI','REG']},
+],
+
+networks:[
+  {name:'Black Angel Group',sub:'Google / Alphabet Collective · 150 members · Global',url:'https://blackangelgroup.com',
+  stage:'Seed – Series A · 150 members · Global · 45% women · Half of portfolio founders underrepresented',checkSize:'$25K – $250K (angel collective)',stageNote:'Seed · Series A',stages:['seed','series-a'],
+  thesis:'A collective of Black professionals inside Google and Alphabet deploying intellectual, social, and financial capital into early-stage startups globally. Emerged from inside the most powerful AI research organization in the world — with direct portfolio exposure to AI infrastructure companies.',
+  why:['<strong>Membership:</strong> grew from 25 to 150. Spans five continents. 45% women. Co-investment with GV (Google Ventures), a16z, Gradient, MaC Ventures, Gaingels.','<strong>AI portfolio:</strong> LastMile AI (AI infrastructure), Status Pro (sports performance AI), Syrup Tech, Aster — direct AI investment activity, not just diversity-first mandate.','<strong>Institutional co-investors:</strong> GV, a16z, and Gradient as co-investors validate BAG\'s deal selection quality at the institutional level.','<strong>Structural significance:</strong> the most organized Black angel network with direct AI portfolio exposure, operating with inside knowledge of where Google and Alphabet are building next.'],
+  tags:['AI','COMM','DIV']},
+
+  {name:'776',sub:'Alexis Ohanian · Co-founder, Reddit · 10% of carry to social causes',url:'https://776.vc',
+  stage:'Seed+ · Diverse founder mandate · 10% of carry to social causes',checkSize:'$500K – $3M',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Named after the year Wakanda was founded in Black Panther canon. Backs diverse founders across technology, health, wellness, and the creator economy. 10% of carried interest is structurally committed to social causes — community benefit encoded into fund economics.',
+  why:['<strong>10% carry commitment:</strong> the more the fund returns, the more capital flows to social causes. Not philanthropy bolted on — economics baked in from the fund structure itself.','<strong>Portfolio:</strong> technology, health, wellness, creator economy — strong overlap with essential services and cultural ownership thesis.','<strong>Cultural credibility:</strong> marriage to Serena Williams and public advocacy for paid parental leave and women\'s rights give Ohanian access to communities traditional VCs cannot reach.','<strong>Fund name:</strong> 776 = Wakanda founding year per Black Panther lore. Cultural signal in the name itself — parallel to QueensBridge and Marcy Houses.'],
+  tags:['DIV','SI','COMM','CULT']},
+],
+
+regional:[
+  {name:'Drive Capital',sub:'Chris Olsen & Mark Kvamme · Ex-Sequoia · $500M returned May 2025',url:'https://drivecapital.com',
+  stage:'Columbus, OH · Stage-agnostic · 100+ portfolio companies · 9 unicorns · $500M returned May 2025',checkSize:'$1M – $15M',stageNote:'Seed · Series A · Series B',stages:['seed','series-a','series-b'],
+  thesis:'Founded by ex-Sequoia Capital partners with one thesis: world-class technology companies can be built anywhere, not just in Silicon Valley. The "Driveway" — Hudson River to the Rocky Mountains — contains founders, customers, and resources that coastal investors systematically miss.',
+  why:['<strong>Founded by ex-Sequoia partners</strong> who believed the West Coast monopoly on venture returns was a thesis error, not a fact. Left institutional prestige to prove it.','<strong>Portfolio:</strong> Notion, Duolingo, Forge Biologics — world-class companies built outside Silicon Valley. 9 unicorns validates the thesis at institutional scale.','<strong>$500M returned in one week (May 2025):</strong> the single largest weekly distribution in firm history. The "flyover country" bet paying off at Sequoia-level returns.','<strong>Model for non-traditional founders:</strong> a company built by a team with non-traditional credentials in a non-coastal geography is exactly the "Driveway" founder Drive Capital was designed to find.'],
+  tags:['AI','REG']},
+
+  {name:'Next Coast Ventures',sub:'Mike Smerklo & Thomas Ball · Founded 2015 · Austin, TX · $265M+ AUM',url:'https://nextcoastventures.com',
+  stage:'Austin, TX · $265M+ AUM · Seed – Series B · Thematic investing',checkSize:'$500K – $5M',stageNote:'Seed · Series A · Series B',stages:['seed','series-a','series-b'],
+  thesis:'"Next Coast markets" — high-growth tech ecosystems outside Silicon Valley and New York, including Austin, the Midwest, the Mountain West, and the Southeast. Both founders are serial operators. Thematic investing: Future of Work, Software 3.0, Digital Health, Retail (R)evolution.',
+  why:['<strong>$265M+ AUM.</strong> Both founders built companies themselves before investing — "glass-eating founders" is their language for the founders they back, and they\'ve been in that seat.','<strong>"Next Coast" framing (2015):</strong> explicitly positioned Austin, Midwest, and Southeast as the next technology value creation centers — a thesis validated by 10 years of portfolio performance.','<strong>Thematic over sector:</strong> "Software 3.0" captured AI-native software before "agentic" was vocabulary. "Future of Work" maps to multi-stakeholder AI infrastructure for workers and employers simultaneously.','<strong>HX Venture Fund LP:</strong> NCV is one of HX Venture Fund\'s portfolio funds — creating a direct Houston-Austin investment corridor and a warm intro pathway between two ecosystems.'],
+  tags:['AI','REG','COMM']},
+],
+
+institutional:[
+  {name:'MacKenzie Scott',sub:'Independent Philanthropist · $17B+ deployed since 2020',url:'https://mackenzie-scott.medium.com',
+  stage:'$17B+ deployed since 2020 · No applications · No reporting requirements · Unrestricted gifts',checkSize:'$1M – $40M+ (unrestricted gifts)',stageNote:'All stages (philanthropy)',stages:['impact'],
+  thesis:'Radical philanthropic democratization: identify institutions doing exceptional work in underserved communities and write unrestricted checks with zero strings. The explicit goal is to dismantle philanthropic gatekeeping — the infrastructure of control that traditional foundations impose on recipients.',
+  why:['<strong>Recipients:</strong> Howard University ($40M), Spelman College ($40M), Xavier University ($20M), NAACP Legal Defense Fund, Movement for Black Lives, Color of Change, UnidosUS, dozens of HBCUs and CDFIs.','<strong>Method:</strong> no applications, no reporting requirements, no aligned strategy mandates. The opposite of traditional philanthropy\'s surveillance and performance theater.','<strong>Scale:</strong> $17B+ deployed since 2020 — the single most impactful funder of Black and marginalized institutions in modern history, measured by unrestricted capital deployed.','<strong>Warm intro value:</strong> organizations she\'s funded (HBCUs, Color of Change, Movement for Black Lives) become credibility bridges into communities where trust matters most.'],
+  tags:['SI','COMM','DIV']},
+
+  {name:'Vista Equity Partners',sub:'Robert F. Smith · $100B+ AUM · Largest Black-owned PE firm in the US',url:'https://vistaequitypartners.com',
+  stage:'$100B+ AUM · Largest Black-owned PE firm in the US · Enterprise software PE',checkSize:'$50M – $500M+ (PE buyouts)',stageNote:'Growth · PE',stages:['series-b'],
+  thesis:'Institutional-scale private equity in enterprise software — proof that Black-owned investment management operates at the highest levels of the industry. Community investment through Fund II Foundation and a historic commitment to Morehouse College.',
+  why:['<strong>$100B+ AUM:</strong> the largest Black-owned private equity firm in the United States — an institutional signal with no parallel. It changes what other institutions believe is possible.','<strong>Morehouse pledge:</strong> paid off the entire student loan debt of the Morehouse Class of 2019 ($34M) — the largest single gift to an HBCU at the time of the pledge.','<strong>Fund II Foundation:</strong> deploys capital to support Black male achievement, financial literacy, and STEM investment in Black communities — the community pipeline thesis applied to PE.','<strong>CEO Action for Racial Equity:</strong> organized major corporate CEOs into a coalition with specific, measurable equity commitments — governance-level change, not just philanthropic gestures.'],
+  tags:['COMM','OWN','SI']},
+
+  {name:'Ariel Investments',sub:'Mellody Hobson · Co-CEO and President · $17B+ AUM · Founded 1983',url:'https://arielinvestments.com',
+  stage:'Co-CEO · $17B+ AUM · Founded 1983 by John Rogers Jr. · JPMorgan + Starbucks board member',checkSize:'$1M – $50M+ (public market fund)',stageNote:'Public Markets',stages:['series-b'],
+  thesis:'Financial education and access to equity markets is the most durable path to generational wealth for Black Americans. Ariel Investments has sustained this thesis institutionally for over four decades — one of the longest-standing examples of Black-owned investment infrastructure at scale.',
+  why:['<strong>$17B+ AUM:</strong> founded in 1983 — four decades of proof that Black-owned institutional investment management operates at the highest level with consistent performance.','<strong>Board membership:</strong> JPMorgan Chase and Starbucks — operating at the apex of institutional capital while maintaining community advocacy. The access is real, not symbolic.','<strong>Financial literacy advocacy:</strong> Hobson\'s public platform focuses specifically on financial literacy in Black communities and diversity in investment decision-making.','<strong>Mellody + JPMorgan connection:</strong> her board seat at JPMorgan creates a governance bridge between Black-owned investment infrastructure (Ariel) and JPMorgan\'s $30B racial equity commitment.'],
+  tags:['COMM','DIV','SI']},
+
+  {name:'Backstage Capital',sub:'Arlan Hamilton · Founder and Managing Partner · 200+ portfolio companies',url:'https://backstagecapital.com',
+  stage:'Pre-seed / Seed · 200+ portfolio companies · Backstage Studio accelerator · $12M+ deployed',checkSize:'$25K – $500K',stageNote:'Pre-Seed · Seed',stages:['pre-seed','seed'],
+  thesis:'Lived proximity produces better products for underserved populations. The structural barrier is not founder ability — it\'s that access to capital networks is restricted by proximity to existing wealth. Backstage invests in Black, Latinx, LGBTQ+, and women founders.',
+  why:['<strong>200+ portfolio companies.</strong> Backstage Studio accelerator specifically for Black, Latinx, LGBTQ+, and women founders — built for the moment before institutional capital arrives.','<strong>Hamilton\'s story as thesis:</strong> she was homeless at points while pitching Backstage to LPs — a first-hand demonstration of the access gap she was built to correct. The founder is the evidence.','<strong>Intellectual contribution:</strong> naming the structural problem explicitly — access to capital is restricted by proximity to existing wealth, not by founder quality. The diagnosis precedes the fund.','<strong>Investable asset framing:</strong> one of the most documented examples of lived experience and proximity to problem as investable assets, not just backstory color.'],
+  tags:['DIV','COMM','SI']},
+],
+
+};
+
+function badges(active){
+  return ALL_T.map(t=>{
+    const m=TAGS[t];
+    return active.includes(t)
+      ?`<span class="badge" style="background:${m.color};color:#fff">${m.label}</span>`
+      :`<span class="badge badge-off">${m.label}</span>`;
+  }).join('');
+}
+
+function card(f){
+  const why=f.why.map(w=>`<li>${w}</li>`).join('');
+  const meta=(f.checkSize||f.stageNote)?`<div class="firm-meta">${f.checkSize?`<div class="meta-pair"><span class="meta-k">Check</span><span class="meta-v">${f.checkSize}</span></div>`:''}${f.stageNote?`<div class="meta-pair"><span class="meta-k">Stage</span><span class="meta-v">${f.stageNote}</span></div>`:''}</div>`:'';
+  const stagesAttr=(f.stages&&f.stages.length)?` data-stages="${f.stages.join(' ')}"`:' data-stages="seed"';
+  return `<div class="firm-card"${stagesAttr}>
+    <div class="firm-top">
+      <div>
+        <div class="firm-name"><a href="${f.url}" target="_blank" rel="noopener">${f.name}</a></div>
+        ${f.sub?`<div class="firm-sub">${f.sub}</div>`:''}
+      </div>
+      <div class="firm-stage-pill">${f.stage}</div>
+    </div>
+    ${meta}
+    <p class="firm-thesis">${f.thesis}</p>
+    <ul class="firm-why">${why}</ul>
+    <div class="firm-badges">${badges(f.tags)}</div>
+  </div>`;
+}
+
+function render(key,id){
+  const el=document.getElementById(id);
+  if(el) el.innerHTML=FIRMS[key].map(card).join('');
+}
+
+render('tier1','tier1-grid');
+render('aiinfra','ai-infra-grid');
+render('genai','genai-grid');
+render('impact','impact-grid');
+render('diverse','diverse-grid');
+render('tier2','tier2-grid');
+render('founderfirst','founderfirst-grid');
+render('infra','infra-grid');
+render('established','established-grid');
+render('houston','houston-grid');
+render('corporate','corporate-grid');
+render('named3','named3-grid');
+render('athletes','athletes-grid');
+render('entertainment','entertainment-grid');
+render('aiwave','aiwave-grid');
+render('superangels','superangels-grid');
+render('networks','networks-grid');
+render('regional','regional-grid');
+render('institutional','institutional-grid');
+
+/* STAGE FILTER */
+(function(){
+  const btns=document.querySelectorAll('.filter-btn');
+  let active='all';
+
+  function applyFilter(f){
+    active=f;
+    btns.forEach(b=>b.classList.toggle('active',b.dataset.filter===f));
+    document.querySelectorAll('.firm-card').forEach(card=>{
+      if(f==='all'){card.classList.remove('hidden');return;}
+      const stages=(card.dataset.stages||'').split(' ');
+      card.classList.toggle('hidden',!stages.includes(f));
+    });
+    document.querySelectorAll('.section').forEach(sec=>{
+      const grid=sec.querySelector('.firm-grid');
+      if(!grid){sec.classList.remove('hidden');return;}
+      const visibleCards=grid.querySelectorAll('.firm-card:not(.hidden)');
+      sec.classList.toggle('hidden',visibleCards.length===0);
+    });
+  }
+
+  btns.forEach(btn=>btn.addEventListener('click',()=>applyFilter(btn.dataset.filter)));
+})();
+(function(){
+  const tip=document.createElement('div');
+  tip.id='stage-tooltip';
+  document.body.appendChild(tip);
+  document.querySelectorAll('.filter-btn[data-tooltip]').forEach(btn=>{
+    btn.addEventListener('mouseenter',function(){
+      tip.textContent=this.dataset.tooltip;
+      const r=this.getBoundingClientRect();
+      const tw=220;
+      let left=r.left+r.width/2-tw/2;
+      if(left<8)left=8;
+      if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
+      tip.style.left=left+'px';
+      tip.style.top=(r.bottom+8)+'px';
+      tip.classList.add('visible');
+    });
+    btn.addEventListener('mouseleave',function(){
+      tip.classList.remove('visible');
+    });
+  });
+})();
+</script>
+</body>
+</html>
